@@ -1,5 +1,7 @@
 create database Codeplay;
-	use Pesquisa
+
+use Codeplay;
+
 create table Aluno (
 id int AUTO_INCREMENT,
 matricula varchar(20),
