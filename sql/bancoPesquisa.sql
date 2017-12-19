@@ -1,4 +1,4 @@
-create database Pesquisa;
+create database Codeplay;
 	use Pesquisa
 create table Aluno (
 id int AUTO_INCREMENT,
