@@ -1,0 +1,10 @@
+
+create database projeto;
+use projeto;
+
+create table cadastro(
+	id int primary key auto_increment,
+	nome varchar (40) not null,
+	senha varchar(100) not null,
+	email varchar (40) not null
+);
