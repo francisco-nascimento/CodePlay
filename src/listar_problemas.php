@@ -15,6 +15,12 @@
 
 <body>
 
+  <?php 
+
+    require 'verifica.php';
+
+   ?>
+
   <div class="table-users">
    <div class="header">Questões a serem resolvidas</div>
 
