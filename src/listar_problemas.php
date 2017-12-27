@@ -32,7 +32,7 @@
       </tr>
    <?php
 
-  require 'conecao.php';
+  require 'conexao.php';
 
    $resultado = $conexao->query("select profe.nome, proble.desc_Problema, proble.classificacao from Professor as profe left join Problema as proble on profe.id = proble.id_Professor");
 
