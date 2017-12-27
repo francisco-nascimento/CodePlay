@@ -26,7 +26,7 @@
               <a class="nav-link js-scroll-trigger" href="listar_problemas.php">Problemas</a>
             </li>
              <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="Login/index.php" >Logar-se ou Criar conta</a>
+              <a class="nav-link js-scroll-trigger" href="Modelo/Login/index.php" >Logar-se ou Criar conta</a>
             </li>
           </ul>
         </div>

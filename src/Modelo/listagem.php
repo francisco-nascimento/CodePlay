@@ -8,6 +8,7 @@
 <body>
 
 	<?php
+		
 
 		require 'verifica.php';
 	?>

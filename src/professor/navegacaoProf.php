@@ -27,6 +27,12 @@
              <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="Login/index.php" > Cadastrar Problemas </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="../Modelo/listagem.php" > Lista de Alunos </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="../Modelo/logoff.php" > LogOff </a>
+            </li>
           </ul>
         </div>
       </div>

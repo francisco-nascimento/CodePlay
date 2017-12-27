@@ -14,11 +14,11 @@
 
 		if (strcasecmp($usuario, $professor) == 0) {
 
-			require 'navegacaoProf.php';
+			require '../professor/navegacaoProf.php';
 		
 		}else if (strcasecmp($usuario, $aluno) == 0) {
 
-			require 'navegacaoAlun.php';
+			require '../aluno/navegacaoAlun.php';
 
 		}
 
