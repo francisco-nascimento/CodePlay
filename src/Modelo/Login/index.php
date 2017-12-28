@@ -27,10 +27,16 @@
         }
           
     </script>
+    <?php
+
+            include ($_SERVER ['DOCUMENT_ROOT'].'/verifica.php');
+
+    ?>
  
 </head>
 
 <body>
+  <br><br>
   
 <div class="container">
   <div class="info">
@@ -60,10 +66,10 @@
     <input type="text" required autocomplete="off" placeholder="fulano@gmail.com"/ name="email">
 
 	<label> Professor</label>
-	<input type="radio" name="professor" required="required" value="1"> <br>
+	<input type="radio" name="tipoUsuario" required="required" value="1"> <br>
 	
 	<label>Aluno</label>
-	<input type="radio" name="professor" value="0"> <br>
+	<input type="radio" name="tipoUsuario" value="0"> <br>
 
     <button>criar</button>
     <p class="message">Já registrado? <a href="#">Sign In</a></p>
@@ -82,10 +88,10 @@
     <input type="password" name="senha" required placeholder="********"/><br>
 
 	<label> Professor</label>
-	<input type="radio" name="professor" required value="1"> <br>
+	<input type="radio" name="tipoUsuario" required value="1"> <br>
 	
 	<label>Aluno</label>
-	<input type="radio" name="professor" value="0"> <br>
+	<input type="radio" name="tipoUsuario" value="0"> <br>
 
     <button>login</button>
     <p class="message">Não registrado? <a href="#">Crie uma conta</a></p>

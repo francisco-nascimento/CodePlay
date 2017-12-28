@@ -37,7 +37,12 @@
 
      <?php
 
-      include '../../../verifica.php';
+     
+
+      include ("$_SERVER [ 'DOCUMENT_ROOT']/verifica.php");
+
+
+
       
       ?>
     
@@ -46,15 +51,26 @@
 
     <?php
 
-      require '../php/questao.php';
+    include ($_SERVER['DOCUMENT_ROOT'].'/conexao.php');
+  
 
+  
 
-      
-    ?>
+   $resultado = $conexao->prepare("select desc_Problema, classificacao from Problema where id = 1");
+   //$resultado->bindParam(1,$id);
+   $resultado->execute();
 
-    <h1><?=$resultado['desc_Problema']?></h1>
+   foreach ($resultado as $linha) {
+     # code...
    
 
+?>
+
+    <h1><?=$linha['desc_Problema']?></h1>
+   
+<?php
+    }
+?>
    
 
   </body>

@@ -2,7 +2,7 @@
 
 	session_start();
 		
-	require 'conexao.php';
+	 include ($_SERVER ['DOCUMENT_ROOT'].'/conexao.php');
 
 	 if (!isset($_SESSION['nome'])) {
 		# code...

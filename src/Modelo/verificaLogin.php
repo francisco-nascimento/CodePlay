@@ -1,15 +1,14 @@
 
 <?php
-  require 'verifica.php';
+ //require 'verifica.php';
 
   $email = $_POST["email"];
   $senha = $_POST["senha"];
-  $professor = $_POST["professor"];
+  $professor = $_POST["tipoUsuario"];
 
   try{
 
-	$conexao = new PDO("mysql:host=localhost;dbname=Pesquisa","root","1994");
-	$conexao->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+	include ($_SERVER['DOCUMENT_ROOT'].'/conexao.php');
 
 
 
@@ -30,7 +29,7 @@
 	
 	foreach($resultado as $linha){
 	
-		if(password_verify($senha, $linha["senha"])){
+		if(strcasecmp($senha, $linha["senha"])){
 			
 			session_start();
 			$_SESSION["email"]=$email;
@@ -45,10 +44,11 @@
 			
 
 
-			header("Location: index.php");
+			header("Location: ".$_SERVER['DOCUMENT_ROOT']."/index.php");
 
 		}else{
 			echo "Email ou senha incorreto(s)";
+			header("Location: index.php");
 		}
 	}
 	}	catch(PDOException $e){
