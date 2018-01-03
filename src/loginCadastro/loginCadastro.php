@@ -8,7 +8,7 @@
   <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
   <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Montserrat:400,700'>
   <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
-  <link rel="stylesheet" href="css/style.css">
+  
   <script type="text/javascript">
 
 
@@ -29,7 +29,14 @@
     </script>
     <?php
 
-            include ($_SERVER['DOCUMENT_ROOT'].'/verifica.php');
+          if (isset($_SESSION['nome'])) {
+    # code...
+             header("Location: ../index.php");
+          }
+
+            include '../verifica.php';
+
+            include '../imports.php';
 
     ?>
  
@@ -104,7 +111,7 @@
 </video>
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
-    <script  src="js/index.js"></script>
+    <script  src="../js/index.js"></script>
 
 </body>
 </html>

@@ -7,6 +7,7 @@
 	 if (!isset($_SESSION['nome'])) {
 		# code...
 		require 'navegacao.php';
+		
 	}else{
 
 		$usuario = $_SESSION['USUARIO_LOGADO'];

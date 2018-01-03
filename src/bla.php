@@ -34,5 +34,5 @@ echo dirname($path);
 
 echo "<br />";
 
-echo dirname($_SERVER['DOCUMENT_ROOT']).'/src';
+echo var_dump($_SERVER);
 ?>
