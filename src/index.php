@@ -10,8 +10,9 @@
 
     <title>CodePlay</title>
 
+
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?=$_SEVER['DOCUMENT_ROOT']?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Fontes personalizadas para este modelo -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
