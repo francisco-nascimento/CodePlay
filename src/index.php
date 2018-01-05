@@ -3,6 +3,12 @@
 
   <head>
 
+    <?php
+
+    $host = $_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'];
+
+    ?>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -12,7 +18,7 @@
 
 
     <!-- Bootstrap core CSS -->
-    <link href="<?=$_SEVER['DOCUMENT_ROOT']?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Fontes personalizadas para este modelo -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
