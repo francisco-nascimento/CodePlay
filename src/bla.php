@@ -35,4 +35,18 @@ echo dirname($path);
 echo "<br />";
 
 echo var_dump($_SERVER);
+
+$host = $_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'];
+
+echo "<br />";
+echo "$host";
+
+echo "<br />";
+
+$caminho = getcwd();
+echo $caminho;
+
+echo "<br />";
+
+echo $_SERVER['DOCUMENT_ROOT']."/index.php";
 ?>

@@ -36,7 +36,7 @@
 
             include '../verifica.php';
 
-            include '../imports.php';
+            include '/imports.php';
 
     ?>
  
