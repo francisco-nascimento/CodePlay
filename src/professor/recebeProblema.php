@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 	require '/conexao.php';
+=======
+	require 'conexao.php';
+>>>>>>> f0f3aa649b623ae61b84b1f10f23310b2313afbf
 
 	try {
 
