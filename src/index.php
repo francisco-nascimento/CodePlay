@@ -34,6 +34,8 @@
     <!-- Navegação -->
     <?php
 
+      session_start();
+
       require 'verifica.php';
 
     ?>

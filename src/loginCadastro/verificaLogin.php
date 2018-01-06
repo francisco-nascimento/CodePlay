@@ -8,7 +8,7 @@
 
   try{
 
-	include ($_SERVER['DOCUMENT_ROOT'].'/conexao.php');
+	include ($_SERVER['HTTP_HOST'].'/conexao.php');
 
 
 
@@ -29,7 +29,7 @@
 	
 	foreach($resultado as $linha){
 	
-		if(strcasecmp($senha, $linha["senha"])){
+		if(strcasecmp($senha, $linha["senha"]) == 0){
 			
 			session_start();
 			$_SESSION["email"]=$email;
@@ -44,7 +44,7 @@
 			
 
 
-			header("Location: ".($_SERVER['DOCUMENT_ROOT'].'/index.php)'));
+			header("Location: ".'/index.php');
 
 		}else{
 			echo "Email ou senha incorreto(s)";

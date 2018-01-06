@@ -36,7 +36,7 @@
 
             include '../verifica.php';
 
-            include '/imports.php';
+            
 
     ?>
  
@@ -66,11 +66,11 @@
     <label>
       Repita a senha
     </label>
-    <input type="password" required autocomplete="off" id="confirmaSenha" placeholder="********"/>
+    <input type="password" required autocomplete="off" id="confirmaSenha" placeholder="********">
     <label>
       Insira um email
     </label>
-    <input type="text" required autocomplete="off" placeholder="fulano@gmail.com"/ name="email">
+    <input type="text" required autocomplete="off" placeholder="fulano@gmail.com" name="email">
 
 	<label> Professor</label>
 	<input type="radio" name="tipoUsuario" required="required" value="1"> <br>
@@ -84,15 +84,15 @@
 
 
   </form>
-  <form action="../verificaLogin.php" method="POST" class="login-form">
+  <form action="/loginCadastro/verificaLogin.php" method="POST" class="login-form">
   	<label>
        Email 
     </label>
-    <input type="text" name="email" required placeholder="fulano@gmail.com"/>
+    <input type="text" name="email" required placeholder="fulano@gmail.com">
     <label>
       Senha
     </label>
-    <input type="password" name="senha" required placeholder="********"/><br>
+    <input type="password" name="senha" required placeholder="********"><br>
 
 	<label> Professor</label>
 	<input type="radio" name="tipoUsuario" required value="1"> <br>
@@ -106,9 +106,7 @@
 
 
 </div>
-<video id="video" autoplay="autoplay" loop="loop" poster="polina.jpg">
-  <source src="http://andytran.me/A%20peaceful%20nature%20timelapse%20video.mp4" type="video/mp4"/>
-</video>
+
   <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
     <script  src="../js/index.js"></script>

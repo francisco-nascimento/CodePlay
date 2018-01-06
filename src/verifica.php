@@ -2,7 +2,7 @@
 
 	session_start();
 		
-	 include ($_SERVER['DOCUMENT_ROOT'].'/conexao.php');
+	 include 'conexao.php';
 
 	 if (!isset($_SESSION['nome'])) {
 		# code...
@@ -19,11 +19,11 @@
 
 		if (strcasecmp($usuario, $professor) == 0) {
 
-			require 'professor/navegacaoProf.php';
+			require '/professor/navegacaoProf.php';
 			
 		}else if (strcasecmp($usuario, $aluno) == 0) {
 
-			require 'aluno/navegacaoAlun.php';
+			require '/aluno/navegacaoAlun.php';
 
 		}
 

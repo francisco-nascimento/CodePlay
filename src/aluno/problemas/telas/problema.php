@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
     <?php
-      require ($_SERVER['DOCUMENT_ROOT'].'/imports.php');;
+      require ($_SERVER['HTTP_HOST'].'/imports.php');;
       //include ($_SERVER['DOCUMENT_ROOT'].'/imports.php');
     ?>
 
@@ -37,7 +37,7 @@
 
      
 
-      include ($_SERVER [ 'DOCUMENT_ROOT'].'/verifica.php');
+      include ($_SERVER ['DOCUMENT_ROOT'].'/verifica.php');
 
 
 
