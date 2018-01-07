@@ -1,8 +1,8 @@
 <?php
 
-	//session_start();
+	session_start();
 		
-	 include 'conexao.php';
+	 include ($_SERVER['DOCUMENT_ROOT'].'/conexao.php');
 
 	 if (!isset($_SESSION['nome'])) {
 		# code...
@@ -19,12 +19,12 @@
 
 		if (strcasecmp($usuario, $professor) == 0) {
 
-			require 'professor/navegacaoProf.php';
-			
+			header("Location: ".'/professor/navegacaoProf.php');
+		
 		}else if (strcasecmp($usuario, $aluno) == 0) {
 
-			require 'aluno/navegacaoAlun.php';
-
+			header("Location: ".'/aluno/navegacaoAlun.php');
+			
 		}
 
 	}

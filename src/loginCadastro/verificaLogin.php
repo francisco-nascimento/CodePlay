@@ -1,6 +1,7 @@
 
 <?php
- //require 'verifica.php';
+	
+ require 'verifica.php';
 
   $email = $_POST["email"];
   $senha = $_POST["senha"];
@@ -8,7 +9,7 @@
 
   try{
 
-	include ($_SERVER['HTTP_HOST'].'/conexao.php');
+	include ($_SERVER['DOCUMENT_ROOT'] .'/conexao.php');
 
 
 
@@ -31,7 +32,7 @@
 	
 		if(strcasecmp($senha, $linha["senha"]) == 0){
 			
-			session_start();
+			
 			$_SESSION["email"]=$email;
 			$_SESSION["email"]=$linha["email"];
 			$_SESSION["USUARIO_LOGADO"];

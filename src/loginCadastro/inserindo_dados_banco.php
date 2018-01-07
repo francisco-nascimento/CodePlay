@@ -3,7 +3,7 @@
 	try{
 
 			
-			$conexao = new PDO('mysql:host=localhost;dbname=Pesquisa', "root", "1994");
+			$conexao = new PDO('mysql:host=localhost;dbname=Codeplay', "root", "@luno1fpe");
 
 			$conexao->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 

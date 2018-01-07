@@ -3,7 +3,6 @@
   include 'imports.php';
 
   
-
 ?>
 
  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">

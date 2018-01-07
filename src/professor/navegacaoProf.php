@@ -1,3 +1,4 @@
+
 <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -28,10 +29,10 @@
               <a class="nav-link js-scroll-trigger" href="Login/index.php" > Cadastrar Problemas </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="../Modelo/listagem.php" > Lista de Alunos </a>
+              <a class="nav-link js-scroll-trigger" href="/listagem.php" > Lista de Alunos </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="../Modelo/logoff.php" > LogOff </a>
+              <a class="nav-link js-scroll-trigger" href="../loginCadastro/logoff.php" > LogOff </a>
             </li>
           </ul>
         </div>

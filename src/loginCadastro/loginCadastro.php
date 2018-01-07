@@ -43,6 +43,12 @@
 </head>
 
 <body>
+
+ <?php
+  require '../navegacao.php';
+  include 'imports.php';
+
+?>
   <br><br>
   
 <div class="container">
@@ -58,7 +64,7 @@
     <label>
       Insira seu nome
     </label>
-    <input type="text" required autocomplete="off" placeholder="Fulano de Tal" name="nome">
+    <input type="text" required autocomplete="off"  placeholder="Fulano de Tal" name="nome">
     <label>
       Insira uma senha
     </label>

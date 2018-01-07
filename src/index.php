@@ -37,6 +37,7 @@
       session_start();
 
       require 'verifica.php';
+      require 'navegacao.php'
 
     ?>
     <!-- Header -->
