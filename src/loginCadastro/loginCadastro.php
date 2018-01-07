@@ -62,6 +62,10 @@
    
   
     <label>
+      Insira sua matricula
+    </label>
+    <input type="text" required autocomplete="off"  placeholder="XXX2016" name="matricula">
+     <label>
       Insira seu nome
     </label>
     <input type="text" required autocomplete="off"  placeholder="Fulano de Tal" name="nome">
@@ -82,7 +86,7 @@
 	<input type="radio" name="tipoUsuario" required="required" value="1"> <br>
 	
 	<label>Aluno</label>
-	<input type="radio" name="tipoUsuario" value="0"> <br>
+	<input type="radio" name="tipoUsuario"  required="required" value="0"> <br>
 
     <button>criar</button>
     <p class="message">Já registrado? <a href="#">Sign In</a></p>

@@ -3,41 +3,60 @@
 	try{
 
 			
-			$conexao = new PDO('mysql:host=localhost;dbname=Codeplay', "root", "@luno1fpe");
+			$conexao = new PDO('mysql:host=localhost;dbname=Codeplay', "root", "@ndr0!D");
 
 			$conexao->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-			$inserirAluno = "insert into Aluno (nome, senha, email) values (?,?,?)";
+			$matricula = $_POST["matricula"];
+			$nome = $_POST["nome"];
+			$senha = $_POST["senha"];
+			$email = $_POST["email"];
+
+
+
+			$inserirAluno = "insert into Aluno (matricula, nome, senha, email) values (?,?,?,?)";
 		
-			$inserirProfessor = "insert into Professor (nome, senha, email) values (?,?,?)";
+			$inserirProfessor = "insert into Professor (matricula, nome, senha, email) values (?,?,?,?)";
 			
-			if($_POST['professor'] == 1){
+			if($_POST['tipoUsuario'] == 1){
 
-			$stmt = $conexao->prepare($inserirProfessor);
-			}else{
-				$stmt = $conexao->prepare($inserirAluno);
-			}
-			
+				$stmt = $conexao->prepare($inserirProfessor);
 				session_start();
-				$nome = $_POST["nome"];
 				$_SESSION["nome"] = $nome;
-				$senha = $_POST["senha"];
 				$senhaCriptografada = password_hash($senha, PASSWORD_DEFAULT);
-				$email = $_POST["email"];
 				$_SESSION["email"] = $email;
-				
-				
-				$stmt->bindValue(1, $nome);
-				$stmt->bindValue(2, $senhaCriptografada);
-				$stmt->bindValue(3, $email);
-				
-				
 
-
+				$stmt->bindValue(1, $matricula);
+				$stmt->bindValue(2, $nome);
+				$stmt->bindValue(3, $senhaCriptografada);
+				$stmt->bindValue(4, $email);
 
 				$stmt->execute();
 
 				header("Location: ../");
+
+
+			}else{
+				$stmt = $conexao->prepare($inserirAluno);
+			
+			
+				session_start();
+				$_SESSION["nome"] = $nome;
+				$senhaCriptografada = password_hash($senha, PASSWORD_DEFAULT);
+				$_SESSION["email"] = $email;
+				
+				$stmt->bindValue(1, $matricula);
+				$stmt->bindValue(2, $nome);
+				$stmt->bindValue(3, $senhaCriptografada);
+				$stmt->bindValue(4, $email);
+				
+				$stmt->execute();
+
+				header("Location: ../");
+
+			}
+
+				
 
 	}catch(PDOException $e){
 			echo $e->getMessage();
