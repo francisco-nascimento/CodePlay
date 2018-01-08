@@ -1,15 +1,11 @@
 <?php
 
-<<<<<<< HEAD
-	require '/conexao.php';
-=======
-	require 'conexao.php';
->>>>>>> f0f3aa649b623ae61b84b1f10f23310b2313afbf
+include ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
 
 	try {
 
 		$descricaoProblema = $_POST["descricao"];
-		$idProfessor = 5;
+		$idProfessor = $_SESSION['id'];
 		$classificacao = $_POST["dificuldade"];
 		
 
@@ -32,6 +28,8 @@
 			$InserirGabarito->bindValue(2, $descricaoGabarito);
 
 			$InserirGabarito->execute();
+
+			header("Location: listarProblemas.php")
 
 
 

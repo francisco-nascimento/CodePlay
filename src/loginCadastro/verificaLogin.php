@@ -39,6 +39,8 @@
 			$_SESSION["email"]=$linha["email"];
 			$_SESSION["nome"]=$linha["nome"];
 			$_SESSION["USUARIO_LOGADO"] = 'P';
+			$_SESSION["id"]=$linha["id"];
+			$_SESSION["matricula"]=$linha["matricula"];
 
 			if ($professor == 1) {
 				$_SESSION["USUARIO_LOGADO"] = 'P';

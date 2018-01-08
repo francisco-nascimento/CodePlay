@@ -11,12 +11,13 @@
 			$nome = $_POST["nome"];
 			$senha = $_POST["senha"];
 			$email = $_POST["email"];
+			$situacao = 1;
 
 
 
-			$inserirAluno = "insert into Aluno (matricula, nome, senha, email) values (?,?,?,?)";
+			$inserirAluno = "insert into Aluno (matricula, nome, senha, email, situacao) values (?,?,?,?,?)";
 		
-			$inserirProfessor = "insert into Professor (matricula, nome, senha, email) values (?,?,?,?)";
+			$inserirProfessor = "insert into Professor (matricula, nome, senha, email, situacao) values (?,?,?,?,?)";
 			
 			if($_POST['tipoUsuario'] == 1){
 
@@ -30,10 +31,11 @@
 				$stmt->bindValue(2, $nome);
 				$stmt->bindValue(3, $senhaCriptografada);
 				$stmt->bindValue(4, $email);
+				$stmt->bindValue(5, $situacao);
 
 				$stmt->execute();
 
-				header("Location: ../");
+				header("Location: loginCadastro.php");
 
 
 			}else{
@@ -52,7 +54,7 @@
 				
 				$stmt->execute();
 
-				header("Location:".'/index.php');
+				header("Location: loginCadastro.php");
 
 			}
 

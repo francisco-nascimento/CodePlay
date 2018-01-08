@@ -2,7 +2,7 @@
 
 <?php
 
-  include 'imports.php';
+  include ($_SERVER["DOCUMENT_ROOT"].'/imports.php');
 
   
 ?>
@@ -17,18 +17,18 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#contact">Alunos</a>
+              <a class="nav-link js-scroll-trigger" href="/professor/listarAlunos.php">Alunos</a>
             </li>
             <li class="nav-item">
               <center>
-              <a class="nav-link js-scroll-trigger" href="problemas.php">Problemas já cadastrados</a>
+              <a class="nav-link js-scroll-trigger" href="/professor/listarProblemas.php">Problemas já cadastrados</a>
               </center>
             </li>
              <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/professor/cadastrarProblemas.php" > Cadastrar Problemas </a>
+              <a class="nav-link js-scroll-trigger" href="/professor/cadastrarProblema.php" > Cadastrar Problemas </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/listagem.php" > Lista de Alunos </a>
+              <a class="nav-link js-scroll-trigger" href="/professor/listarProblemas.php" > Lista de Atividades(Alunos) </a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#">Usuario: <br> <?= $_SESSION['nome']?></a>

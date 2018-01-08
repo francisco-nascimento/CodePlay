@@ -35,6 +35,8 @@
     $arquivo = $_SERVER['PHP_SELF'];
 
     $login = '/loginCadastro/loginCadastro.php';
+    $listagemProb = '/professor/listarProblemas.php';
+    $listagemAlunos = '/professor/listarAlunos.php';
 
 
 
@@ -61,4 +63,22 @@
 
     <link href="/js/freelancer.min.js" rel="stylesheet" type="text/css">
 
+    <?php
+
+    if(strcasecmp($arquivo, $listagemProb) == 0 || strcasecmp($arquivo, $listagemAlunos) == 0){
+
+
+ ?>
+
+     <!-- Style da listagem de problemas -->
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+
+
+    <?php 
+
+}
+
+     ?>
+
+   
    
