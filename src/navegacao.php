@@ -24,7 +24,7 @@
               <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/aluno/listar_problemas.php">Problemas</a>
+              <a class="nav-link js-scroll-trigger" href="/aluno/problemas.php">Problemas</a>
             </li>
             
              <li class="nav-item">

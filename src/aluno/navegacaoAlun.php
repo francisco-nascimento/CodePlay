@@ -18,22 +18,22 @@
           <ul class="navbar-nav ml-auto">
            
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/aluno/ranking.php">Ranking</a>
+              <a class="nav-link js-scroll-trigger" href="ranking.php">Ranking</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/aluno/telas/listar_problemas.php">Ver problemas</a>
+              <a class="nav-link js-scroll-trigger" href="problemas/telas/listar_problemas.php">Ver problemas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/aluno/telas/problemas.php">Ver ranking</a>
+              <a class="nav-link js-scroll-trigger" href="problemas/telas/problemas.php">Ver ranking</a>
             </li>
              <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/aluno/telas/problemas.php" > Responder Problemas </a>
+              <a class="nav-link js-scroll-trigger" href="problemas/telas/problemas.php" > Responder Problemas </a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#">Usuario: <br> <?= $_SESSION['nome']?></a>
             </li>
              <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/loginCadastro/logoff.php" > LogOff </a>
+              <a class="nav-link js-scroll-trigger" href="../loginCadastro/logoff.php" > LogOff </a>
             </li>
           </ul>
         </div>
