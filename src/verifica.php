@@ -1,10 +1,10 @@
 <?php
 
-	//session_start();
+	session_start();
 		
 	 include 'conexao.php';
 
-	 if (!isset($_SESSION['nome'])) {
+	 if (!isset($_SESSION['USUARIO_LOGADO'])) {
 		# code...
 		require 'navegacao.php';
 		

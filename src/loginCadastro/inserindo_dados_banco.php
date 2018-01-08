@@ -3,7 +3,7 @@
 	try{
 
 			
-			$conexao = new PDO('mysql:host=localhost;dbname=Codeplay', "root", "@ndr0!D");
+			$conexao = new PDO('mysql:host=localhost;dbname=Codeplay', "root", "@luno1fpe");
 
 			$conexao->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
@@ -40,7 +40,7 @@
 				$stmt = $conexao->prepare($inserirAluno);
 			
 			
-				session_start();
+				//session_start();
 				$_SESSION["nome"] = $nome;
 				$senhaCriptografada = password_hash($senha, PASSWORD_DEFAULT);
 				$_SESSION["email"] = $email;
@@ -52,7 +52,7 @@
 				
 				$stmt->execute();
 
-				header("Location: ../");
+				header("Location:".'/index.php');
 
 			}
 

@@ -16,10 +16,10 @@
 	if ($professor == 1) {
 		# code...
 	
-	$stmt =$conexao->prepare("select email, senha from Professor where email = ? ");
+	$stmt =$conexao->prepare("select * from Professor where email = ? ");
 
 	}else{
-		$stmt =$conexao->prepare("select email, senha from Aluno where email = ? ");		
+		$stmt =$conexao->prepare("select * from Aluno where email = ? ");		
 	}
 
 	$stmt->bindParam(1, $email);
@@ -30,12 +30,15 @@
 	
 	foreach($resultado as $linha){
 	
-		if(strcasecmp($senha, $linha["senha"]) == 0){
+		if(password_verify($senha, $linha["senha"])){
+
+			session_start();
 			
 			
-			$_SESSION["email"]=$email;
+			
 			$_SESSION["email"]=$linha["email"];
-			$_SESSION["USUARIO_LOGADO"];
+			$_SESSION["nome"]=$linha["nome"];
+			$_SESSION["USUARIO_LOGADO"] = 'P';
 
 			if ($professor == 1) {
 				$_SESSION["USUARIO_LOGADO"] = 'P';
@@ -48,8 +51,9 @@
 			header("Location: ".'/index.php');
 
 		}else{
-			echo "Email ou senha incorreto(s)";
-			header("Location: Login/index.php");
+
+			print "<script> alert('Login ou senhas Incorreto(s)!');</script>";
+			header("Location: loginCadastro.php");
 		}
 	}
 	}	catch(PDOException $e){

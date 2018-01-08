@@ -52,3 +52,5 @@ echo $_SERVER['DOCUMENT_ROOT']."/index.php";
 
 phpinfo();
 ?>
+
+<script> alert('Login ou senhas Incorreto(s)!');</script>

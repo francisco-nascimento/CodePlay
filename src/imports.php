@@ -28,7 +28,28 @@
     <!-- Estilos personalizados para este modelo -->
     <link href="/css/freelancer.min.css" rel="stylesheet">
 
+<?php 
+    
+    
+
+    $arquivo = $_SERVER['PHP_SELF'];
+
+    $login = '/loginCadastro/loginCadastro.php';
+
+
+
+    if(!isset($_SESSION["USUARIO_LOGADO"]) && strcmp($arquivo, $login) == 0){
+
+
+ ?>
+
     <link href="/css/styleLogin.css" rel="stylesheet">
+
+    <?php 
+
+}
+
+     ?>
 
     <!-- Bootstrap core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">

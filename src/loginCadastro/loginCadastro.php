@@ -29,9 +29,9 @@
     </script>
     <?php
 
-          if (isset($_SESSION['nome'])) {
+          if (isset($_SESSION["USUARIO_LOGADO"])) {
     # code...
-             header("Location: ../index.php");
+             header("Location: /index.php");
           }
 
             include '../verifica.php';
@@ -45,8 +45,8 @@
 <body>
 
  <?php
-  require '../navegacao.php';
-  include 'imports.php';
+  
+  include '../imports.php';
 
 ?>
   <br><br>
