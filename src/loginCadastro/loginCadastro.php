@@ -29,7 +29,7 @@
     if (isset($_SESSION["USUARIO_LOGADO"])) {
       header("Location: /index.php");
     }
-    include '../verifica.php';
+    include ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
   ?>
    
   </head>

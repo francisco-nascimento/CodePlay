@@ -6,7 +6,7 @@
 
 	 if (!isset($_SESSION['USUARIO_LOGADO'])) {
 		# code...
-		require 'navegacao.php';
+		require ($_SERVER["DOCUMENT_ROOT"].'/navegacao.php');
 		
 	}else{
 
@@ -19,11 +19,11 @@
 
 		if (strcasecmp($usuario, $professor) == 0) {
 
-			require 'professor/navegacaoProf.php';
+			require ($_SERVER["DOCUMENT_ROOT"].'/professor/navegacaoProf.php');
 			
 		}else if (strcasecmp($usuario, $aluno) == 0) {
 
-			require 'aluno/navegacaoAlun.php';
+			require ($_SERVER["DOCUMENT_ROOT"].'/aluno/navegacaoAlun.php');
 
 		}
 
