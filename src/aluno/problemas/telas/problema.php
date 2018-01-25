@@ -10,13 +10,10 @@
 
     <title>CodePlay</title>
 
-    <!-- Bootstrap core CSS -->
     
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
     <?php
-      require ($_SERVER['HTTP_HOST'].'/imports.php');;
+      require ($_SERVER['DOCUMENT_ROOT'].'/imports.php');
       //include ($_SERVER['DOCUMENT_ROOT'].'/imports.php');
     ?>
 
@@ -47,6 +44,8 @@
 
     <br><br>
 
+    <table>
+
     <?php
 
     //include ($_SERVER['DOCUMENT_ROOT'].'/conexao.php');
@@ -72,15 +71,15 @@
 
   <div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
 
-  <xml id="toolbox" style="display: none">
+  
     <?php
 
-      include ($_SERVER['DOCUMENT_ROOT'].'/blocos/logicos.xml');
+      require ($_SERVER['DOCUMENT_ROOT'].'/util/blocos.php');
 
     ?>
   </xml>
    
-
+</table>
   </body>
 
 </html>

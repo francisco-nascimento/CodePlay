@@ -16,43 +16,33 @@
 			
 		if($_POST['tipoUsuario'] == 1){
 
-			$stmt = $conexao->prepare($inserirProfessor);
-			session_start();
-			$_SESSION["nome"] = $nome;
-			$senhaCriptografada = password_hash($senha, PASSWORD_DEFAULT);
-			$_SESSION["email"] = $email;
-
-			$stmt->bindValue(1, $matricula);
-			$stmt->bindValue(2, $nome);
-			$stmt->bindValue(3, $senhaCriptografada);
-			$stmt->bindValue(4, $email);
-			$stmt->bindValue(5, $situacao);
-
-			$stmt->execute();
-
-			header("Location: loginCadastro.php");
-
+			$sql = $inserirProfessor;
 
 		}else{
-			$stmt = $conexao->prepare($inserirAluno);
-			//session_start();
-			$_SESSION["nome"] = $nome;
+
+			$sql = $inserirAluno;
+
+		}
+
+			$stmt = $conexao->prepare($sql);
+			
+			
 			$senhaCriptografada = password_hash($senha, PASSWORD_DEFAULT);
-			$_SESSION["email"] = $email;
+			
 				
 			$stmt->bindValue(1, $matricula);
 			$stmt->bindValue(2, $nome);
 			$stmt->bindValue(3, $senhaCriptografada);
 			$stmt->bindValue(4, $email);
+			$stmt->bindValue(5, 1);
 				
 			$stmt->execute();
 
 			header("Location: loginCadastro.php");
-
-			}
 
 				
 
 	}catch(PDOException $e){
 			echo $e->getMessage();
+	}
 ?>

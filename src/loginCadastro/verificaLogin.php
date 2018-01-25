@@ -1,11 +1,12 @@
 
 <?php
 	
- require 'verifica.php';
+ 
 
   $email = $_POST["email"];
   $senha = $_POST["senha"];
   $professor = $_POST["tipoUsuario"];
+  $sql;
 
   try{
 
@@ -16,11 +17,14 @@
 	if ($professor == 1) {
 		# code...
 	
-	$stmt =$conexao->prepare("select * from Professor where email = ? ");
+		$sql = "select * from Professor where email = ? ";
 
 	}else{
-		$stmt =$conexao->prepare("select * from Aluno where email = ? ");		
+
+		$sql = "select * from Aluno where email = ? ";
 	}
+
+	$stmt = $conexao->prepare($sql);
 
 	$stmt->bindParam(1, $email);
 
