@@ -2,11 +2,13 @@
 
 include ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
 
+session_start();
+
 	try {
 
 		$descricaoProblema = $_POST["descricao"];
-		$idProfessor = $_SESSION['id'];
-		$classificacao = $_POST["dificuldade"];
+		$idProfessor = $_SESSION["id"];
+		$classificacao = $_POST["classificacao"];
 		$resposta = $_POST["resposta"];
 		
 

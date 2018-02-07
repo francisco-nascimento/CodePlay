@@ -3,10 +3,11 @@
 	
  
 
-  $email = $_POST["email"];
+  
   $senha = $_POST["senha"];
   $professor = $_POST["tipoUsuario"];
   $sql;
+  $email;
 
   try{
 
@@ -15,11 +16,14 @@
 
 
 	if ($professor == 1) {
-		# code...
+		
+		$email = $_POST["email"];
 	
 		$sql = "select * from Professor where email = ? ";
 
 	}else{
+
+		$email = $_POST["email"];
 
 		$sql = "select * from Aluno where email = ? ";
 	}
@@ -43,7 +47,7 @@
 			$_SESSION["email"]=$linha["email"];
 			$_SESSION["nome"]=$linha["nome"];
 			$_SESSION["USUARIO_LOGADO"] = 'P';
-			$_SESSION["id"]=$linha["id"];
+			$_SESSION["id"]= $linha["id"];
 			$_SESSION["matricula"]=$linha["matricula"];
 
 			if ($professor == 1) {
