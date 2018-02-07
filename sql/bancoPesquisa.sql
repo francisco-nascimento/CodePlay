@@ -47,10 +47,35 @@ foreign key (id_Problema) references Problema (id)
 
 create table Resposta_Aluno (
 id int AUTO_INCREMENT,
-desc_Resposta_Aluno text(10000),
+desc_Resposta_Aluno_XML text(10000),
+esc_Resposta_Aluno_JS text(10000),
 id_Aluno int,
 data_Alteracao timestamp default current_timestamp,
 primary key (id),
 foreign key (id_Aluno) references Aluno (id)
 );
+
+create table Atividade (
+id int AUTO_INCREMENT,
+desc_Atividade text(50000),
+data_Alteracao timestamp default current_timestamp,
+id_Professor int,
+primary key (id),
+foreign key (id_Professor) references Professor(id)
+);
+
+create table Turma (
+id int AUTO_INCREMENT,
+id_Professor int,
+id_Aluno int,
+id_Atividade int,
+desc_Turma varchar(200),
+data_Alteracao timestamp default current_timestamp,
+primary key (id),
+foreign key (id_Aluno) references Aluno (id),
+foreign key (id_Atividade) references Atividade (id),
+foreign key (id_Professor) references Professor (id)
+);
+
+
 
