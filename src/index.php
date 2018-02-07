@@ -39,7 +39,7 @@
     <!-- Header -->
     <header class="masthead">
       <div class="container">
-        <img class="img-fluid" src="img/profile.png" alt="">
+        <img class="img-fluid" src="/img/blockly/image.jpg" alt="">
         <div class="intro-text">
           <span class="name">Code Play</span>
           <hr class="star-light">
@@ -61,7 +61,7 @@
                   <i class="fa fa-search-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="img-fluid" src="img/portfolio/cabin.png" alt="">
+              <img class="img-fluid" src="/img/exemplos/sample.png" width="1900" height="1900" alt="">
             </a>
           </div>
           <div class="col-sm-4 portfolio-item">
@@ -71,7 +71,7 @@
                   <i class="fa fa-search-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="img-fluid" src="img/portfolio/cake.png" alt="">
+              <img class="img-fluid" src="/img/exemplos/sample(1).png"  alt="">
             </a>
           </div>
           <div class="col-sm-4 portfolio-item">
@@ -104,16 +104,7 @@
               <img class="img-fluid" src="img/portfolio/safe.png" alt="">
             </a>
           </div>
-          <div class="col-sm-4 portfolio-item">
-            <a class="portfolio-link" href="#portfolioModal6" data-toggle="modal">
-              <div class="caption">
-                <div class="caption-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/submarine.png" alt="">
-            </a>
-          </div>
+          
         </div>
       </div>
     </section>
@@ -141,53 +132,7 @@
     </section>
 
     <!--Seção de contato -->
-    <section id="contact">
-      <div class="container">
-        <h2 class="text-center">Contact Me</h2>
-        <hr class="star-primary">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <!-- Para configurar o endereço de e-mail do formulário de contato, vá para mail / contact_me.php e atualize o endereço de e-mail no arquivo PHP na linha 19. ->
-             <! - O formulário deve funcionar na maioria dos servidores da Web, mas se o formulário não estiver funcionando, talvez seja necessário configurar seu servidor da Web de forma diferente. -->
-            <form name="sentMessage" id="contactForm" novalidate>
-              <div class="control-group">
-                <div class="form-group floating-label-form-group controls">
-                  <label>Name</label>
-                  <input class="form-control" id="name" type="text" placeholder="Name" required data-validation-required-message="Please enter your name.">
-                  <p class="help-block text-danger"></p>
-                </div>
-              </div>
-              <div class="control-group">
-                <div class="form-group floating-label-form-group controls">
-                  <label>Email Address</label>
-                  <input class="form-control" id="email" type="email" placeholder="Email Address" required data-validation-required-message="Please enter your email address.">
-                  <p class="help-block text-danger"></p>
-                </div>
-              </div>
-              <div class="control-group">
-                <div class="form-group floating-label-form-group controls">
-                  <label>Phone Number</label>
-                  <input class="form-control" id="phone" type="tel" placeholder="Phone Number" required data-validation-required-message="Please enter your phone number.">
-                  <p class="help-block text-danger"></p>
-                </div>
-              </div>
-              <div class="control-group">
-                <div class="form-group floating-label-form-group controls">
-                  <label>Message</label>
-                  <textarea class="form-control" id="message" rows="5" placeholder="Message" required data-validation-required-message="Please enter a message."></textarea>
-                  <p class="help-block text-danger"></p>
-                </div>
-              </div>
-              <br>
-              <div id="success"></div>
-              <div class="form-group">
-                <button type="submit" class="btn btn-success btn-lg" id="sendMessageButton">Send</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
+    
   
 
     <!-- Footer -->
