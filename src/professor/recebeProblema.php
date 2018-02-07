@@ -7,6 +7,7 @@ include ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
 		$descricaoProblema = $_POST["descricao"];
 		$idProfessor = $_SESSION['id'];
 		$classificacao = $_POST["dificuldade"];
+		$resposta = $_POST["resposta"];
 		
 
 		$InserirProblema = $conexao->prepare("insert into Problema (desc_Problema, id_Professor, classificacao) values (?,?,?)");
@@ -19,17 +20,17 @@ include ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
 
 
 			$lastId = $conexao->lastInsertId();
-			$descricaoGabarito = $_POST["gabarito"];
+			
 
 
 		$InserirGabarito = $conexao->prepare("insert into Gabarito (id_Problema, desc_Gabarito) values (?,?)");
 
 			$InserirGabarito->bindValue(1, $lastId);
-			$InserirGabarito->bindValue(2, $descricaoGabarito);
+			$InserirGabarito->bindValue(2, $resposta);
 
 			$InserirGabarito->execute();
 
-			header("Location: listarProblemas.php")
+			header("Location: /professor/listarProblemas.php");
 
 
 

@@ -3,9 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>Resolvendo problemas e pondo tbm no banco de dados</title>
-  <?php
-    require "imports.php";
-  ?>
+  
   <style>
     body {
       background-color: #fff;
@@ -16,12 +14,16 @@
       font-size: 140%;
     }
   </style>
+   <script src="../../../blockly_compressed.js"></script>
+  <script src="../../../blocks_compressed.js"></script>
+  <script src="../../../javascript_compressed.js"></script>
+  <script src="../../../msg/js/en.js"></script>
 </head>
 <body>
   
 
   <p>
-    <form name="formulario" onsubmit="recebeResposta();" action="imprime.php" method="POST">
+    <form name="formulario" onsubmit="recebeResposta();" action="teste.php" method="POST">
       <input type="hidden" name="resposta">
       <input type="submit" name="enviarResposta" value="Testar resposta">
     </form>

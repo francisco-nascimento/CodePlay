@@ -1,4 +1,11 @@
-<td>
+
+<!-- <td>
+
+<form name="formBanco" action="/professor/teste.php" method="POST" onsubmit="recebeResposta();">
+        <input type="hidden" name="resposta">
+        <input type="submit" name="inserir resposta" value="INserir no banco">
+</form> -->
+
 <div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
 
   <xml id="toolbox" style="display: none">
@@ -40,9 +47,9 @@
 
 <td>
      <p>
-    <button onclick="showCode();">Show JavaScript</button>
+   <!--  <button onclick="showCode();">Show JavaScript</button>
     <button onclick="runCode();">Run JavaScript</button>
-    <button onsubmit="enviar();"> Enviar resposta </button>
+    <button type="submit"> Enviar resposta </button> -->
   </p>
  </td>
 
@@ -53,32 +60,5 @@
     Blockly.Xml.domToWorkspace(document.getElementById('startBlocks'),
                                demoWorkspace);
 
-    function showCode() {
-      // Generate JavaScript code and display it.
-      Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
-      var code = Blockly.JavaScript.workspaceToCode(demoWorkspace);
-      alert(code);
-    }
-
-    function runCode() {
-      // Generate JavaScript code and run it.
-      window.LoopTrap = 1000;
-      Blockly.JavaScript.INFINITE_LOOP_TRAP =
-          'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
-      var code = Blockly.JavaScript.workspaceToCode(demoWorkspace);
-      Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
-      try {
-        eval(code);
-      } catch (e) {
-        alert(e);
-      }
-    }
-
-    function enviar(){
-
-      Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
-      var code = Blockly.JavaScript.workspaceToCode(demoWorkspace);
-      document.formulario.resposta.value = code;
-
-    }
+    
   </script>
