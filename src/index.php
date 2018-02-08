@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>CodePlay</title>
+    <title>CodeAndPlay</title>
 
 
     
@@ -41,7 +41,7 @@
       <div class="container">
         <img class="img-fluid" src="/img/blockly/image.jpg" alt="">
         <div class="intro-text">
-          <span class="name">Code Play</span>
+          <span class="name">Code And Play</span>
           <hr class="star-light">
           <span class="skills">Lógica de programação - Feedback com o professor - User Experience Designer</span>
         </div>
@@ -51,7 +51,7 @@
     <!-- Seção de grade de portfólio -->
     <section id="portfolio">
       <div class="container">
-        <h2 class="text-center">Portfolio</h2>
+        <h2 class="text-center">Portfólio</h2>
         <hr class="star-primary">
         <div class="row">
           <div class="col-sm-4 portfolio-item">
@@ -112,20 +112,14 @@
     <!-- Sobre a seção -->
     <section class="success" id="about">
       <div class="container">
-        <h2 class="text-center">About</h2>
+        <h2 class="text-center">Sobre</h2>
         <hr class="star-light">
         <div class="row">
           <div class="col-lg-4 ml-auto">
-            <p>Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional LESS stylesheets for easy customization.</p>
+            <p>O Code And Play é uma plataforma com conteúdos de lógica de programação em PBD (Programação por Demonstração) contendo atividades, com complexidade progressiva, sobre respectivos assuntos: Vetores, Matrizes, Estrutura de Repetição e Condicionais.</p>
           </div>
           <div class="col-lg-4 mr-auto">
-            <p>Whether you're a student looking to showcase your work, a professional looking to attract clients, or a graphic artist looking to share your projects, this template is the perfect starting point!</p>
-          </div>
-          <div class="col-lg-8 mx-auto text-center">
-            <a href="#" class="btn btn-lg btn-outline">
-              <i class="fa fa-download"></i>
-              Download Theme
-            </a>
+            <p>Esta plataforma irá ajudar a entender melhor, através de blocos e de forma objetiva, o princípio da linguagem de programação, para, futuramente, realizar com eficiência o uso de linguagens mais complexas.</p>
           </div>
         </div>
       </div>
