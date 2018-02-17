@@ -60,7 +60,9 @@ create table Atividade_Turma (
 id int AUTO_INCREMENT,
 id_Atidivade int,
 id_Turma int,
-primary key (id)
+primary key (id),
+primary key (id_Turma),
+primary key (id_Atividade)
 
 );
 
