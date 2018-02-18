@@ -12,23 +12,26 @@
 
 		?>
 
-		<br>
-		<fieldset>
+		
+		<br><br><br><br>
+		<form method="GET" action="/professor/inserirAtividade.php">
 		<table border="1">
-		<legend>Lista de problemas</legend>
+		
 				<tr>
 					<td>
 						Descrição
 					</td>
 					<td>
-						Classificação
+						Ultima alteração
 					</td>
 					<td>
 						Opções
 					</td>
 				</tr>
+				
 				<?php
 					require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
+					$cont = 0;
 
 				   $resultado = $conexao->query("select  id, desc_Problema, classificacao from Problema");
 
@@ -39,21 +42,31 @@
 			         
 			         <td><?=$linha['desc_Problema'];?></td>
 			         <td><?=$linha['classificacao'];?></td>
-			         <td>
-			         	<form action="/aluno/problemas/telas/responderProblemas.php" method="GET">
-			         		<input type="hidden" name="id" value="<?=$linha['id'];?>">
-			         		<button type="submit"> Responder Esta </button>
-			         	</form>
-			         </td>
+			         <td> 
+
+			         <input type="checkbox" name="id<?=$count?>" value="<?=$linha['id'];?>">
+
+			          </td>
 
 			       </tr>
 
 				<?php 
+					//$count = $count + 1;
 					} 
 				?>
-
+				<tr>
+					<td colspan="3">
+					<center>
+					<input type="hidden" name="contador" value="<?=$count?>">
+						<button type="submit"> Criar uma lista </button>
+					</center>
+					</td>
+				</tr>
+			</form>
+				
 		</table>
-		</fieldset>
+		
 
 </body>
 </html>
+

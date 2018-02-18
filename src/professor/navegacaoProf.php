@@ -28,7 +28,7 @@
               <a class="nav-link js-scroll-trigger" href="/professor/cadastrarProblema.php" > Cadastrar Problemas </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/professor/listarProblemas.php" > Lista de Atividades(Alunos) </a>
+              <a class="nav-link js-scroll-trigger" href="/professor/listarAtividades.php" > Lista de Atividades(Alunos) </a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#">Usuario: <br> <?= $_SESSION['nome']?></a>
@@ -40,3 +40,4 @@
         </div>
       </div>
     </nav>
+    <br><br><br><br><br>
