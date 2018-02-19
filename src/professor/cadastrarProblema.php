@@ -78,7 +78,7 @@
       	require ($_SERVER["DOCUMENT_ROOT"].'/util/blocos.php');
 
        ?>
-      <input type="submit" name="enviarResposta" value="Testar resposta">
+      <input type="submit" name="enviarResposta" value="Enviar Problema">
     </form>
 
 		

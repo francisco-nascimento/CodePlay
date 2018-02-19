@@ -12,7 +12,7 @@
 
 		?>
 
-		
+		<br>
 		<fieldset>
 		<table border="1">
 		<legend>Lista de problemas</legend>
