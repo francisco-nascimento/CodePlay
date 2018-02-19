@@ -1,18 +1,31 @@
 <?php 
 
-	//var_dump($_GET);
+	require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
 
-	$atv[20];
-	$count = 0;
+	session_start();
 
-	foreach ($_GET as $linha) {
-		
-		$atv[$count] = $linha;
-		$count = $count + 1;
+	$idAtividade = $_POST["idAtividade"];
 
-	}
+	$descAtividade = $_POST["descAtividade"];
 
-	var_dump($atv)
+	$problemas = $_POST["idsProb"];
+
+	$marcadas = count($_POST['idsProb']);
+
+	
+	
+		$sql = "UPDATE Atividade SET desc_Atividade = ? WHERE id = ?";
+
+		$stmt = $conexao->prepare($sql);
+		$stmt->bindValue(1, $descAtividade);
+		$stmt->bindValue(2, $idAtividade);
+		$stmt->execute();
+
+	if ($marcadas > 0)	require ($_SERVER["DOCUMENT_ROOT"]."/professor/insercao/".$marcadas.".php");
+	
+	
+	
 
 
+	header("Location: /professor/listarAtividades.php");
 ?>

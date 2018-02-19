@@ -2,8 +2,7 @@
 
 	try{
 			
-		$conexao = new PDO('mysql:host=localhost;dbname=Codeplay', "root", "@luno1fpe");
-		$conexao->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+		require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
 
 		$matricula = $_POST["matricula"];
 		$nome = $_POST["nome"];
