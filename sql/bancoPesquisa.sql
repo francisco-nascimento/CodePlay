@@ -75,6 +75,15 @@ foreign key (id_Professor) references Professor(id),
 foreign key (id) references Atividade_Turma (id_Atividade)
 );
 
+
+
+create table Problema_Atividade(
+id_atividade int,
+id_problema int,
+foreign key (id_atividade) references Atividade(id),
+foreign key (id_problema) references Problema(id)
+);
+
 create table Turma (
 id int AUTO_INCREMENT,
 id_Professor int,
@@ -85,6 +94,7 @@ data_Alteracao timestamp default current_timestamp,
 primary key (id),
 foreign key (id_Aluno) references Aluno (id),
 foreign key (id_Atividade) references Atividade (id),
+<<<<<<< HEAD
 foreign key (id_Professor) references Professor (id),
 foreign key (id) references Atividade_Turma (id_Turma)
 );
@@ -93,3 +103,8 @@ foreign key (id) references Atividade_Turma (id_Turma)
 
 
 
+=======
+foreign key (id_Professor) references Professor (id)
+
+);
+>>>>>>> Wesley
