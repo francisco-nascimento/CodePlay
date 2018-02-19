@@ -64,6 +64,15 @@ primary key (id),
 foreign key (id_Professor) references Professor(id)
 );
 
+
+
+create table Problema_Atividade(
+id_atividade int,
+id_problema int,
+foreign key (id_atividade) references Atividade(id),
+foreign key (id_problema) references Problema(id)
+);
+
 create table Turma (
 id int AUTO_INCREMENT,
 id_Professor int,
@@ -75,7 +84,5 @@ primary key (id),
 foreign key (id_Aluno) references Aluno (id),
 foreign key (id_Atividade) references Atividade (id),
 foreign key (id_Professor) references Professor (id)
+
 );
-
-
-
