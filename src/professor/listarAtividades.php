@@ -17,7 +17,7 @@
 		
 		<br><br><br><br>
 
-		<table border="1">
+		<table border="1" class="table">
 		
 		
 				<tr>

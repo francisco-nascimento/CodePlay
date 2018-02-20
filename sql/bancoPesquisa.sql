@@ -71,10 +71,8 @@ desc_Atividade text(50000),
 data_Alteracao timestamp default current_timestamp,
 id_Professor int,
 primary key (id),
-foreign key (id_Professor) references Professor(id),
-foreign key (id) references Atividade_Turma (id_Atividade)
+foreign key (id_Professor) references Professor(id)
 );
-
 
 
 create table Problema_Atividade(

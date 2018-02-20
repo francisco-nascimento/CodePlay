@@ -11,6 +11,7 @@
 	$problemas = $_POST["idsProb"];
 
 	$marcadas = count($_POST['idsProb']);
+	
 
 	
 	
