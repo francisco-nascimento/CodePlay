@@ -19,6 +19,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/js/bootstrap.min.js" rel="stylesheet">
 
     <!-- Fontes personalizadas para este modelo -->
     <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -62,6 +63,7 @@
 
 
     <link href="/js/freelancer.min.js" rel="stylesheet" type="text/css">
+    <link href="/css/dropdown.css" rel="stylesheet" type="text/css">
 
     <?php
 
@@ -72,6 +74,7 @@
 
      <!-- Style da listagem de problemas -->
     <link href="/css/style.css" rel="stylesheet" type="text/css">
+
 
 
     <?php 
