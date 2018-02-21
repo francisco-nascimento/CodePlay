@@ -50,7 +50,7 @@
                                   </li>
                                   <li class="nav-item">
                                     <center>
-                                      <a href="/professor/turmas.php" class="nav-link js-scroll-trigger">
+                                      <a href="/professor/criarTurma.php" class="nav-link js-scroll-trigger">
                                       Turmas
                                       </a>
                                     </center>
