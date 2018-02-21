@@ -25,7 +25,7 @@
             </li>
             <li class="nav-item">
               <ul class="menuEU">
-                      <li class="nav-item"><a href="#">Professor</a>
+                      <li class="nav-item"> <center><a href="#">Professor</a> </center>
                           <ul>
                                   <li class="nav-item">
                                     <center>
@@ -59,6 +59,7 @@
                     </li>              
               </ul>
             </li>
+            &nbsp;
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#">Usuario: <br> <?= $_SESSION['nome']?></a>
             </li>

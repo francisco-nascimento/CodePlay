@@ -9,6 +9,7 @@ position:relative;
 float:left; 
 border: hidden;
 border-color: #fff;
+border-radius: 10px;
 
 }
 
@@ -17,6 +18,7 @@ border-color: #fff;
 .menuEU li a:hover{
  
 color:#fff; 
+border-radius: 10px;
 
 }
 
@@ -26,6 +28,7 @@ top:25px;
 left:0;
 background-color: #2c3e50; 
 display:none;
+border-radius: 10px;
 }
 
 .menuEU li:hover ul, .menuEU li.over ul{display:block;}
