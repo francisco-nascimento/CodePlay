@@ -23,39 +23,14 @@
 
     <!-- Estilos personalizados para este modelo -->
     <style>
-	/*  .circulo{
+	  .circulo{
 		
   
    border-radius: 50%;
 
+		} 
 
-		
-		} */
-
-		
-		/*imagem redonda*/
-		.circulo 
-        {
-
-                margin:10px;
-                border-radius: 50%;
-                overflow: hidden;
-                width: 200px;
-                height: 200px;
-                /* sombra deslocada em 3px para baixo e 3px para direita, borrada em 5px e com cor cinza */
-
-         }
-
-         .circulo div 
-        {
-                    width: 100%;
-                    height: 100%;
-                    overflow: hidden;
-                    background-size: cover; /*ajusta a imagem dentro do div, mantendo a proporção da imagem */
-                    background-position: center center 
-
-                    
-            
+	         
 </style>
     
 

@@ -2,20 +2,18 @@
 
 require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
 
-$idProblema = $_POST["idProblema"];
+$idProblema = $_GET["idProblema"];
 
-$idAtividade = $_POST["idAtividade"];
+$descAtividade = $_GET["descAtividade"];
 
-$sql = "DELETE FROM Problema_Atividade WHERE id_atividade = ? AND id_problema = ?";
+$idAtividade = $_GET["idAtividade"];
 
-$stmt = $conexao->prepare($sql);
+	$sql = "DELETE FROM Problema_Atividade WHERE id_atividade = ? and id_problema = ?";
 
-$stmt->bindValue(1, $idAtividade);
-
-$stmt->bindValue(2, $idProblema);
-
-$stmt->execute();
-
-header("Location: /professor/listarProblemasAtividade.php?id=$idAtividade");
-
+		$stmt = $conexao->prepare($sql);
+		$stmt->bindValue(1, $idAtividade);
+		$stmt->bindValue(2, $idProblema);
+		$stmt->execute();
+		
+	header("Location: /professor/listarProblemasAtividade.php?id="."$idAtividade");
 ?>
