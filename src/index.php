@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>CodeAndPlay</title>
+    <title>Code && Play</title>
 
 
     
@@ -41,7 +41,7 @@
       <div class="container">
         <img class="img-fluid" src="/img/blockly/image.jpg" alt="">
         <div class="intro-text">
-          <span class="name">Code And Play</span>
+          <span class="name">Code && Play</span>
           <hr class="star-light">
           <span class="skills">Lógica de programação - Feedback com o professor - User Experience Designer</span>
         </div>
@@ -116,7 +116,7 @@
         <hr class="star-light">
         <div class="row">
           <div class="col-lg-4 ml-auto">
-            <p>O Code And Play é uma plataforma com conteúdos de lógica de programação em PBD (Programação por Demonstração) contendo atividades, com complexidade progressiva, sobre respectivos assuntos: Vetores, Matrizes, Estrutura de Repetição e Condicionais.</p>
+            <p>O Code && Play é uma plataforma com conteúdos de lógica de programação em PBD (Programação por Demonstração) contendo atividades, com complexidade progressiva, sobre respectivos assuntos: Vetores, Matrizes, Estrutura de Repetição e Condicionais.</p>
           </div>
           <div class="col-lg-4 mr-auto">
             <p>Esta plataforma irá ajudar a entender melhor, através de blocos e de forma objetiva, o princípio da linguagem de programação, para, futuramente, realizar com eficiência o uso de linguagens mais complexas.</p>
