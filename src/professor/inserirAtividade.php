@@ -4,29 +4,25 @@
 
 	session_start();
 
-	$idAtividade = $_POST["idAtividade"];
-
-	$descAtividade = $_POST["descAtividade"];
-
-	$problemas = $_POST["idsProb"];
-
-	$marcadas = count($_POST['idsProb']);
-	
+	$idAtividade = $_GET["idAtividade"];
 
 	
-	
-		$sql = "UPDATE Atividade SET desc_Atividade = ? WHERE id = ?";
 
-		$stmt = $conexao->prepare($sql);
-		$stmt->bindValue(1, $descAtividade);
-		$stmt->bindValue(2, $idAtividade);
+	$problema = $_GET["idProb"];
+
+		$sql2 = "INSERT INTO Problema_Atividade(id_atividade, id_Problema) VALUES(?,?)";
+
+		$stmt = $conexao->prepare($sql2);
+		$stmt->bindValue(1, $idAtividade);
+		$stmt->bindValue(2, $problema);
+		
 		$stmt->execute();
 
-	if ($marcadas > 0)	require ($_SERVER["DOCUMENT_ROOT"]."/professor/insercao/".$marcadas.".php");
+	
 	
 	
 	
 
 
-	header("Location: /professor/listarAtividades.php");
+	header("Location: /professor/listarProblemasAtividade.php?id="."$idAtividade");
 ?>
