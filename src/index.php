@@ -22,6 +22,41 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- Estilos personalizados para este modelo -->
+    <style>
+	/*  .circulo{
+		
+  
+   border-radius: 50%;
+
+
+		
+		} */
+
+		
+		/*imagem redonda*/
+		.circulo 
+        {
+
+                margin:10px;
+                border-radius: 50%;
+                overflow: hidden;
+                width: 200px;
+                height: 200px;
+                /* sombra deslocada em 3px para baixo e 3px para direita, borrada em 5px e com cor cinza */
+
+         }
+
+         .circulo div 
+        {
+                    width: 100%;
+                    height: 100%;
+                    overflow: hidden;
+                    background-size: cover; /*ajusta a imagem dentro do div, mantendo a proporção da imagem */
+                    background-position: center center 
+
+                    
+            
+</style>
     
 
   </head>
@@ -39,7 +74,9 @@
     <!-- Header -->
     <header class="masthead">
       <div class="container">
-        <img class="img-fluid" src="/img/blockly/image.jpg" alt="">
+      <center><div class="circulo">
+        <img class="img-fluid" height="30" width="200" src="/img/blockly/image.jpg" alt="">
+       </div></center>
         <div class="intro-text">
           <span class="name">Code && Play</span>
           <hr class="star-light">
