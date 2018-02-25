@@ -31,7 +31,7 @@
 
   require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
 
-   $resultado = $conexao->query("select proble.id, profe.nome, proble.desc_Problema, proble.classificacao from Professor as profe left join Problema as proble on profe.id = proble.id_Professor limit 100");
+   $resultado = $conexao->query("select proble.id, profe.nome, proble.desc_Problema, proble.classificacao from Professor as profe right join Problema as proble on profe.id = proble.id_Professor limit 100");
 
   foreach($resultado as $linha){ 
 
