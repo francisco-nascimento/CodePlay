@@ -2,9 +2,9 @@
 
 require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
 
-$idProblema = $_POST["idProblema"];
+$idProblema = $_GET["idProblema"];
 
-$idAtividade = $_POST["idAtividade"];
+$idAtividade = $_GET["idAtividade"];
 
 $sql = "DELETE FROM Problema_Atividade WHERE id_atividade = ? AND id_problema = ?";
 

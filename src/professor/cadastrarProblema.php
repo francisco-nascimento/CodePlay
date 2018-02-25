@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<title>Cadastrar Problema</title>
+    <link rel="stylesheet" type="text/css" href="/util/meu.css">
 		<script>
     var demoWorkspace = Blockly.inject('blocklyDiv',
         {media: '/blockly/media/',
@@ -31,8 +32,13 @@
     }
     function recebeResposta(){
       var code = Blockly.JavaScript.workspaceToCode(demoWorkspace);
+      if (code != "" && code != null) {
       document.formulario.resposta.value = code;
       document.formBanco.resposta.value = code;
+      }else{
+        window.alert("Preencha a resposta do Problema!");
+        return false;
+      }
     }
     
   </script>
@@ -56,31 +62,50 @@
 			
 
 		?>
-		<br>
-		<br>
-		<br>
+		
+    <table class="table">
 
-	<form name="formulario" onsubmit="recebeResposta();" action="/professor/recebeProblema.php" method="POST">
-      <input type="hidden" name="resposta">
+	<form name="formulario" onsubmit="recebeResposta();" class="form form-control" action="/professor/recebeProblema.php" method="POST">
+      <input type="hidden" name="resposta" required="required">
+      <tr>
+        <th>Descrição do Problema *</th> <th> Classificação do Problema* </th> <th>Assunto do Problema*</th>
+      </tr>
 
-      <textarea name="descricao"></textarea>
+      
 
-      <select name="classificacao">
-      	<option value="">Selecione a dificuldade</option>
-      	<option value="fácil">Fácil</option>
-      	<option value="médio"> Médio</option>
-      	<option value="difícil"> Difícil</option>
-      	
-      </select>
+      <tr>
+        <td>
+          <textarea name="descricao" required="required" placeholder="Digite Aqui"></textarea>
+        </td>
+        <td>
+            <select name="classificacao" required="required">
+            	<option value="">Selecione a dificuldade</option>
+            	<option value="fácil">Fácil</option>
+            	<option value="médio"> Médio</option>
+            	<option value="difícil"> Difícil</option>
+            
+            </select>
 
+        </td>
+        <td>
+            <input type="text" name="assunto" required="required" placeholder="Escreva aqui">
+        </td>
+
+      </tr>
+      <tr>
+        <td colspan="3">
+        <center>
       <?php 
 
       	require ($_SERVER["DOCUMENT_ROOT"].'/util/blocos.php');
 
        ?>
-      <input type="submit" name="enviarResposta" value="Enviar Problema">
+        </td>
+        </center>
+       </tr>
+      <input type="submit" class="btn btn-control" name="enviarResposta" value="Enviar Problema">
     </form>
-
+    </table>
 		
 
   

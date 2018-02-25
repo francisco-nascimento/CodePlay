@@ -2,12 +2,19 @@
 <html>
 <head>
 	<title>Problemas a responder</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<style type="text/css">
+		.containerEU {
+  			flex-direction: row | row-reverse | column | column-reverse;
+		}
+	</style>
 </head>
 <body>
 
 	<?php
 
 			require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
+			require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
 			$idAtividade = $_GET["id"];
 			$sql = "select * from Atividade where id = ?";
 			$stmt = $conexao->prepare($sql);
@@ -45,23 +52,29 @@
 				$count = $count + 1;
 			}
 
-			
-
-			
-			
-
 		?>
 
 		
 		<br><br><br><br>
+	
 		
+   		<fieldset class="default">
+   		<legend>Problemas já cadastrados</legend>
+			<table border="1" class="table" cellspacing="0">
 		
-		<table border="1" class="table">
-		<form method="POST" action="/professor/inserirAtividade.php">
-			<input type="hidden" name="idAtividade" value="<?=$idAtividade;?>">
+
 
 				<tr>
-					<td>Descrição Da atividade: <br> <input type="text" name="descAtividade" value="<?=$descAtividade;?>"></td>
+				<form method="GET" action="/professor/descricao.php">
+					<th colspan="2"> Descrição da Atividade:
+				
+						<input type="hidden" name="idAtividade" value="<?=$idAtividade?>">
+						<input type="text" name="descAtividade" value="<?=$descAtividade?>">
+					</th>
+					<th>
+						<input type="submit" value="Alterar Descrição">
+					</th>
+				</form>
 
 
 				</tr>
@@ -77,91 +90,91 @@
 						Opções
 					</td>
 				</tr>
-				
-				<?php
-					require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
-					$cont = 0;
-
-					$resultado = $conexao->query("select  id, desc_Problema, classificacao from Problema");
-					
-
-
-				  foreach($resultado as $linha){ 
-
-				?>
-			      <tr>
-			         
-			         <td><?=$linha['desc_Problema'];?></td>
-			         <td><?=$linha['classificacao'];?></td>
-			         <td> 
-			        <p>Marque esse problema: </p>
-			         <input type="checkbox" name="idsProb[]" value="<?=$linha['id'];?>">
-
-			          </td>
-
-			       </tr>
 
 				<?php 
-					//$count = $count + 1;
-					} 
+
+				$sql = "select p.id, p.desc_Problema, p.classificacao from Problema as p right join Problema_Atividade as pa on p.id = pa.id_Problema where pa.id_atividade = ?;";
+				$stmt = $conexao->prepare($sql);
+				$stmt->bindValue(1, $idAtividade);
+				$stmt->execute();
+
+				foreach ($stmt as $key) {
 
 				?>
 				<tr>
-					<td colspan="3">
-					<center>
-					
-						<button type="submit"> Enviar Alterações</button>
-					</center>
+					<td>
+						<?=$key["desc_Problema"];?>
+					</td>
+					<td>
+						<?=$key["classificacao"];?>
+					</td>
+					<td>
+						<form action="/professor/tirarProblemaAtividade.php" method="GET">
+							<input type="hidden" name="idProblema" value="<?=$key['id']?>">
+							<input type="hidden" name="idAtividade" value="<?=$idAtividade?>">
+							<input type="submit" value="Retirar Problema">	
+						</form>
+						
 					</td>
 				</tr>
-			</form>
+				<?php 
+				}
+				?>
+
+			
+			
 			</table>
-
-				<center>
-			<table class="table" border="1">
-				<fieldset>
-					<legend>Problemas cadastrados nessa atividade</legend>
-
-			<?php 
-
-				
-
-					$sql = "select * from Problema left join Problema_Atividade on Problema.id = Problema_Atividade.id_problema where Problema_Atividade.id_atividade > 0;";
-					$resultadoPA = $conexao->prepare($sql);
-					
-					$resultadoPA->execute();
-
-					foreach ($resultadoPA as $chave) {
-				?>
-				<tr>
-			         
-			         <td><?=$chave['desc_Problema'];?></td>
-			         <td><?=$chave['classificacao'];?></td>
-			         <td> 
-			        <p>Marque esse problema: </p>
-			        <form action="/professor/tirarProblemaAtividade.php" method="POST">
-			        	<input type="hidden" name="idProblema" value="<?=$chave['id'];?>">
-			        	<input type="hidden" name="idAtividade" value="<?=$idAtividade;?>">
-			        	<input type="submit" value="Deletar Problema Dessa Atividade">
-			        </form>
-
-			          </td>
-
-			       </tr>
-
-				<?php
-					}
-				?>
-
 			</fieldset>
-
-			</table>
+		
 			</center>
 
+		<table border="1" class="table">
+			<tr>
+					<td>
+						Descrição do problema
+					</td>
+					<td>
+						Classificação do Problema
+					</td>
+					<td>
+						Opções
+					</td>
+			</tr>
+			<?php
+			$sql = "select * from Problema where id not in(select id_problema from Problema_Atividade  where id_atividade = ?);";
+
+			$stmt = $conexao->prepare($sql);
+			$stmt->bindValue(1, $idAtividade);
+			$stmt->execute();
+			foreach ($stmt as $key) {
+
+			?>
+			<tr>
 				
+				<td>
+					<?=$key["desc_Problema"]?>
+				</td>
+				<td>
+					<?=$key["classificacao"]?>
+				</td>
+				<td>
+					<form action="/professor/inserirAtividade.php" method="GET">
+						<input type="hidden" name="idProb" value="<?=$key["id"]?>">
+						<input type="hidden" name="idAtividade" value="<?=$idAtividade;?>">
+						
+						<input type="submit" value="Adicionar Problema">
+					</form>
+					
+				</td>
+			</tr>
+			<?php 
+			}
+			?>
+			
+
+		</table>
 		
 		
 
 </body>
 </html>
-
