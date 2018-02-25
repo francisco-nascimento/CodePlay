@@ -55,7 +55,7 @@
         <div class="intro-text">
           <span class="name">Code && Play</span>
           <hr class="star-light">
-          <span class="skills">Lógica de programação - Feedback com o professor - User Experience Designer</span>
+          <span class="skills">Lógica de programação - Atividades com nivelamentos - Feedback com o professor </span>
         </div>
       </div>
     </header>
