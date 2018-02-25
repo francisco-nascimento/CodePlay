@@ -1,7 +1,9 @@
 <?php 
+	session_start();
 
 	require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
 
+<<<<<<< HEAD
 	session_start();
 
 	$idAtividade = $_GET["idAtividade"];
@@ -20,9 +22,37 @@
 
 	
 	
+=======
+	
+
+	$idAtividade = $_GET["idAtividade"];
+
+	$problema = $_GET["idProb"];
+
+	
+	
+
+	
+	
+		
+
+		
+		$sql = "INSERT INTO Problema_Atividade VALUES(?,?)";
+
+		$stmt = $conexao->prepare($sql);
+		$stmt->bindValue(1, $idAtividade);
+		$stmt->bindValue(2, $problema);
+		$stmt->execute();
+
+		
+>>>>>>> Wesley
 	
 	
 
 
+<<<<<<< HEAD
 	header("Location: /professor/listarProblemasAtividade.php?id="."$idAtividade");
+=======
+	header("Location: /professor/listarProblemasAtividade.php?id=$idAtividade");
+>>>>>>> Wesley
 ?>
