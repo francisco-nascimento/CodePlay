@@ -60,7 +60,15 @@
 		
    		<fieldset class="default">
    		<legend>Problemas já cadastrados</legend>
+<<<<<<< HEAD
 			<table border="1" cellspacing="0">
+=======
+<<<<<<< HEAD
+			<table border="1" cellspacing="0">
+=======
+			<table border="1" class="table" cellspacing="0">
+>>>>>>> Wesley
+>>>>>>> 278f2521d59d0cd2a5955ea54ab44e9259316153
 		
 
 
@@ -128,7 +136,15 @@
 		
 			</center>
 
+<<<<<<< HEAD
 		<table border="1">
+=======
+<<<<<<< HEAD
+		<table border="1">
+=======
+		<table border="1" class="table">
+>>>>>>> Wesley
+>>>>>>> 278f2521d59d0cd2a5955ea54ab44e9259316153
 			<tr>
 					<td>
 						Descrição do problema
@@ -161,7 +177,15 @@
 					<form action="/professor/inserirAtividade.php" method="GET">
 						<input type="hidden" name="idProb" value="<?=$key["id"]?>">
 						<input type="hidden" name="idAtividade" value="<?=$idAtividade;?>">
+<<<<<<< HEAD
 						<input type="hidden" name="descAtividade" value="<?=$descAtividade;?>">
+=======
+<<<<<<< HEAD
+						<input type="hidden" name="descAtividade" value="<?=$descAtividade;?>">
+=======
+						
+>>>>>>> Wesley
+>>>>>>> 278f2521d59d0cd2a5955ea54ab44e9259316153
 						<input type="submit" value="Adicionar Problema">
 					</form>
 					
