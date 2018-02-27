@@ -4,11 +4,11 @@ require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
 
 $idProblema = $_GET["idProblema"];
 
-<<<<<<< HEAD
+
 $descAtividade = $_GET["descAtividade"];
-=======
+
 $idAtividade = $_GET["idAtividade"];
->>>>>>> Wesley
+
 
 $idAtividade = $_GET["idAtividade"];
 

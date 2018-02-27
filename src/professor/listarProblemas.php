@@ -31,7 +31,7 @@
 
   require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
 
-   $resultado = $conexao->query("select proble.id, profe.nome, proble.desc_Problema, proble.classificacao from Professor as profe right join Problema as proble on profe.id = proble.id_Professor limit 100");
+   $resultado = $conexao->query("select proble.id, profe.id as idP, profe.nome, proble.desc_Problema, proble.classificacao from Professor as profe right join Problema as proble on profe.id = proble.id_Professor limit 100");
 
   foreach($resultado as $linha){ 
 
@@ -40,13 +40,17 @@
          <td><?=$linha['nome'];?></td>
          <td><a href=''><?=$linha['desc_Problema'];?></a></td>
          <td><?=$linha['classificacao'];?></td>
+
          <td>
            <form action="/professor/deletarProblema.php" action="GET">
              <input type="hidden" name="idProb" value="<?=$linha["id"];?>">
              <input type="submit" value="Deletar Problema">
            </form>
          </td>
-<?php } ?>
+      <?php 
+            
+          } 
+      ?>
       </tr>
    </table>
 </div>

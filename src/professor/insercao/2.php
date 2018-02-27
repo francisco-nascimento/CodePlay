@@ -1,5 +1,7 @@
 <?php
 
+
+
 	$sql = "INSERT INTO Problema_Atividade VALUES(?,?), (?,?)";
 
 	$stmt = $conexao->prepare($sql);
@@ -7,7 +9,7 @@
 
 	for ($i=0; $i < $marcadas ; $i++) { 
 		
-		$stmt->bindValue($count, $idAtividade);
+		$stmt->bindValue($count, $idAtv);
 		$count = $count + 1;
 		$stmt->bindValue($count, $problemas[$i]);
 		$count = $count + 1;

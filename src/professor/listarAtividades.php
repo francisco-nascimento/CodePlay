@@ -36,7 +36,9 @@
 					
 					
 
-				   $resultado = $conexao->query("select  id, desc_Atividade, data_Alteracao from Atividade");
+				   $resultado = $conexao->prepare("select  id, desc_Atividade, data_Alteracao from Atividade where id_Professor = ?");
+				   $resultado->bindValue(1, $_SESSION["id"]);
+				   $resultado->execute();
 
 				  foreach($resultado as $linha){ 
 
@@ -47,8 +49,13 @@
 			         <td><?=$linha['data_Alteracao'];?></td>
 			         <td> 
 			         <form method="GET" action="/professor/listarProblemasAtividade.php">
-			         	<input type="hidden" name="id" value="<?=$linha['id'];?>">
-			         	<input type="submit" value="Alterar">
+			         	<input type="hidden" name="idAtividade" value="<?=$linha['id'];?>">
+			         	<button class="btn" type="submit"> Alterar </button>
+			         </form>
+
+			         <form method="GET" action="/professor/deletarAtividade.php">
+			         	<input type="hidden" name="idAtividade" value="<?=$linha['id'];?>">
+			         	<button class="btn" type="submit"> Deletar </button>
 			         </form>
 
 			          </td>
@@ -63,7 +70,7 @@
 				<tr>
 					<td colspan="3">
 					<center>
-						<a href="/professor/criarAtividades.php"><button> Criar uma lista </button></a>
+						<a href="/professor/atividade.php"><button> Criar uma lista </button></a>
 					</center>
 					</td>
 				</tr>

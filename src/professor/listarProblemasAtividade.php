@@ -15,7 +15,7 @@
 
 			require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
 			require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
-			$idAtividade = $_GET["id"];
+			$idAtividade = $_GET["idAtividade"];
 			$sql = "select * from Atividade where id = ?";
 			$stmt = $conexao->prepare($sql);
 			$stmt->bindValue(1, $idAtividade);
@@ -60,11 +60,11 @@
 		
    		<fieldset class="default">
    		<legend>Problemas já cadastrados</legend>
-<<<<<<< HEAD
+
 			<table border="1" cellspacing="0">
-=======
+
 			<table border="1" class="table" cellspacing="0">
->>>>>>> Wesley
+
 		
 
 
@@ -76,7 +76,7 @@
 						<input type="text" name="descAtividade" value="<?=$descAtividade?>">
 					</th>
 					<th>
-						<input type="submit" value="Alterar Descrição">
+						<input class="submit" type="submit" value="Alterar Descrição">
 					</th>
 				</form>
 
@@ -132,11 +132,11 @@
 		
 			</center>
 
-<<<<<<< HEAD
+
 		<table border="1">
-=======
+
 		<table border="1" class="table">
->>>>>>> Wesley
+
 			<tr>
 					<td>
 						Descrição do problema
@@ -169,11 +169,7 @@
 					<form action="/professor/inserirAtividade.php" method="GET">
 						<input type="hidden" name="idProb" value="<?=$key["id"]?>">
 						<input type="hidden" name="idAtividade" value="<?=$idAtividade;?>">
-<<<<<<< HEAD
-						<input type="hidden" name="descAtividade" value="<?=$descAtividade;?>">
-=======
-						
->>>>>>> Wesley
+
 						<input type="submit" value="Adicionar Problema">
 					</form>
 					
