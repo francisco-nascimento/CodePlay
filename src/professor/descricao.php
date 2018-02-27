@@ -13,5 +13,5 @@
 		$stmt->bindValue(2, $idAtividade);
 		$stmt->execute();
 		
-	header("Location: /professor/listarProblemasAtividade.php?id="."$idAtividade");
+	header("Location: /professor/listarProblemasAtividade.php?idAtividade="."$idAtividade");
 ?>

@@ -22,6 +22,16 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- Estilos personalizados para este modelo -->
+    <style>
+	  .circulo{
+		
+  
+   border-radius: 50%;
+
+		} 
+
+	         
+</style>
     
 
   </head>
@@ -39,11 +49,13 @@
     <!-- Header -->
     <header class="masthead">
       <div class="container">
-        <img class="img-fluid" src="/img/blockly/image.jpg" alt="">
+      <center><div class="circulo">
+        <img class="img-fluid" height="30" width="200" src="/img/blockly/image.jpg" alt="">
+       </div></center>
         <div class="intro-text">
           <span class="name">Code && Play</span>
           <hr class="star-light">
-          <span class="skills">Lógica de programação - Feedback com o professor - User Experience Designer</span>
+          <span class="skills">Lógica de programação - Atividades com nivelamentos - Feedback com o professor </span>
         </div>
       </div>
     </header>

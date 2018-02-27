@@ -7,8 +7,6 @@ $idProblema = $_GET["idProblema"];
 
 $descAtividade = $_GET["descAtividade"];
 
-$idAtividade = $_GET["idAtividade"];
-
 
 $idAtividade = $_GET["idAtividade"];
 
@@ -19,5 +17,5 @@ $idAtividade = $_GET["idAtividade"];
 		$stmt->bindValue(2, $idProblema);
 		$stmt->execute();
 		
-	header("Location: /professor/listarProblemasAtividade.php?id="."$idAtividade");
+	header("Location: /professor/listarProblemasAtividade.php?idAtividade="."$idAtividade");
 ?>

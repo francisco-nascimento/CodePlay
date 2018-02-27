@@ -22,7 +22,7 @@ function verificaChecks() {
 		return false;
 	}
 } 
-	
+	// please commit your changes or stash them before you merge
 
 </script>
 <body>
