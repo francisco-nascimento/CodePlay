@@ -41,9 +41,9 @@
       <div class="container">
         <img class="img-fluid" src="/img/blockly/image.jpg" alt="">
         <div class="intro-text">
-          <span class="name">Code And Play</span>
+          <span class="name">Code && Play</span>
           <hr class="star-light">
-          <span class="skills">Lógica de programação - Feedback com o professor - User Experience Designer</span>
+          <span class="skills">Lógica de programação - Atividades com nivelamento -Feedback com o professor</span>
         </div>
       </div>
     </header>

@@ -6,18 +6,51 @@
 
 	$id = $_SESSION["id"];
 
-	$sql = "INSERT INTO Atividade(desc_Atividade, id_Professor) VALUES (?,?)";
+	$descricao = $_GET["descAtividade"];
+
+	$problema = $_GET["idsProb"];
+
+	$marcadas = count($problema);
+	
+	if ($marcadas < 1 || $marcadas > 10) {
+
+			header("Location: /professor/atividade.php");
+			
+		}
+
 
 	try {
 
+		$sql = "INSERT INTO Atividade(desc_Atividade, id_Professor) VALUES (?,?)";
+
 		$stmt = $conexao->prepare("$sql");
-		$stmt->bindValue(1, 'Nova Atividade');
+		$stmt->bindValue(1, $descricao);
 		$stmt->bindValue(2, $id);
 		$stmt->execute();
 
-		header("Location: /professor/listarAtividades.php");
+		$stmt = $conexao->query("select MAX(id) as id from Atividade");
+
+		$idAtv;
+
+		foreach ($stmt as $key) {
+			$idAtv = $key["id"];
+		}
+
+
+
+		if ($marcadas > 0 && $marcadas < 11) {
+
+			require ($_SERVER["DOCUMENT_ROOT"].'/professor/insercao/'.$marcadas.'.php');
+			
+		}
+
+		
+
+		header("Location: /professor/listarProblemasAtividade.php?id=$idAtv");
 		
 	} catch (Exception $e) {
+
+		echo $e;
 		
 	}
 
