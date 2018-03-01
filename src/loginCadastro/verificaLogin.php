@@ -6,6 +6,7 @@
   
   $senha = $_POST["senha"];
   $professor = $_POST["tipoUsuario"];
+  $email = $_POST["email"];
   $sql;
   $email;
 
@@ -16,16 +17,24 @@
 
 
 	if ($professor == 1) {
-		
-		$email = $_POST["email"];
+
+		if (strlen($email) == 13) {
+			$sql = "select * from Professor where matricula = ? ";		
+		}else{
 	
 		$sql = "select * from Professor where email = ? ";
 
+		}
+
 	}else{
 
-		$email = $_POST["email"];
+		if (strlen($email) == 13) {
+			$sql = "select * from Aluno where matricula = ? ";		
+		}else{
 
 		$sql = "select * from Aluno where email = ? ";
+
+		}
 	}
 
 	$stmt = $conexao->prepare($sql);
@@ -61,8 +70,6 @@
 			header("Location: ".'/index.php');
 
 		}else{
-
-			print "<script> alert('Login ou senhas Incorreto(s)!');</script>";
 			header("Location: loginCadastro.php");
 		}
 	}

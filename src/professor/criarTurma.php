@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Turma</title>
+
 </head>
 <body>
 
@@ -15,57 +16,31 @@
 		?>
 
 		
-		<br><br><br><br>
+		<br><br>
+
+
 		<table border="1" class="table">
-		
-		
+		<form action="/professor/inserirTurma.php" name="formulario" method="GET">
+
+			<tr>
+				<th>
+					<label>Descrição para esta turma: </label>
+					<input maxlength="50000" required="required" type="text" name="descTurma">
+				</th>
+			</tr>
 				<tr>
 					<td>
-						Turma
-					</td>
-					<td>
-						Ultima alteração
-					</td>
-					<td>
-						Opções
-					</td>
-				</tr>
-				
-				<?php
-					
-					
-
-				   $resultado = $conexao->query("select  id, desc_Turma, data_Alteracao from Turma");
-
-				  foreach($resultado as $linha){ 
-
-				?>
-			      <tr>
-			         
-			         <td><?=$linha['desc_Turma'];?></td>
-			         <td><?=$linha['data_Alteracao'];?></td>
-			         <td> 
-			         <form method="GET" action="/professor/adicionarAluno.php">
-			         	<input type="hidden" name="id" value="<?=$linha['id'];?>">
-			         	<input type="submit" value="Alterar">
-			         </form>
-
-			          </td>
-
-			       </tr>
-
-				<?php 
-					
-					} 
-				?>
-				
-				<tr>
-					<td colspan="3">
 					<center>
-						<a href="/professor/Turma.php"><button> Criar Turma </button></a>
+						<button class="btn btn-sm btn-success" type="submit">
+							Criar Turma
+						</button>
 					</center>
 					</td>
 				</tr>
+				</form>
 				
 		</table>
+		
+
 </body>
+</html>

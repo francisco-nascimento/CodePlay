@@ -2,19 +2,6 @@ create database Codeplay;
 
 use Codeplay;
 
-create table Aluno (
-id int AUTO_INCREMENT,
-id_turma int,
-matricula varchar(20),
-nome varchar(50),
-email varchar(40),
-senha varchar(100),
-situacao tinyint(1),
-pontuacao int,
-nivel tinyint(1),
-data_Alteracao timestamp default current_timestamp,
-primary key(id)
-);
 
 create table Professor (
 id int AUTO_INCREMENT,
@@ -25,6 +12,22 @@ senha varchar(100),
 situacao tinyint(1),
 data_Alteracao timestamp default current_timestamp,
 primary key(id)
+);
+
+create table Aluno (
+id int AUTO_INCREMENT,
+id_turma int,
+id_professor int,
+matricula varchar(20),
+nome varchar(50),
+email varchar(40),
+senha varchar(100),
+situacao tinyint(1),
+pontuacao int,
+nivel tinyint(1),
+data_Alteracao timestamp default current_timestamp,
+primary key(id),
+foreign key(id_professor) references Professor(id)
 );
 
 create table Problema (
