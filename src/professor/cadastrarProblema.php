@@ -65,7 +65,7 @@
 		
     <table class="table">
 
-	<form name="formulario" onsubmit="recebeResposta();" class="form form-control" action="/professor/recebeProblema.php" method="POST">
+	<form name="formulario" onsubmit="return recebeResposta();" class="form form-control" action="/professor/recebeProblema.php" method="POST">
       <input type="hidden" name="resposta" required="required">
       <tr>
         <th>Descrição do Problema *</th> <th> Classificação do Problema* </th> <th>Assunto do Problema*</th>
@@ -103,7 +103,7 @@
         </td>
         </center>
        </tr>
-      <input type="submit" class="btn btn-control" name="enviarResposta" value="Enviar Problema">
+      <button type="submit" class="btn btn-sm btn-success">Enviar Problema</button>
     </form>
     </table>
 		

@@ -6,7 +6,8 @@
 
 	$id = $_SESSION["id"];
 
-	$descricao = $_GET["descricao"];
+
+	$descricao = $_GET["descAtividade"];
 
 	$problema = $_GET["idsProb"];
 
@@ -21,7 +22,8 @@
 		$stmt->bindValue(2, $id);
 		$stmt->execute();
 
-		$stmt = $conexao->query("select MAX(id_atividade) as id from Problema_Atividade");
+		$stmt = $conexao->query("select MAX(id) as id from Atividade");
+
 
 		$idAtv;
 
@@ -31,15 +33,17 @@
 
 
 
-		if ($marcados > 0) {
+		if ($marcadas > 0 && $marcadas < 11) {
 
-			require ($_SERVER["DOCUMENT_ROOT"].'/professor/insercao/'.$marcados.'.php');
+			require ($_SERVER["DOCUMENT_ROOT"].'/professor/insercao/'.$marcadas.'.php');
 			
 		}
 
 		
 
-		header("Location: /professor/listarAtividades.php");
+
+		header("Location: /professor/listarProblemasAtividade.php?id=$idAtv");
+
 		
 	} catch (Exception $e) {
 

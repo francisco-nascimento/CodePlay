@@ -57,6 +57,9 @@
 		
 		<br><br><br><br>
 	
+		<p>
+			<?=$_GET["msg"];?>
+		</p>
 		
    		<fieldset class="default">
    		<legend>Problemas já cadastrados</legend>
@@ -71,7 +74,7 @@
 						<input type="text" name="descAtividade" value="<?=$descAtividade?>">
 					</th>
 					<th>
-						<input class="submit" type="submit" value="Alterar Descrição">
+						<button type="submit" class="btn btn-warning btn-sm"> Alterar Descrição</button>
 					</th>
 				</form>
 
@@ -111,7 +114,8 @@
 						<form action="/professor/tirarProblemaAtividade.php" method="GET">
 							<input type="hidden" name="idProblema" value="<?=$key['id']?>">
 							<input type="hidden" name="idAtividade" value="<?=$idAtividade?>">
-							<input type="submit" value="Retirar Problema">	
+							<button type="submit" class="btn btn-danger btn-sm"> Retirar Problema	</button>
+							   
 						</form>
 						
 					</td>
@@ -161,9 +165,7 @@
 					<form action="/professor/inserirAtividade.php" method="GET">
 						<input type="hidden" name="idProb" value="<?=$key["id"]?>">
 						<input type="hidden" name="idAtividade" value="<?=$idAtividade;?>">
-						
-
-						<input type="submit" value="Adicionar Problema">
+						<button type="submit" class="btn btn-success btn-sm"> Adicionar Problema	</button>
 					</form>
 					
 				</td>

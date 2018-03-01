@@ -55,7 +55,7 @@
 
 			         <form method="GET" action="/professor/deletarAtividade.php">
 			         	<input type="hidden" name="idAtividade" value="<?=$linha['id'];?>">
-			         	<button class="btn" type="submit"> Deletar </button>
+			         	<button class="btn btn-sm btn-danger" type="submit"> Deletar </button>
 			         </form>
 
 			          </td>
@@ -70,7 +70,7 @@
 				<tr>
 					<td colspan="3">
 					<center>
-						<a href="/professor/atividade.php"><button> Criar uma lista </button></a>
+						<a href="/professor/atividade.php"><button class="btn btn-sm btn-success"> Criar uma lista </button></a>
 					</center>
 					</td>
 				</tr>

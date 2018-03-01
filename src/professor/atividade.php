@@ -4,25 +4,22 @@
 	<title>Problemas a responder</title>
 </head>
 <script type="text/javascript">
-	
-	
-function verificaChecks() {
-	var aChk = document.getElementsByName("idsProb");
+
+	function verificaChecks() {
+	var aChk = document.getElementsByName("idsProb");  
 	var count = 0;
-	for (var i = 0; i < aChk.length; i++){  
+	for (var i=0;i<aChk.length;i++){  
 		if (aChk[i].checked == true){  
 			
-			var count = count + 1;
-
+			count = count + 1;
+			
 		} 
 	}
-	if (count < 1 || count > 10) {
-		alert("Preencha entre 1 e 10 Problemas para sua atividade.");
-		achk.focus();
+	if (count > 10 || count < 1) {
+		alert("Preencha entre 1 e 10 Problemas para sua Atividade!");
 		return false;
 	}
 } 
-	// please commit your changes or stash them before you merge
 
 </script>
 <body>
@@ -32,56 +29,85 @@ function verificaChecks() {
 			require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
 			require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
 
-			$sql = "select * from Problema";
-			$stmt=$conexao->query($sql);
+
+			$sql = "select * from Problema where id_Professor = ?";
+
+			$stmt=$conexao->prepare($sql);
+			$stmt->bindValue(1, $_SESSION["id"]);
+			$stmt->execute();
+
 		?>
 
 		
 		<br><br><br><br>
 
 		<table border="1" class="table">
-		<form action="/professor/criarAtividades.php" name="form" onsubmit="verificaChecks()" method="GET" class="form-control">
-		
-		
-				<tr>
-					<th colspan="2">
-						<label>Descrição Da Atividade:</label> <input type="text" required="required" name="descricao">
-					</th>
-					<th>
-						*Insira no maximo 10 Problemas na sua atividade.
-					</th>
-				</tr>
-				<tr>
-					<th>Adicionar Problemas:</th>
-				</tr>
-				<tr>
-					<td>Descrição do Problema</td>
-					<td>Classificação</td>
-					<td>Marcar Problema</td>
-				</tr>
-				<?php
-					foreach ($stmt as $key) {
+		<form action="/professor/criarAtividades.php" name="formulario" method="GET" onsubmit="return verificaChecks();">
+
+			<tr>
+				<th colspan="2">
+					<label>Desctição para a atividade: </label>
+					<input maxlength="50000" required="required" type="text" name="descAtividade">
+				</th>
+				<th>
+				<p>
+					* Insira de 1 a 10 problemas na sua atividade.
+				</p>
 					
+				</th>
+			</tr>
+		
+		
+				<tr>
+					<td>
+						Descrição
+					</td>
+					<td>
+						Ultima alteração
+					</td>
+					<td>
+						Marcar
+					</td>
+				</tr>
+
+				
+				<?php
+					
+					
+
+				   $resultado = $conexao->prepare("select * from Problema where id_Professor = ?");
+				   $resultado->bindValue(1, $_SESSION["id"]);
+				   $resultado->execute();
+
+				  foreach($resultado as $linha){ 
+
 				?>
 			      <tr>
-			         <td><?=$key["desc_Problema"]?></td>
-			         <td><?=$key["classificacao"]?></td>
-			         <td><input type="checkbox" name="idsProb" maxlength="10" value="<?=$key["id"];?>">
-			         </td>
+			         
+			         <td><?=$linha['desc_Problema'];?></td>
+			         <td><?=$linha['data_Alteracao'];?></td>
+			         <td> 
+
+			         <input type="checkbox" name="idsProb" value="<?=$linha["id"];?>">
+
+			          </td>
+
 			       </tr>
-			      <?php
-			  }
-			      ?>
+
+				<?php 
+					
+					} 
+				?>
 				<tr>
 					<td colspan="3">
 					<center>
-						<button type="submit"> Criar </button></a>
+						<button class="btn btn-sm btn-success" type="submit">
+							Criar Atividade
+						</button>
 					</center>
 					</td>
 				</tr>
 				</form>
-				
-				
 		</table>
 		
 

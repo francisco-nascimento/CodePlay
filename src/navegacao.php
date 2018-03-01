@@ -18,7 +18,6 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#about">Sobre</a>
             </li>
-            
              <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="/loginCadastro/loginCadastro.php" >Logar-se ou Criar conta</a>
             </li>
