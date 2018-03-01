@@ -50,20 +50,34 @@
 		if(password_verify($senha, $linha["senha"])){
 
 			session_start();
-			
-			
-			
-			$_SESSION["email"]=$linha["email"];
-			$_SESSION["nome"]=$linha["nome"];
+
 			$_SESSION["USUARIO_LOGADO"] = 'P';
+
 			$_SESSION["id"]= $linha["id"];
-			$_SESSION["matricula"]=$linha["matricula"];
 
 			if ($professor == 1) {
 				$_SESSION["USUARIO_LOGADO"] = 'P';
 			}else{
 				$_SESSION["USUARIO_LOGADO"] = 'A';
+				$_SESSION["matricula"] = $linha["matricula"];
+				$_SESSION["situacao"] = $linha["situacao"];
+
+				if ($linha["situacao"] != 1) {
+					header("Location: /aluno/primeiroLogin.php");
+				}
+
+				
 			}
+			
+			
+			
+			$_SESSION["email"] = $linha["email"];
+			$_SESSION["nome"] = $linha["nome"];
+			
+			
+			$_SESSION["matricula"] = $linha["matricula"];
+
+			
 			
 
 

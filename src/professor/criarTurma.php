@@ -22,7 +22,7 @@
 
 			<tr>
 				<th>
-					<label>Descrição para esta turma: </label>
+					<label>Descrição para turma: </label>
 					<input maxlength="50000" required="required" type="text" name="descTurma">
 				</th>
 			</tr>

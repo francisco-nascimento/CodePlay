@@ -15,10 +15,10 @@
 
 			require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
 			require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
-			$idTurma = $_GET["id"];
+			$idTurma = $_GET["idturma"];
 			$sql = "select * from Turma where id = ?";
 			$stmt = $conexao->prepare($sql);
-			$stmt->bindValue(1, $idAtividade);
+			$stmt->bindValue(1, $idTurma);
 			$stmt->execute();
 
 
@@ -53,13 +53,13 @@
 		</p>
 		
    		<fieldset class="default">
-   		<legend>Problemas já cadastrados</legend>
+   		<legend>Alunos desta Turma</legend>
 			<table border="1" class="table" cellspacing="0">
 		
 
 
 				<tr>
-				<form method="GET" action="/professor/descricaoTurma.php">
+				<form method="GET" name="formDesc" action="/professor/descricaoTurma.php">
 					<th colspan="2"> Descrição da Turma:
 				
 						<input type="hidden" name="idTurma" value="<?=$idTurma?>">
@@ -87,7 +87,7 @@
 
 				<?php 
 
-				$sql = "select a.id, a.nome, a.matricula from Aluno as a right join Aluno_Turma as at on a.id = at.id_aluno where at.id_turma = ?"
+				$sql = "select a.id, a.nome, a.matricula from Aluno as a right join Aluno_Turma as at on a.id = at.id_aluno where at.id_turma = ?";
 				$stmt = $conexao->prepare($sql);
 				$stmt->bindValue(1, $idTurma);
 				$stmt->execute();
@@ -103,8 +103,9 @@
 						<?=$key["matricula"];?>
 					</td>
 					<td>
-						<form action="/professor/tirarProblemaAtividade.php" method="GET">
+						<form action="/professor/tirarAlunoTurma.php" name="formTirar" method="GET">
 							<input type="hidden" name="idAluno" value="<?=$key['id']?>">
+							<input type="hidden" name="descTurma">
 							<input type="hidden" name="idTurma" value="<?=$idTurma?>">
 							<button type="submit" class="btn btn-danger btn-sm"> Retirar Aluno	</button>
 							   
@@ -137,10 +138,11 @@
 			</tr>
 			<?php
 
-			$sql = "select * from Aluno where id not in(select id_aluno from Aluno_Turma where id_turma = ?)";
+			$sql = "select * from Aluno where id not in(select id_aluno from Aluno_Turma where id_turma = ?) and id_professor = ?";
 
 			$stmt = $conexao->prepare($sql);
 			$stmt->bindValue(1, $idTurma);
+			$stmt->bindValue(2, $_SESSION["id"]);
 			$stmt->execute();
 			foreach ($stmt as $key) {
 
@@ -154,9 +156,10 @@
 					<?=$key["matricula"]?>
 				</td>
 				<td>
-					<form action="/professor/inserirAlunoTurma.php" method="GET">
+					<form action="/professor/inserirAlunoTurma.php" name="formInserir" method="GET">
 						<input type="hidden" name="idAluno" value="<?=$key["id"]?>">
 						<input type="hidden" name="idTurma" value="<?=$idTurma;?>">
+						<input type="hidden" name="descTurma">
 						
 						<button type="submit" class="btn btn-success btn-sm"> Adicionar Aluno	</button>
 					</form>

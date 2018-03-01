@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Problemas</title>
+  <title>Alunos</title>
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
  
@@ -36,14 +36,16 @@
 
   require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
 
-   $resultado = $conexao->query("select nome, matricula, situacao from Aluno");
+   $resultado = $conexao->prepare("select id, nome, matricula, situacao from Aluno where id_professor = ?");
+   $resultado->bindValue(1, $_SESSION["id"]);
+   $resultado->execute();
 
   foreach($resultado as $linha){ 
 
 ?>
       <tr>
-         <?="<td>".$linha['nome']."</td>";?>
-         <?="<td>".$linha['matricula']."</td>";?>
+         <td><?=$linha['nome'];?></td>
+         <td><?=$linha['matricula'];?></td>
          
          <?php
 
@@ -52,15 +54,44 @@
 
          <td>Ativo</td>
 
+         <td>
+         <form method="GET" action="/professor/alterarAluno.php">
+          <input type="hidden" name="idAluno" value="<?=$linha['id']?>">
+          <button type="submit" class="btn btn-sm btn-primary">Alterar Dados do Aluno</button>
+           
+         </form>
+
+          <form method="GET" action="/professor/deletarAluno.php">
+          <input type="hidden" name="idAluno" value="<?=$linha['id']?>">
+          <button type="submit" class="btn btn-sm btn-danger">Deletar Aluno</button>
+           
+         </form>
+       </td>
+
          <?php 
           }else{
         ?>
 
         <td>Inativo</td>
 
+        <td>
+         <form method="GET" action="/professor/alterarMatriculaAluno.php">
+          <input type="hidden" name="idAluno" value="<?=$linha['id']?>">
+          <button type="submit" class="btn btn-sm btn-primary">Alterar Matricula do Aluno</button>
+           
+         </form>
+
+          <form method="GET" action="/professor/deletarAluno.php">
+          <input type="hidden" name="idAluno" value="<?=$linha['id']?>">
+          <button type="submit" class="btn btn-sm btn-danger">Deletar Aluno</button>
+           
+         </form>
+       </td>
+
         <?php 
           }
        ?>
+       
          
       </tr>
 

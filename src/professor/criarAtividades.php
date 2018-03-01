@@ -8,9 +8,11 @@
 
 	$descricao = $_GET["descAtividade"];
 
-	$problema = $_GET["idsProb"];
+	$problemas = $_GET["idsProb"];
 
-	$marcadas = count($problema);
+	$marcadas = count($problemas);
+
+	
 	
 	if ($marcadas < 1 || $marcadas > 10) {
 
@@ -30,10 +32,10 @@
 
 		$stmt = $conexao->query("select MAX(id) as id from Atividade");
 
-		$idAtv;
+		$idAtividade;
 
 		foreach ($stmt as $key) {
-			$idAtv = $key["id"];
+			$idAtividade = $key["id"];
 		}
 
 
@@ -46,7 +48,7 @@
 
 		
 
-		header("Location: /professor/listarProblemasAtividade.php?id=$idAtv");
+		header("Location: /professor/listarProblemasAtividade.php?id=$idAtividade");
 		
 	} catch (Exception $e) {
 

@@ -3,7 +3,7 @@
 	require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
 	$idAtividade = $_GET["idAtividade"];
 
-	$sql = "DELETE FROM Atividade_Turma WHERE id_Atidivade = ?;";
+	$sql = "DELETE FROM Atividade_Turma WHERE id_Atidividade = ?;";
 
 	$stmt = $conexao->prepare($sql);
 	$stmt->bindValue(1, $idAtividade);
