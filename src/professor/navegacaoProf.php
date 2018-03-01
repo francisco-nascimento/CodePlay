@@ -20,9 +20,33 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/professor/listarAlunos.php">Alunos</a>
-            </li>
+            <ul class="menuEU">
+                      <li class="nav-item"> <center><a href="#">Alunos</a> </center>
+                          <ul>
+                                  <li class="nav-item">
+                                    <center>
+                                      <a href="/professor/listarAlunos.php" class="nav-link js-scroll-trigger">
+                                        Alunos Cadastrados
+                                      </a>
+                                    </center>
+                                    </li>
+                                  <li class="nav-item">
+                                    <center>
+                                      <a href="/professor/cadastrarAluno.php" class="nav-link js-scroll-trigger">
+                                      Cadastrar Aluno
+                                      </a>
+                                     </center>
+                                  </li>
+                                  <li class="nav-item">
+                                    <center>
+                                      <a href="/professor/turmas.php" class="nav-link js-scroll-trigger">
+                                        Turmas
+                                      </a>
+                                    </center>
+                                  </li>
+                          </ul>
+                    </li>              
+              </ul>
             <li class="nav-item">
               <ul class="menuEU">
                       <li class="nav-item"> <center><a href="#">Professor</a> </center>
@@ -48,13 +72,6 @@
                                       </a>
                                     </center>
                                   </li>
-                                  <li class="nav-item">
-                                    <center>
-                                      <a href="/professor/turmas.php" class="nav-link js-scroll-trigger">
-                                      Turmas
-                                      </a>
-                                    </center>
-                                  </li>                    
                           </ul>
                     </li>              
               </ul>

@@ -36,12 +36,18 @@
 		<br><br><br><br>
 
 		<table border="1" class="table">
-		<form action="/professor/criarAtividades.php" name="formulario" method="GET" onsubmit="verificaChecks();">
+		<form action="/professor/criarAtividades.php" name="formulario" method="GET" onsubmit="return verificaChecks();">
 
 			<tr>
-				<th colspan="3">
+				<th colspan="2">
 					<label>Desctição para a atividade: </label>
 					<input maxlength="50000" required="required" type="text" name="descAtividade">
+				</th>
+				<th>
+				<p>
+					* Insira de 1 a 10 problemas na sua atividade.
+				</p>
+					
 				</th>
 			</tr>
 		

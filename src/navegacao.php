@@ -16,7 +16,7 @@
           <ul class="navbar-nav ml-auto">
             
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#about">Sobre o Code And Play</a>
+              <a class="nav-link js-scroll-trigger" href="#about">Sobre</a>
             </li>
              <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="/loginCadastro/loginCadastro.php" >Logar-se ou Criar conta</a>

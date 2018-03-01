@@ -43,7 +43,7 @@
          <td>
            <form action="/professor/deletarProblema.php" action="GET">
              <input type="hidden" name="idProb" value="<?=$linha["id"];?>">
-             <input type="submit" value="Deletar Problema">
+             <button type="submit" class="btn btn-sm btn-danger"> Deletar Problema </button>
            </form>
          </td>
 <?php } ?>

@@ -57,6 +57,9 @@
 		
 		<br><br><br><br>
 	
+		<p>
+			<?=$_GET["msg"];?>
+		</p>
 		
    		<fieldset class="default">
    		<legend>Problemas já cadastrados</legend>
@@ -72,7 +75,7 @@
 						<input type="text" name="descAtividade" value="<?=$descAtividade?>">
 					</th>
 					<th>
-						<button type="submit" class="btn btn-warning btn-sm"> Alterar Descriçãoq</button>
+						<button type="submit" class="btn btn-warning btn-sm"> Alterar Descrição</button>
 					</th>
 				</form>
 

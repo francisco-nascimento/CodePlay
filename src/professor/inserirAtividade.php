@@ -9,6 +9,22 @@
 
 	$problema = $_GET["idProb"];
 
+	$sql = "select count(*) as probs from Problema_Atividade where id_atividade = ?";
+
+	$problemas;
+
+	$stmt = $conexao->prepare($sql);
+	$stmt->bindValue(1, $idAtividade);
+	$stmt->execute();
+
+	foreach ($stmt as $key) {
+		$problemas = $key["probs"];
+	}
+
+	if ($problemas == 10) {
+		header("Location: /professor/listarProblemasAtividade.php?id=".$idAtividade);
+	}
+
 	
 	
 

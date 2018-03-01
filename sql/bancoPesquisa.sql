@@ -4,6 +4,7 @@ use Codeplay;
 
 create table Aluno (
 id int AUTO_INCREMENT,
+id_turma int,
 matricula varchar(20),
 nome varchar(50),
 email varchar(40),
@@ -48,8 +49,7 @@ foreign key (id_Problema) references Problema (id)
 
 create table Resposta_Aluno (
 id int AUTO_INCREMENT,
-desc_Resposta_Aluno_XML text(10000),
-esc_Resposta_Aluno_JS text(10000),
+desc_resposta text(10000),
 id_Aluno int,
 data_Alteracao timestamp default current_timestamp,
 primary key (id),
@@ -58,7 +58,7 @@ foreign key (id_Aluno) references Aluno (id)
 
 create table Atividade_Turma (
 id int AUTO_INCREMENT,
-id_Atidivade int,
+id_Atidividade int,
 id_Turma int,
 primary key (id)
 
@@ -85,13 +85,15 @@ foreign key (id_problema) references Problema(id)
 create table Turma (
 id int AUTO_INCREMENT,
 id_Professor int,
-id_Aluno int,
-id_Atividade int,
 desc_Turma varchar(200),
 data_Alteracao timestamp default current_timestamp,
 primary key (id),
-foreign key (id_Aluno) references Aluno (id),
-foreign key (id_Atividade) references Atividade (id),
 foreign key (id_Professor) references Professor (id)
 );
 
+create table Aluno_Turma(
+	id_aluno int,
+	id_turma int,
+	foreign key (id_aluno) references Aluno(id),
+	foreign key (id_turma) references Turma(id)
+);
