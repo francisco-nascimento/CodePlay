@@ -31,7 +31,6 @@
       <table cellspacing="0" class="table table-bordered">
       <tr>
          <th>Descrição</th>
-         <th>Quantidade de Alunos</th>
          <th>Opções</th>
       </tr>
    <?php
@@ -43,21 +42,11 @@
    $resultado->execute();
 
   foreach($resultado as $linha){ 
-    $sql = "select count(*) from Alunos where id_turma = ?";
-
-    $stmt = $conexao->prepare($sql);
-    $stmt->bindValue(1, $linha["id"]);
-
-    $quantidade;
-
-    foreach ($stmt as $key) {
-        $quantidade = $key["count(*)"];
-    }
+    
 
 ?>
       <tr>
          <td><?=$linha['desc_Turma'];?></td>
-         <td><?=$quantidade;?></td>
          <td>
             <form action="/professor/listarAlunosTurma.php" action="GET">
              <input type="hidden" name="idturma" value="<?=$linha["id"];?>">

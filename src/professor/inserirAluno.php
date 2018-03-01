@@ -14,9 +14,7 @@
 
 		$stmt->execute();
 
-	$funfou = return $stmt;
-
-	if ($funfou) {
+	if ($stmt) {
 		header("Location: /professor/cadastrarAluno.php?msg=Aluno%20Cadastrado");
 	}else{
 		header("Location: /professor/cadastrarAluno.php?msg=Aluno%20não%20Cadastrado");

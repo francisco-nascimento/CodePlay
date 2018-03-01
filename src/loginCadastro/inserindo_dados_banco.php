@@ -10,18 +10,8 @@
 		$email = $_POST["email"];
 		$situacao = 1;
 
-		$inserirAluno = "insert into Aluno (matricula, nome, senha, email, situacao) values (?,?,?,?,?)";
-		$inserirProfessor = "insert into Professor (matricula, nome, senha, email, situacao) values (?,?,?,?,?)";
+		$sql = "insert into Professor (matricula, nome, senha, email, situacao) values (?,?,?,?,?)";
 			
-		if($_POST['tipoUsuario'] == 1){
-
-			$sql = $inserirProfessor;
-
-		}else{
-
-			$sql = $inserirAluno;
-
-		}
 
 			$stmt = $conexao->prepare($sql);
 			
@@ -37,7 +27,7 @@
 				
 			$stmt->execute();
 
-			header("Location: loginCadastro.php");
+			header("Location: /loginCadastro/loginCadastro.php");
 
 				
 

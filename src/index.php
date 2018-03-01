@@ -14,7 +14,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>CodeAndPlay</title>
+    <title>Code && Play</title>
 
 
     
