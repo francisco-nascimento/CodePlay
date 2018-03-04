@@ -8,6 +8,18 @@
   			flex-direction: row | row-reverse | column | column-reverse;
 		}
 	</style>
+	<script type="text/javascript">
+		function verifica(){
+
+			var quantidade = document.inserir.cadastrados.value;
+
+			if (quantidade == 10) {
+				alert("Já se tem 10 problemas cadastrados.");
+				return false;
+			}
+
+		}
+	</script>
 </head>
 <body>
 
@@ -50,6 +62,18 @@
 
 				$idsProbBD[$count] = $key["id_problema"];
 				$count = $count + 1;
+			}
+
+			$sql = "select count(*) as problemas from Problema_Atividade where id_atividade = ?";
+			$stmt = $conexao->prepare($sql);
+			$stmt->bindValue(1, $idAtividade);
+			$stmt->execute();
+
+			$problemasAtv = 0;
+			foreach ($stmt as $key) {
+				
+
+				$problemasAtv = $key["problemas"];
 			}
 
 		?>
@@ -145,10 +169,11 @@
 					</td>
 			</tr>
 			<?php
-			$sql = "select * from Problema where id not in(select id_problema from Problema_Atividade  where id_atividade = ?);";
+			$sql = "select * from Problema where id not in(select id_problema from Problema_Atividade  where id_atividade = ?) and id_professor = ?";
 
 			$stmt = $conexao->prepare($sql);
 			$stmt->bindValue(1, $idAtividade);
+			$stmt->bindValue(2, $_SESSION["id"]);
 			$stmt->execute();
 			foreach ($stmt as $key) {
 
@@ -162,9 +187,10 @@
 					<?=$key["classificacao"]?>
 				</td>
 				<td>
-					<form action="/professor/inserirAtividade.php" method="GET">
+					<form action="/professor/inserirAtividade.php" name="inserir" onsubmit="return verifica()" method="GET">
 						<input type="hidden" name="idProb" value="<?=$key["id"]?>">
 						<input type="hidden" name="idAtividade" value="<?=$idAtividade;?>">
+						<input type="hidden" name="cadastrados" value="<?=$problemasAtv;?>">
 						
 						<button type="submit" class="btn btn-success btn-sm"> Adicionar Problema	</button>
 					</form>

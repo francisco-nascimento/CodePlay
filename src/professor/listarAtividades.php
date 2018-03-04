@@ -58,6 +58,11 @@
 			         	<button class="btn btn-sm btn-danger" type="submit"> Deletar </button>
 			         </form>
 
+			         <form method="GET" action="/professor/exibirLiberarAtividade.php">
+			         	<input type="hidden" name="idAtividade" value="<?=$linha['id'];?>">
+			         	<button class="btn btn-sm btn-primary" type="submit"> Liberar para turma </button>
+			         </form>
+
 			          </td>
 
 			       </tr>

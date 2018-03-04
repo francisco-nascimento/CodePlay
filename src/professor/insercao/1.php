@@ -9,7 +9,7 @@
 		
 		$stmt->bindValue($count, $idAtividade);
 		$count = $count + 1;
-		$stmt->bindValue($count, $problemas[$i]);
+		$stmt->bindValue($count, $problemas);
 		$count = $count + 1;
 	}
 
