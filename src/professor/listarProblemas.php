@@ -31,7 +31,12 @@
 
   require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
 
-   $resultado = $conexao->query("select proble.id, profe.id as idP, profe.nome, proble.desc_Problema, proble.classificacao from Professor as profe right join Problema as proble on profe.id = proble.id_Professor limit 100");
+
+   $resultado = $conexao->prepare("select proble.id, profe.nome, proble.desc_Problema, proble.classificacao from Professor as profe right join Problema as proble on profe.id = proble.id_Professor where profe.id = ? limit 100");
+
+   $resultado->bindValue(1, $_SESSION["id"]);
+   $resultado->execute();
+
 
   foreach($resultado as $linha){ 
 

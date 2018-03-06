@@ -9,9 +9,21 @@
 
 	$descricao = $_GET["descAtividade"];
 
-	$problema = $_GET["idsProb"];
+	$problemas = $_GET["idsProb"];
 
-	$marcadas = count($problema);
+
+	$marcadas = count($problemas);
+
+	
+
+	
+	
+	if ($marcadas < 1 || $marcadas > 10) {
+
+			$msg = "Insira%20de%201%20a%2010%20problemas%20na%20sua%20Atividade!";
+			header("Location: /professor/atividade.php?msg=$msg");
+			
+		}
 
 	try {
 
@@ -25,10 +37,11 @@
 		$stmt = $conexao->query("select MAX(id) as id from Atividade");
 
 
-		$idAtv;
+		$idAtividade;
+
 
 		foreach ($stmt as $key) {
-			$idAtv = $key["id"];
+			$idAtividade = $key["id"];
 		}
 
 
@@ -42,7 +55,7 @@
 		
 
 
-		header("Location: /professor/listarProblemasAtividade.php?id=$idAtv");
+		header("Location: /professor/listarProblemasAtividade.php?id=$idAtividade");
 
 		
 	} catch (Exception $e) {
@@ -50,7 +63,6 @@
 		echo $e;
 		
 	}
-
 	
 
 

@@ -6,11 +6,14 @@
 
 	$senha = "ifpe1234";
 
-	$sql = "insert into Aluno(matricula, senha) values(?,?)";
+	$senhaCriptografada = password_hash($senha, PASSWORD_DEFAULT);
+
+	$sql = "insert into Aluno(matricula, senha, id_professor) values(?,?,?)";
 
 		$stmt = $conexao->prepare($sql);
 		$stmt->bindValue(1, $matricula);
-		$stmt->bindValue(2, $senha);
+		$stmt->bindValue(2, $senhaCriptografada);
+		$stmt->bindValue(3, $_SESSION["id"]);
 
 		$stmt->execute();
 

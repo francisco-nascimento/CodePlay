@@ -63,6 +63,7 @@ create table Atividade_Turma (
 id int AUTO_INCREMENT,
 id_Atidividade int,
 id_Turma int,
+data_limite date,
 primary key (id)
 
 );

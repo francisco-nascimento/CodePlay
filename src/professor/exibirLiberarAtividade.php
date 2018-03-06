@@ -48,24 +48,26 @@
       <tr>
          <td><?=$linha['desc_Turma'];?></td>
          <td>
-            <form action="/professor/listarAlunosTurma.php" action="GET">
+            <form action="/professor/liberarAtividade.php" action="GET">
              <input type="hidden" name="idturma" value="<?=$linha["id"];?>">
-             <button type="submit" class="btn btn-sm btn-warning">Editar Turma</button>
-           </form>
-           <form action="/professor/deletarTurma.php" action="GET" onsubmit="return confirme()">
-             <input type="hidden" name="idturma" value="<?=$linha["id"];?>">
-             <button type="submit" class="btn btn-sm btn-danger"> Deletar Turma </button>
+             <input type="hidden" name="idAtv" value="<?=$_GET["idAtividade"];?>">
+             <!-- Small modal -->
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Selecione a data limite</button>
+
+              <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-sm">
+                  <div class="modal-content">
+                    <input type="date" class="form-control" name="dataLimite" required="">
+                  </div>
+                </div>
+              </div>
+             <button type="submit" class="btn btn-sm btn-warning">Liberar Atividade</button>
            </form>
          </td>
 <?php } ?>
       </tr>
       <tr>
         <td colspan="3">
-        <center>
-          <a href="/professor/criarTurma.php" style="color: #fff">
-          <button class="btn btn-success btn-sm">
-            Criar nova turma
-          </button>
           </a>
         </center>
         </td>

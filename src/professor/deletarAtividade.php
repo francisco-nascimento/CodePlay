@@ -2,7 +2,9 @@
 	session_start();
 	require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
 
-	
+
+	$sql = "DELETE FROM Atividade_Turma WHERE id_Atidividade = ?;";
+
 
 	$idAtividade = $_GET["idAtividade"];
 

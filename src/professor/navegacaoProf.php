@@ -78,7 +78,31 @@
             </li>
             &nbsp;
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#">Usuario: <br> <?= $_SESSION['nome']?></a>
+                          <ul class="menuEU">
+                      <li class="nav-item"> <center><a href="#">Usuario: <br> <?=$_SESSION["nome"];?></a> </center>
+                          <ul>
+                                  <li class="nav-item">
+                                    <center>
+                                      <a href="/professor/cadastrarProblema.php" class="nav-link js-scroll-trigger">
+                                        Alterar dados
+                                      </a>
+                                    </center>
+                                    </li>
+                                  <li class="nav-item">
+                                    <center>
+                                      <a href="/professor/listarProblemas.php" class="nav-link js-scroll-trigger">
+                                      Listar Problemas Cadastrados
+                                      </a>
+                                     </center>
+                                  </li>
+                                  <li class="nav-item">
+                                    <center>
+                                      <a href="/professor/listarAtividades.php" class="nav-link js-scroll-trigger">
+                                        Lista de Atividades
+                                      </a>
+                                    </center>
+                                  </li>
+                          </ul>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="/loginCadastro/logoff.php" > LogOff </a>

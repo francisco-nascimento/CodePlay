@@ -3,25 +3,6 @@
 <head>
 	<title>Problemas a responder</title>
 </head>
-<script type="text/javascript">
-
-	function verificaChecks() {
-	var aChk = document.getElementsByName("idsProb");  
-	var count = 0;
-	for (var i=0;i<aChk.length;i++){  
-		if (aChk[i].checked == true){  
-			
-			count = count + 1;
-			
-		} 
-	}
-	if (count > 10 || count < 1) {
-		alert("Preencha entre 1 e 10 Problemas para sua Atividade!");
-		return false;
-	}
-} 
-
-</script>
 <body>
 
 	<?php
@@ -39,10 +20,25 @@
 		?>
 
 		
-		<br><br><br><br>
+		<br><br>
+
+		<?php
+
+			if ($_GET["msg"] != null && strcmp($_GET["msg"], "") != 0) {
+		?>
+
+		<h3>
+			<?=$_GET["msg"];?>
+		</h3>
+
+		<?php
+
+		}
+
+		?>
 
 		<table border="1" class="table">
-		<form action="/professor/criarAtividades.php" name="formulario" method="GET" onsubmit="return verificaChecks();">
+		<form action="/professor/criarAtividades.php" name="formulario" method="GET" onsubmit="return verificaChecks()">
 
 			<tr>
 				<th colspan="2">
@@ -88,7 +84,7 @@
 			         <td><?=$linha['data_Alteracao'];?></td>
 			         <td> 
 
-			         <input type="checkbox" name="idsProb" value="<?=$linha["id"];?>">
+			         <input type="checkbox" name="idsProb[]" value="<?=$linha["id"];?>">
 
 			          </td>
 
