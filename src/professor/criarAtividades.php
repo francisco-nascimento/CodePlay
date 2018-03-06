@@ -12,14 +12,17 @@
 
 	$marcadas = count($problemas);
 
+	var_dump($problemas);
+	echo "<br>".$marcadas;
+
 	
 	
 	if ($marcadas < 1 || $marcadas > 10) {
 
-			header("Location: /professor/atividade.php");
+			$msg = "Insira%20de%201%20a%2010%20problemas%20na%20sua%20Atividade!";
+			header("Location: /professor/atividade.php?msg=$msg");
 			
 		}
-
 
 	try {
 
@@ -55,7 +58,6 @@
 		echo $e;
 		
 	}
-
 	
 
 
