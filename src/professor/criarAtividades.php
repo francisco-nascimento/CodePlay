@@ -14,17 +14,6 @@
 
 	$marcadas = count($problemas);
 
-	
-
-	
-	
-	if ($marcadas < 1 || $marcadas > 10) {
-
-			$msg = "Insira%20de%201%20a%2010%20problemas%20na%20sua%20Atividade!";
-			header("Location: /professor/atividade.php?msg=$msg");
-			
-		}
-
 	try {
 
 		$sql = "INSERT INTO Atividade(desc_Atividade, id_Professor) VALUES (?,?)";
@@ -55,7 +44,7 @@
 		
 
 
-		header("Location: /professor/listarProblemasAtividade.php?id=$idAtividade");
+		header("Location: /professor/listarProblemasAtividade.php?idAtividade=$idAtividade");
 
 		
 	} catch (Exception $e) {

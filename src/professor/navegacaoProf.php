@@ -88,20 +88,6 @@
                                       </a>
                                     </center>
                                     </li>
-                                  <li class="nav-item">
-                                    <center>
-                                      <a href="/professor/listarProblemas.php" class="nav-link js-scroll-trigger">
-                                      Listar Problemas Cadastrados
-                                      </a>
-                                     </center>
-                                  </li>
-                                  <li class="nav-item">
-                                    <center>
-                                      <a href="/professor/listarAtividades.php" class="nav-link js-scroll-trigger">
-                                        Lista de Atividades
-                                      </a>
-                                    </center>
-                                  </li>
                           </ul>
             </li>
             <li class="nav-item">

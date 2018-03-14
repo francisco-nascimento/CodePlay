@@ -28,7 +28,7 @@
 			$idTurma = $key["id"];
 		}
 
-		header("Location: /professor/listarAlunosTurma.php?id=$idTurma");
+		header("Location: /professor/listarAlunosTurma.php?idturma=$idTurma");
 		
 	} catch (Exception $e) {
 

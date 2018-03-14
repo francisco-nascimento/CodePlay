@@ -51,16 +51,11 @@
             <form action="/professor/liberarAtividade.php" action="GET">
              <input type="hidden" name="idturma" value="<?=$linha["id"];?>">
              <input type="hidden" name="idAtv" value="<?=$_GET["idAtividade"];?>">
-             <!-- Small modal -->
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Selecione a data limite</button>
+          
 
-              <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-sm">
-                  <div class="modal-content">
+                  <label>Insira uma data limite</label>
                     <input type="date" class="form-control" name="dataLimite" required="">
-                  </div>
-                </div>
-              </div>
+                  
              <button type="submit" class="btn btn-sm btn-warning">Liberar Atividade</button>
            </form>
          </td>

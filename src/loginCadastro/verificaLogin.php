@@ -55,33 +55,53 @@
 
 			$_SESSION["id"]= $linha["id"];
 
+			$_SESSION["USUARIO_LOGADO"];
+			$_SESSION["matricula"] = $linha["matricula"];
+			
+
 			if ($professor == 1) {
 				$_SESSION["USUARIO_LOGADO"] = 'P';
 			}else{
 				$_SESSION["USUARIO_LOGADO"] = 'A';
-				$_SESSION["matricula"] = $linha["matricula"];
+				
 				$_SESSION["situacao"] = $linha["situacao"];
 
-				if ($linha["situacao"] != 1) {
-					header("Location: /aluno/primeiroLogin.php");
-				}
+				$sql1 = "select a.id, at.id_turma from Aluno as a left join Aluno_Turma as at on a.id = at.id_aluno where at.id_aluno = ?;";
 
-				
+				$stmt1 = $conexao->prepare($sql1);
+				$stmt1->bindValue(1, $_SESSION["id"]);
+
+				$stmt1->execute();
+
+				foreach ($stmt1 as $chave) {
+					if ($chave["id_turma"] != null || strcmp($chave["id_turma"], "") != 0) {
+						
+						$_SESSION["idTurma"] = $chave["id_turma"];
+
+					}
+				}
 			}
 			
+
 			
 			
 			$_SESSION["email"] = $linha["email"];
 			$_SESSION["nome"] = $linha["nome"];
-			
-			
-			$_SESSION["matricula"] = $linha["matricula"];
 
-			
 			
 
 
-			header("Location: ".'/index.php');
+			if ($linha["situacao"] == 0) {
+
+					header("Location: /aluno/primeiroLogin/primeiroLogin.php");
+
+			}elseif ($linha["situacao"] == null || strcmp($linha["situacao"], "")) {
+
+				header("Location: ".'/index.php');
+
+			}
+
+			
 
 		}else{
 			header("Location: loginCadastro.php");

@@ -8,12 +8,13 @@
 
 	$senhaCriptografada = password_hash($senha, PASSWORD_DEFAULT);
 
-	$sql = "insert into Aluno(matricula, senha, id_professor) values(?,?,?)";
+	$sql = "insert into Aluno(matricula, senha, situacao, id_professor) values(?,?,?,?)";
 
 		$stmt = $conexao->prepare($sql);
 		$stmt->bindValue(1, $matricula);
 		$stmt->bindValue(2, $senhaCriptografada);
-		$stmt->bindValue(3, $_SESSION["id"]);
+		$stmt->bindValue(3, 0);
+		$stmt->bindValue(4, $_SESSION["id"]);
 
 		$stmt->execute();
 

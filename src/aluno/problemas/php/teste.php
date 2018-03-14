@@ -9,7 +9,7 @@
 	
 	$idProblema = $_POST["id"];
 
-	$inserirResposta = "insert into Resposta_Aluno (esc_Resposta_Aluno_JS, id_aluno) values (?,?)";
+	$inserirResposta = "insert into Resposta_Aluno (desc_resposta, id_aluno) values (?,?)";
 
 	$stmt = $conexao->prepare($inserirResposta);
 

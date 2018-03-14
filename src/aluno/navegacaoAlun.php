@@ -16,18 +16,52 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-           
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="ranking.php">Ranking</a>
+              <li class="nav-item">
+              <ul class="menuEU">
+                      <li class="nav-item"> <center><a href="#">Alunos</a> </center>
+                          <ul>
+                                <li class="nav-item">
+                                    <center>
+                                      <li class="nav-item">
+                                        <a class="nav-link js-scroll-trigger" href="ranking.php">Ranking</a>
+                                      </li>
+                                    </center>
+                                </li>
+                                <li class="nav-item">
+                                  <center>
+                                      <a class="nav-link js-scroll-trigger" href="/aluno/problemas/telas/listar_problemas.php">Ver problemas</a>
+                                  </center>
+                                </li>
+                          </ul>
+                    </li>              
+              </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/aluno/problemas/telas/listar_problemas.php">Ver problemas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/aluno/problemas/telas/problemas.php">Ver ranking</a>
-            </li>
-             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/aluno/problemas/telas/problema.php" > Responder Problemas </a>
+              <ul class="menuEU">
+                      <li class="nav-item"> <center><a href="#">Turma</a> </center>
+                          <ul>
+                                <li class="nav-item">
+                                    <center>
+                                      <li class="nav-item">
+                                        <a class="nav-link js-scroll-trigger" href="ranking.php">Ranking da turma</a>
+                                      </li>
+                                    </center>
+                                </li>
+                                <li class="nav-item">
+                                  <center>
+                                      <a class="nav-link js-scroll-trigger" href="/aluno/problemas/telas/listar_problemas.php">Ver problemas</a>
+                                  </center>
+                                </li>
+                                <li class="nav-item">
+                                    <center>
+                                      <a href="/aluno/listarAtividade.php" class="nav-link js-scroll-trigger">
+                                        Ver Atividades
+                                      </a>
+                                    </center>
+                                </li>
+                          </ul>
+                    </li>              
+              </ul>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#">Usuario: <br> <?= $_SESSION['nome']?></a>
