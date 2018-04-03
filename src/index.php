@@ -1,15 +1,12 @@
+<?php
+  require 'verifica.php';
+  $host = $_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'];
+
+?>
 <!DOCTYPE html>
 <html lang="pt">
 
   <head>
-
-  
-
-    <?php
-
-    $host = $_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'];
-
-    ?>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -44,7 +41,6 @@
 
       
 
-      require 'verifica.php';
       
 
     ?>
