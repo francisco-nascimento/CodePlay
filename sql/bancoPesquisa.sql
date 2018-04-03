@@ -67,7 +67,6 @@ id_Atividade int,
 id_Turma int,
 data_limite date,
 primary key (id)
-
 );
 
 
@@ -78,6 +77,22 @@ data_Alteracao timestamp default current_timestamp,
 id_Professor int,
 primary key (id),
 foreign key (id_Professor) references Professor(id)
+);
+
+create table Atividade_Turma_Respondida(
+	id_Atividade_Turma int,
+	id_Aluno int,
+	foreign key (id_Atividade_Turma) references Atividade_Turma(id),
+	foreign key (id_Aluno) references Aluno(id)
+);
+
+create table Problema_Atividade_Respondido(
+	id_Atividade int,
+	id_Aluno int,
+	id_Problema int,
+	foreign key (id_Atividade) references Atividade(id),
+	foreign key (id_Aluno) references Aluno(id),
+	foreign key (id_Problema) references Problema(id)
 );
 
 
@@ -102,4 +117,18 @@ create table Aluno_Turma(
 	id_turma int,
 	foreign key (id_aluno) references Aluno(id),
 	foreign key (id_turma) references Turma(id)
+);
+
+create table Resposta_Aluno_Problema_Atividade (
+	id int AUTO_INCREMENT,
+	desc_resposta text(10000),
+	correto tinyint(1),
+	id_Aluno int,
+	id_Problema int,
+	id_Atividade int,
+	data_Alteracao timestamp default current_timestamp,
+	primary key (id),
+	foreign key (id_Aluno) references Aluno (id),
+	foreign key (id_Problema) references Problema(id),
+	foreign key (id_Atividade) references Atividade(id)
 );

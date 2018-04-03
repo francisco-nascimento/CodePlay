@@ -3,9 +3,6 @@
 	require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
 
 
-	$sql = "DELETE FROM Atividade_Turma WHERE id_Atidividade = ?;";
-
-
 	$idAtividade = $_GET["idAtividade"];
 
 	$sql = "DELETE FROM Problema_Atividade WHERE id_atividade = ?";
@@ -14,7 +11,7 @@
 		$stmt->bindValue(1, $idAtividade);
 		$stmt->execute();
 
-	$sql = "DELETE FROM Atividade_Turma WHERE id_Atidividade = ?;";
+	$sql = "DELETE FROM Atividade_Turma WHERE id_Atividade = ?;";
 
 	$stmt = $conexao->prepare($sql);
 	$stmt->bindValue(1, $idAtividade);

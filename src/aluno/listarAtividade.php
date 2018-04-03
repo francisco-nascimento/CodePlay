@@ -34,7 +34,7 @@
 					
 					
 
-				   $resultado = $conexao->prepare("select a.id, a.desc_Atividade from Atividade as a right join Atividade_Turma as a_t on a.id = a_t.id_Atidividade where id_Turma = ?;");
+				   $resultado = $conexao->prepare("select a.id, a.desc_Atividade from Atividade as a right join Atividade_Turma as a_t on a.id = a_t.id_Atividade where id_Turma = ?;");
 				   $resultado->bindValue(1, $_SESSION["idTurma"]);
 				   $resultado->execute();
 
@@ -46,7 +46,7 @@
 			         <td><?=$linha['desc_Atividade'];?></td>
 			         
 			         <td> 
-			         <form method="GET" action="/professor/listarProblemasAtividade.php">
+			         <form method="GET" action="/aluno/responderAtividade.php">
 			         	<input type="hidden" name="idAtividade" value="<?=$linha['id'];?>">
 
 			         	<button class="btn btn-sm btn-success" type="submit"> Responder </button>

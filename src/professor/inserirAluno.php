@@ -8,7 +8,23 @@
 
 	$senhaCriptografada = password_hash($senha, PASSWORD_DEFAULT);
 
-	$sql = "insert into Aluno(matricula, senha, situacao, id_professor) values(?,?,?,?)";
+	$sql = "SELECT id FROM Aluno WHERE matricula = ?";
+
+	$stmt = $conexao->prepare($sql);
+
+	$stmt->bindValue(1, $matricula);
+	$stmt->execute();
+
+	$idAluno = 0;
+
+	foreach ($stmt as $key) {
+		$idAluno = $key["id"];
+	}
+
+
+
+	if ($idAluno == null || $idAluno == 0) {
+		$sql = "insert into Aluno(matricula, senha, situacao, id_professor) values(?,?,?,?)";
 
 		$stmt = $conexao->prepare($sql);
 		$stmt->bindValue(1, $matricula);
@@ -18,11 +34,16 @@
 
 		$stmt->execute();
 
-	if ($stmt) {
-		header("Location: /professor/cadastrarAluno.php?msg=Aluno%20Cadastrado");
+		header("Location: /professor/cadastrarAluno.php?msg=Aluno%20Cadastrado!");
+		
 	}else{
-		header("Location: /professor/cadastrarAluno.php?msg=Aluno%20não%20Cadastrado");
+
+		header("Location: /professor/cadastrarAluno.php?msg=Aluno%20já%20existente!");
+
 	}
+	
+		
+	
 		
 	
 ?>

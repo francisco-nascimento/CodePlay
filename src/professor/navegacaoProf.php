@@ -1,5 +1,6 @@
-
-
+<head>
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+</head>
 <?php
 
   include ($_SERVER["DOCUMENT_ROOT"].'/imports.php');
@@ -98,4 +99,4 @@
         </div>
       </div>
     </nav>
-    <br><br><br><br><br>
+    <br><br><br><br>

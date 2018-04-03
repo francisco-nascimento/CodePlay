@@ -34,7 +34,7 @@ session_start();
 
 			$InserirGabarito->execute();
 
-			header("Location: /professor/listarProblemas.php");
+			header("Location: /professor/cadastrarProblema.php");
 
 
 

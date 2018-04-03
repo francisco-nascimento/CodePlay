@@ -1,0 +1,79 @@
+Professores
+
+Wesley Silva - Professor -> Matricula 20162tijg0545 senha: Eus@u1234
+Francisco Junior - Professor -> Matricula 20141tijg8000 senha:chicochico
+Luciano Cabral - Professor -> Matricula 20181TIJG0623 senha: lulululu
+Diego Queiroz - Professor -> Matricula 20162TIJG0546 senha: dieguinho
+
+-------------------------------------------------------------------------------------------------------
+
+Alunos Wesley
+
+Wesley Silva -> Matricula 20162tijg0545 senha: Eus@u1234
+
+-> Matricula 20141TIJG8000 senha: ifpe1234
+
+-> Matricula 20181TIJG0623 senha: ifpe1234
+
+-> Matricula 20162TIJG0546 senha: ifpe1234
+
+-> Matricula 20152tijg1234 senha: ifpe1234
+
+-> Matricula 20142TIJG0545 senha: ifpe1234
+
+-> Matricula 20132tijg0645 senha: ifpe1234
+
+-> Matricula 20162tijg5463 senha: ifpe1234
+
+-> Matricula 20151tijg5678 senha: ifpe1234
+
+-> Matricula 20171tijg8090 senha: ifpe1234
+
+-------------------------------------------------------------------------------------------------------
+
+Alunos Francisco
+
+-> Matricula 20161tijg0343 senha: ifpe1234
+
+-> Matricula 20161tijg0344 senha: ifpe1234
+
+-> Matricula 20162TIJG0541 senha: ifpe1234
+
+-> Matricula 20162TIJG0542 senha: ifpe1234
+
+-> Matricula 20162TIJG0543 senha: ifpe1234
+
+-> Matricula 20162TIJG0544 senha: ifpe1234
+
+-> Matricula 20162TIJG0547 senha: ifpe1234
+
+-> Matricula 20162TIJG0548 senha: ifpe1234
+
+-> Matricula 20162TIJG0549 senha: ifpe1234
+
+-> Matricula 20162TIJG1545 senha: ifpe1234
+
+-------------------------------------------------------------------------------------------------------
+
+Alunos Luciano
+
+
+-> Matricula 20181tijg0541 senha: ifpe1234
+
+-> Matricula 20181tijg0542 senha: ifpe1234
+
+-> Matricula 20181tijg0543 senha: ifpe1234
+
+-> Matricula 20181tijg0544 senha: ifpe1234
+
+-> Matricula 20181tijg0545 senha: ifpe1234
+
+-> Matricula 20181tijg0546 senha: ifpe1234
+
+-> Matricula 20181tijg0547 senha: ifpe1234
+
+-> Matricula 20181tijg0548 senha: ifpe1234
+
+-> Matricula 20181tijg0549 senha: ifpe1234
+
+-> Matricula 20181tijg0550 senha: ifpe1234

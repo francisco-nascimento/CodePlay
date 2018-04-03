@@ -1,3 +1,8 @@
+
+<head>
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+</head>
+
 <?php
 
   include 'imports.php';
