@@ -1,23 +1,16 @@
+<?php
+  require 'verifica.php';
+  $host = $_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'];
+
+?>
 <!DOCTYPE html>
 <html lang="pt" >
 
 <head>
-  <meta charset="UTF-8">
-  <title>Problemas</title>
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
- 
-  <link rel="stylesheet" href="css/style.css">
- 
+
 </head>
 
 <body>
-
-  <?php 
-
-    require 'verifica.php';
-
-   ?>
 
   <div class="table-users">
    <div class="header">Lista de alunos cadastrados</div>

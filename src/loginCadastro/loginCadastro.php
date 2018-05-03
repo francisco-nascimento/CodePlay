@@ -1,27 +1,15 @@
+<?php
+  if (isset($_SESSION["USUARIO_LOGADO"])) {
+    header("Location: /index.php");
+  }
+  include ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
+?>
 <!DOCTYPE html>
 <html >
   <head>
   <meta charset="UTF-8">
-  <title> Login </title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
-  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Montserrat:400,700'>
-  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
-    
-<!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="./Login_V1_files/bootstrap.min.css">
-<!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="./Login_V1_files/font-awesome.min.css">
-<!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="./Login_V1_files/animate.css">
-<!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="./Login_V1_files/hamburgers.min.css">
-<!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="./Login_V1_files/select2.min.css">
-<!--===============================================================================================-->
-  <link rel="stylesheet" type="text/css" href="./Login_V1_files/util.css">
-  <link rel="stylesheet" type="text/css" href="./Login_V1_files/main.css">
-<!--===============================================================================================-->
+  <title>Code && Play - Login </title>
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
   <script type="text/javascript">
 
       
@@ -67,21 +55,31 @@
     ocultar.style.display="";
 
   }
+   (function () {
 
+          var limite = 7;
+          
+          function limitaInput(input) {
+              if (input.value.length > limite) {
+                  input.value = input.value.substr(0, limite);
+                  alert("A mátricula só vai até 7 caracteres.");
+              }
+          }
+          
+          $(document).on("propertychange change keyup", "#matricula", function () {
+              if (this.timerLimitInput) {
+                 clearTimeout(this.timer);
+              }
+          
+              this.timerLimitInput = setTimeout(limitaInput, 7, this);//Timeout para evitar conflitos
+          });
+
+        })();
         
   </script>
-  <?php
-
-    if (isset($_SESSION["USUARIO_LOGADO"])) {
-      header("Location: /index.php");
-    }
-    include ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
-  ?>
-   
   </head>
 
   <body>
-
     <div class="container">
       <div class="wrap-login100">
         <div  class="login100-pic js-tilt" data-tilt="" style="transform: perspective(300px) rotateX(7.8deg) rotateY(-3.01deg) scale3d(1.1, 1.1, 1.1); will-change: transform; transition: 400ms cubic-bezier(0.03, 0.98, 0.52, 0.99);">
@@ -127,9 +125,7 @@
             <a class="txt2" href="#">
               Senha
             </a>
-          </div>
-
-          <div class="text-center p-t-136">
+            <br>
             <button  class="txt2" onclick="ocultaLogin('idLogin','idCadastro')">
               Crie sua conta
               <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true" ></i>
@@ -142,7 +138,7 @@
             </span>
 
             <div class="wrap-input100">
-              <input class="input100" type="text" required placeholder="20142TIJGXXXX" minlength="13" maxlength="13" name="matricula">
+              <input onkeyup="limitarMatricula(this)" class="input100" type="text" required placeholder="Digite sua mátricula" minlength="7" maxlength="8" name="matricula" id="matricula">
               <span class="focus-input100"></span>
               <span class="symbol-input100">
                 <i class="fa fa-graduation-cap" aria-hidden="true"></i>
@@ -150,7 +146,7 @@
             </div>
 
             <div class="wrap-input100">
-              <input class="input100" type="text" required placeholder="Josisvardol" name="nome">
+              <input class="input100" type="text" required placeholder="Digite seu nome" name="nome">
               <span class="focus-input100"></span>
               <span class="symbol-input100">
                 <i class="fa fa-address-card-o" aria-hidden="true"></i>
@@ -158,7 +154,7 @@
             </div>
             
             <div class="wrap-input100">
-              <input class="input100" type="password" name="senha" required placeholder="******">
+              <input class="input100" type="password" name="senha" required placeholder="Digite sua senha">
               <span class="focus-input100"></span>
               <span class="symbol-input100">
                 <i class="fa fa-lock" aria-hidden="true"></i>
@@ -167,7 +163,7 @@
 
 
             <div class="wrap-input100">
-              <input class="input100" type="password" required id="confirmaSenha" placeholder="*******">
+              <input class="input100" type="password" required id="confirmaSenha" placeholder="Confirmar senha">
               <span class="focus-input100"></span>
               <span class="symbol-input100">
                 <i class="fa fa-lock" aria-hidden="true"></i>
@@ -175,7 +171,7 @@
             </div>
 
             <div class="wrap-input100 validate-input" data-validate="exemplo@exemplo.com">
-              <input class="input100" type="email" required id="email" placeholder="fulano@gmail.com" name="email">
+              <input class="input100" type="email" required id="email" placeholder="Digite seu e-mail" name="email">
               <span class="focus-input100"></span>
               <span class="symbol-input100">
                 <i class="fa fa-envelope" aria-hidden="true"></i>
@@ -186,9 +182,7 @@
               <button type="submit" class="login100-form-btn">
                 Cadastrar
               </button>
-            </div>
-
-            <div class="text-center p-t-136">
+              <br>
               <button class="txt2" onclick="ocultaCadastro('idLogin','idCadastro')">
                 Entre na sua conta
                 <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true" ></i>
@@ -197,39 +191,5 @@
           </form>
       </div>
     </div>
-          
-
-
-
-
-<!--===============================================================================================-->
-  <script type="text/javascript" async="" src="./Login_V1_files/analytics.js"></script><script src="./Login_V1_files/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-  <script src="./Login_V1_files/popper.js"></script>
-  <script src="./Login_V1_files/bootstrap.min.js"></script>
-<!--===============================================================================================-->
- <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <script  src="../js/index.js"></script>
-<!-- ============= -->
-  <script src="./Login_V1_files/select2.min.js"></script>
-<!--===============================================================================================-->
-  <script src="./Login_V1_files/tilt.jquery.min.js"></script>
-  <script>
-    $('.js-tilt').tilt({
-      scale: 1.1
-    })
-  </script>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async="" src="./Login_V1_files/js"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-23581568-13');
-</script>
-
-<!--===============================================================================================-->
-<script src="./Login_V1_files/main.js"></script>
   </body>
 </html>

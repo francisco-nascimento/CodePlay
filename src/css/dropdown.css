@@ -1,41 +1,63 @@
-.menuEU{
-list-style:none; 
+#navPrincipal {
+
+  font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  background: #2C3E50;
+}
+
+#navPrincipal li.nav-item a.nav-link {
+	color: white;
+	
+}
+
+#codePlay {
+
+	font-size: 1.6rem;
+	color: white;
+	text-decoration:none;
+	
+}
+
+
+.navMenu li{
+	position:relative; 
+	float:left; 
+	border: hidden;
+	border-color: #fff;
+	border-radius: 10%;
+
+}
+
+.navMenu li a{
+	color:#fff;
+	text-decoration:none;
+	display:block;
+}
+
+.navMenu li a:hover{
  
-float:left; 
-}
-
-.menuEU li{
-position:relative; 
-float:left; 
-border: hidden;
-border-color: #fff;
-border-radius: 10px;
+	color:#fff; 
+	border-radius: 10%;
 
 }
 
-.menuEU li a{color:#fff; text-decoration:none; padding:5px 10px; display:block;}
-
-.menuEU li a:hover{
- 
-color:#fff; 
-border-radius: 10px;
-
+.navMenu li  ul{
+	position:absolute; 
+	top:20%;
+	background-color: #fff; 
+	display:none;
+	border-radius: 20%;
 }
 
-.menuEU li  ul{
-position:absolute; 
-top:25px; 
-left:0;
-background-color: #2c3e50; 
-display:none;
-border-radius: 10px;
+.navMenu li:hover ul, .navMenu li.over ul{
+	display:block;
 }
 
-.menuEU li:hover ul, .menuEU li.over ul{display:block;}
+.navMenu li ul li{
 
-.menuEU li ul li{
-
-display:block; 
-width:150px;
-border-radius: 10px;
+	display:block; 
+	width:150%;
+	border-radius: 20%;
 }

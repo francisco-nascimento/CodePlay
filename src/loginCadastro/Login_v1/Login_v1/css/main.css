@@ -37,6 +37,7 @@
 body, html {
 	height: 100%;
 	font-family: Poppins-Regular, sans-serif;
+
 }
 
 /*---------------------------------------------*/
@@ -177,7 +178,7 @@ iframe {
 
 .wrap-login100 {
   width: 960px;
-  background: #fff;
+  background-color: #91ced4;
   border-radius: 10px;
   overflow: hidden;
 
@@ -200,6 +201,7 @@ iframe {
 .login100-pic img {
   max-width: 100%;
 }
+
 
 
 /*------------------------------------------------------------------
@@ -227,6 +229,7 @@ iframe {
   width: 100%;
   z-index: 1;
   margin-bottom: 10px;
+  
 }
 
 .input100 {

@@ -15,7 +15,6 @@
     <script src="/js/contact_me.js"></script>
 
     <!-- Custom scripts for this template -->
-    
 
     <!-- Bootstrap core CSS -->
     <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -28,6 +27,38 @@
 
     <!-- Estilos personalizados para este modelo -->
     <link href="/css/freelancer.min.css" rel="stylesheet">
+
+    <!-- MenuNav -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <!-- FimMenuNav -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
+    <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Montserrat:400,700'>
+    
+
+    <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="./Login_V1_files/bootstrap.min.css">
+    <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="./Login_V1_files/font-awesome.min.css">
+    <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="./Login_V1_files/animate.css">
+    <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="./Login_V1_files/hamburgers.min.css">
+    <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="./Login_V1_files/select2.min.css">
+    <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="./Login_V1_files/util.css">
+      <link rel="stylesheet" type="text/css" href="./Login_V1_files/main.css">
+    <!--===============================================================================================-->
+
 
 <?php 
     
@@ -59,8 +90,6 @@
 
     <!-- Fontes personalizadas para este modelo -->
     <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-
 
     <link href="/js/freelancer.min.js" rel="stylesheet" type="text/css">
     <link href="/css/dropdown.css" rel="stylesheet" type="text/css">
