@@ -13,9 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Code && Play</title>
-
-
+    <title>Code && Play - Home</title>
     
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
@@ -25,31 +23,24 @@
 	  .circulo{
 		
   
-   border-radius: 50%;
+   border-radius: 10%;
 
 		} 
 
 	         
 </style>
-    
-
-  </head>
-
-  <body id="page-top">
-    <!-- Navegação -->
-    <?php
-
-      
-
-      
-
-    ?>
-    <!-- Header -->
+</head>
+<body id="page-top">
     <header class="masthead">
       <div class="container">
-      <center><div class="circulo">
-        <img class="img-fluid" height="30" width="200" src="/img/blockly/image.jpg" alt="">
-       </div></center>
+        <center>
+          <div class="wrap-login100">
+            <div  class="login100-pic js-tilt" data-tilt="" style="transform: perspective(300px) rotateX(7.8deg) rotateY(-3.01deg) scale3d(1.1, 1.1, 1.1); will-change: transform; transition: 400ms cubic-bezier(0.03, 0.98, 0.52, 0.99);">
+              <img height="10%" width="10%" src="/img/blockly/image.jpg" alt="IMG">
+            </div>
+        </center>
+       </div>
+
         <div class="intro-text">
           <span class="name">Code && Play</span>
           <hr class="star-light">
