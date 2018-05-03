@@ -68,7 +68,7 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#">Usuario: <br> <?= $_SESSION['nome']?></a>
+              <a class="nav-link js-scroll-trigger" href="/aluno/primeiroLogin/alteraDados.php">Usuario: <br> <?= $_SESSION['nome']?></a>
             </li>
              <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="/loginCadastro/logoff.php" > LogOff </a>

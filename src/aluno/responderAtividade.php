@@ -66,7 +66,7 @@
 			}
 
 
-						$sql2 = "select * from Problema_Atividade_Respondido where id_Aluno = ? and id_Atividade = ?";
+						$sql2 = "select id_Problema from Problema_Atividade_Respondido where id_Aluno = ? and id_Atividade = ?";
 						$stmt2 = $conexao->prepare($sql2);
 						$stmt2->bindValue(1, $_SESSION["id"]);
 						$stmt2->bindValue(2, $_GET["idAtividade"]);
@@ -114,11 +114,7 @@
    		<tr>
    			<td>
 			<table class="table">
-		
 
-
-				
-		
 				<tr>
 					<td>
 						Descrição do problema
@@ -148,30 +144,31 @@
 					<td>
 						<?=$key["classificacao"];?>
 					</td>
-				
+
 					<?php
 
-						if (isset($idsRespondidos)) {
-							
+						$cont = 0;
+						$iguais = 0;
 						
-						for ($i=0; $i < count($idsRespondidos); $i++) {
+							foreach ($idsRespondidos as $linha) {
+								if ($linha[$cont] == $key['id']) {
 
-							if ($idsRespondidos[$i] == $key["id"]) {
-								
-							
+									$iguais = 1;
+									
+
+								}else{
+
+									$cont = $cont + 1;
+
+								}
+							}
+
+							if ($iguais == 1) {
+								echo "<td> Problema Respondido! </td>";
+							}else{
 
 					?>
 
-					<td>
-						Respondido!
-					</td>
-
-					<?php
-
-					break;
-				}else{
-
-					?>
 					<td>
 						<form action="/aluno/responderProblemaAtividade.php" method="GET">
 							<input type="hidden" name="idProblema" value="<?=$key['id']?>">
@@ -181,12 +178,21 @@
 							   
 						</form>
 					</td>
+
+					<?php
+					
+					}
+
+					
+					
+						
+
+					?>
+				
+					
 					
 				</tr>
 				<?php
-						}
-					}
-				}
 			}
 
 				?>

@@ -27,7 +27,7 @@
 
 	<script type="text/javascript">
 
-	function validarSenha(form){
+	function validarSenha(){
 	    var senha = document.formulario.senha.value;
 	    var senhaRepetida = document.formulario.senha2.value;
 	    if (senha != senhaRepetida){
@@ -35,12 +35,7 @@
 	        document.formulario.passwd2.focus();
 	        return false;
 	    }
-	    if (senha.length < 8 || senha.length > 32) {
-	    	alert("As senhas estão abaixo ou acima do limite de caracteres! Senhas de 8 até 32 caracteres!");
-	        document.formulario.passwd2.focus();
-	        return false;
-	    }
-	    if (document.formulario.email.value == "" || document.formulario.email.value.indexOf('@')==-1 || document.formulario.email.value.indexOf('.')==-1 ){
+	    if (document.formulario.email.value == "" || document.formulario.email.value.indexOf('@')== -1 || document.formulario.email.value.indexOf('.')== -1 ){
 	    	alert ("Preencha corretamente o campo email!");
 	    	document.formulario.email.focus();
 	    	return false;
