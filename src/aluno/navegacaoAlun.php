@@ -1,17 +1,57 @@
-
+<?php
+  require ($_SERVER["DOCUMENT_ROOT"].'/imports.php');
+?>
 <head>
   <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
 </head>
-
-<?php
-
-  include ($_SERVER["DOCUMENT_ROOT"].'/imports.php');
-
-  
-?>
-
-
- <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+<nav class="navbar navbar-expand-lg navbar-light" id="navPrincipal">
+  <div class="container">
+      <a id="codePlay" href="/index.php">Code && Play</a>
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Área do Aluno
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="nav-link js-scroll-trigger" href="ranking.php">Ranking</a>
+            <a class="nav-link js-scroll-trigger" href="/aluno/problemas/telas/listar_problemas.php">Ver problemas</a>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Turma
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="nav-link js-scroll-trigger" href="ranking.php">Ranking da turma</a>
+            <a class="nav-link js-scroll-trigger" href="/aluno/problemas/telas/listar_problemas.php">Ver problemas</a>
+            <a href="/aluno/listarAtividade.php" class="nav-link js-scroll-trigger">Ver Atividades
+            </a>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Usuário: <?=$_SESSION["nome"];?>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Alterar Dados</a>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown">
+          <a class="nav-link" href="/loginCadastro/logoff.php">
+            LogOff
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="/index.php">Code && Play</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,5 +116,4 @@
           </ul>
         </div>
       </div>
-    </nav>
-    <br><br><br><br>
+    </nav> -->
