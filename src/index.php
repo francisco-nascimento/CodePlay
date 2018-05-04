@@ -1,7 +1,6 @@
 <?php
   require 'verifica.php';
   $host = $_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'];
-
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -240,22 +239,5 @@
         </div>
       </div>
     </div>
-    
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Contact Form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
-
-    <!-- Custom scripts for this template -->
-    <script src="js/freelancer.min.js"></script>
-
   </body>
-
 </html>

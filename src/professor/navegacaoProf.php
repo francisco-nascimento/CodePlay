@@ -1,17 +1,9 @@
-<head>
-  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
-</head>
 <?php
   include ($_SERVER["DOCUMENT_ROOT"].'/imports.php'); 
 ?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!-- <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-  <div class="container">
-    <a class="navbar-brand js-scroll-trigger" href="/index.php">Code && Play</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      Menu
-      <i class="fa fa-bars"></i>
-    </button> -->
+<head>
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+</head>
 <nav class="navbar navbar-expand-lg navbar-light" id="navPrincipal">
   <div class="container">
       <a id="codePlay" href="/index.php">Code && Play</a>
@@ -60,7 +52,19 @@
     </div>
   </div>
 </nav>
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/freelancer.min.js"></script>
 <!--     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
           <ul class="navMenu">
