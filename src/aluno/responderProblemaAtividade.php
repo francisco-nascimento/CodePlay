@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Responder Problema</title>
+		<title>Code && Play - Responder Problema</title>
     <link rel="stylesheet" type="text/css" href="/util/meu.css">
 		<script>
     var demoWorkspace = Blockly.inject('blocklyDiv',

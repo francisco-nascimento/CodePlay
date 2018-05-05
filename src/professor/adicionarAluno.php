@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Adicionar aluno à turma</title>
+	<title>Code && Play - Adicionar aluno à turma</title>
 </head>
 <body>
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>Code && Play - Responder Problema</title>
 	<?php
 		require ($_SERVER["DOCUMENT_ROOT"].'/blocosJS.php');
 	?>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Sucesso!</title>
+	<title>Code && Play - Sucesso!</title>
 </head>
 <body>
 <?php

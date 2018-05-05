@@ -8,7 +8,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Problemas</title>
+  <title>Code && Play - Listar Problemas</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <!-- <link rel="stylesheet" href="../css/style.css"> -->
 </head>
