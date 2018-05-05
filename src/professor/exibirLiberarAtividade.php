@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Turmas Cadastradas</title>
+  <title>Code && Play - Turmas Cadastradas</title>
   <script type="text/javascript">
     function confirme(){
       var a = prompt("Você tem certeza que quer excluir essa turma? 1 - SIM / 2 - NÃO");

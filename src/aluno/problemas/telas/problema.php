@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>CodePlay</title>
+    <title>Code && Play - Problema</title>
 
     
 

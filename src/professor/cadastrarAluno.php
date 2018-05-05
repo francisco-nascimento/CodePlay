@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Cadastrar Problema</title>
+		<title>Code && Play - Cadastrar Problema</title>
     <link rel="stylesheet" type="text/css" href="/util/meu.css">
 
 	</head>

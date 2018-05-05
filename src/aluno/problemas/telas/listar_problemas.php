@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Problemas a responder</title>
+	<title>Code && Play - Problemas a responder</title>
 </head>
 <body>
 

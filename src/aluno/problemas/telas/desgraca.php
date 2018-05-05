@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Errou</title>
+	<title>Code && Play - Errou</title>
 </head>
 <body>
 		<?php

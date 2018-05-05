@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Turma</title>
+	<title>Code && Play - Criar Turma</title>
 
 </head>
 <body>
