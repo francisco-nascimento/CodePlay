@@ -56,7 +56,16 @@
              <input type="hidden" name="idturma" value="<?=$linha["id"];?>">
              <button type="submit" class="btn btn-sm btn-danger"> Deletar Turma </button>
            </form>
+           <form action="/professor/atividadesTurma.php" action="GET">
+             <input type="hidden" name="descTurma" value="<?=$linha['desc_Turma'];?>">
+             <input type="hidden" name="idTurma" value="<?=$linha["id"];?>">
+             <button type="submit" class="btn btn-sm btn-primary"> Atividades nesta turma </button>
+           </form>
+          
          </td>
+         
+           
+         
 <?php } ?>
       </tr>
       <tr>

@@ -1,4 +1,19 @@
 <!-- imports block js-->
+
+<!-- Bootstrap core JavaScript -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="/vendor/js/jqBootstrapValidation.js"></script>
+    <script src="/vendor/js/contact_me.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="/vendor/js/freelancer.min.js"></script>
+
 <script src="/blockly/blockly_compressed.js"></script>
 <script src="/blockly/blocks_compressed.js"></script>
 <script src="/blockly/javascript_compressed.js"></script>
@@ -44,20 +59,7 @@
     <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Montserrat:400,700'>
     
 
-    <!--===============================================================================================-->
-      <link rel="stylesheet" type="text/css" href="./Login_V1_files/bootstrap.min.css">
-    <!--===============================================================================================-->
-      <link rel="stylesheet" type="text/css" href="./Login_V1_files/font-awesome.min.css">
-    <!--===============================================================================================-->
-      <link rel="stylesheet" type="text/css" href="./Login_V1_files/animate.css">
-    <!--===============================================================================================-->
-      <link rel="stylesheet" type="text/css" href="./Login_V1_files/hamburgers.min.css">
-    <!--===============================================================================================-->
-      <link rel="stylesheet" type="text/css" href="./Login_V1_files/select2.min.css">
-    <!--===============================================================================================-->
-      <link rel="stylesheet" type="text/css" href="./Login_V1_files/util.css">
-      <link rel="stylesheet" type="text/css" href="./Login_V1_files/main.css">
-    <!--===============================================================================================-->
+   
 
 
 <?php 
@@ -78,6 +80,20 @@
  ?>
 
     <link href="/css/styleLogin.css" rel="stylesheet">
+     <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="./Login_V1_files/bootstrap.min.css">
+    <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="./Login_V1_files/font-awesome.min.css">
+    <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="./Login_V1_files/animate.css">
+    <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="./Login_V1_files/hamburgers.min.css">
+    <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="./Login_V1_files/select2.min.css">
+    <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="./Login_V1_files/util.css">
+      <link rel="stylesheet" type="text/css" href="./Login_V1_files/main.css">
+    <!--===============================================================================================-->
 
     <?php 
 

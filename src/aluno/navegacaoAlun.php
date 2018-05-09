@@ -13,7 +13,7 @@
             Área do Aluno
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="nav-link js-scroll-trigger" href="ranking.php">Ranking</a>
+            <a class="nav-link js-scroll-trigger" href="/aluno/Sranking.php">Ranking</a>
             <a class="nav-link js-scroll-trigger" href="/aluno/problemas/telas/listar_problemas.php">Ver problemas</a>
           </div>
         </li>
