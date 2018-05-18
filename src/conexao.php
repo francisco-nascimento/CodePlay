@@ -2,7 +2,7 @@
 
 	try {
 
-	  $conexao = new PDO('mysql:host=127.0.0.1;dbname=Codeplay', 'codeplay', "@luno1fpe");
+	  $conexao = new PDO('mysql:host=127.0.0.1;dbname=Codeplay', 'root', "");
 	  $conexao->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 	} catch(PDOException $e) {
