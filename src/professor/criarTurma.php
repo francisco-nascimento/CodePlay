@@ -1,3 +1,8 @@
+<?php
+	require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
+	require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');			
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,26 +11,18 @@
 </head>
 <body>
 
-	<?php
-
-			require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
-			require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
-			
-			
-
-		?>
-
+	
 		
 		<br><br>
 
 
 		<table border="1" class="table">
-		<form action="/professor/inserirTurma.php" name="formulario" method="GET">
+		<form action="/professor/inserirTurma.php" name="formulario" method="POST">
 
 			<tr>
 				<th>
 					<label>Descrição para turma: </label>
-					<input maxlength="50000" required="required" type="text" name="descTurma">
+					<input maxlength="80" required="required" type="text" name="descTurma">
 				</th>
 			</tr>
 				<tr>
