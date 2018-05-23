@@ -67,6 +67,7 @@
       				<input type="hidden" name="resposta">
       				<input type="hidden" name="id" value="<?=$id;?>">
       				<input type="submit" value="Testar Resposta">
+      				<input type="hidden" name="classificacao" value="<?=$linha['classificacao']?>">
       			</form>
 			</td>
 		</tr>

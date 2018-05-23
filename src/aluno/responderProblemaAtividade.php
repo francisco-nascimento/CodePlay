@@ -98,6 +98,7 @@
     foreach ($stmt as $key) {
       $descProblema = $key["desc_Problema"];
       $assunto = $key["assunto"];
+      $classificacao = $key["classificacao"];
     }
 
     $sql = "SELECT * FROM Gabarito WHERE id_Problema = ?";
@@ -129,8 +130,6 @@
 			
 
 		?>
-
-    <button onclick="testaResposta();">testar resposta</button>
 		
     <table class="table">
 
@@ -141,6 +140,7 @@
       <input type="hidden" name="correcao">
       <input type="hidden" name="idAtividade" value="<?=$idAtividade?>">
       <input type="hidden" name="idProblema" value="<?=$idProblema?>">
+      <input type="hidden" name="classificacao" value="<?=$classificacao?>">
 
       <tr>
         <th>Descrição do Problema</th> <th>Assunto</th>

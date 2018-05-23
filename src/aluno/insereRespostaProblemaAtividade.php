@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-
+include ('pontuar.php');
 require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
 
 $idAluno = $_SESSION["id"];
@@ -15,6 +15,8 @@ $idProblema = $_POST["idProblema"];
 $idAtividade = $_POST["idAtividade"];
 
 $correcao = $_POST["correcao"];
+
+$classificacao = $_POST["classificacao"];
 
 try {
 
@@ -33,6 +35,8 @@ try {
     $stmt->bindValue(4, $idProblema);
     $stmt->bindValue(5, $idAtividade);
     $stmt->execute();
+
+    pontuar_aluno($idAluno, $idProblema, 1, $classificacao);
 
     header("Location: /aluno/responderAtividade.php?idAtividade=$idAtividade");
 	
