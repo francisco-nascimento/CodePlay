@@ -1,3 +1,10 @@
+<?php
+
+	require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
+
+    $msg = $_GET["msg"];
+			
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,14 +20,7 @@
 
 	</script>
 	<body>
-		<?php
-
-			require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
-
-      $msg = $_GET["msg"];
-			
-
-		?>
+		
 
     <p>
       <?=$msg;?>

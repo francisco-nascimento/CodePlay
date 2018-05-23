@@ -1,3 +1,9 @@
+<?php
+
+	require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
+	require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
+			
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,15 +11,7 @@
 </head>
 <body>
 
-	<?php
-
-			require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
-			require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
-			
-			
-
-		?>
-
+	
 		
 		<br><br><br><br>
 

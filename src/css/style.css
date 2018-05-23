@@ -21,6 +21,10 @@ img {
   width: 60px;
 }
 
+.icone {
+  height: 30px;
+  width: 30px;
+}
 .table-users {
   border: 1px solid #327a81;
   border-radius: 10px;
@@ -29,7 +33,7 @@ img {
   max-width: calc(100% - 2em);
   margin: 1em auto;
   overflow: hidden;
-  width: 800px;
+  width: 900px;
 }
 
 table {

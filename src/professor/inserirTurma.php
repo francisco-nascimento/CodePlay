@@ -1,15 +1,11 @@
-
 <?php
-
 	require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
 
 	session_start();
 
-
 	$id = $_SESSION["id"];
 
-	$descricao = $_GET["descTurma"];
-
+	$descricao = $POST["descTurma"];
 
 	try {
 

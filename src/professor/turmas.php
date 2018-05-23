@@ -1,3 +1,9 @@
+<?php 
+
+    require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
+    require ($_SERVER["DOCUMENT_ROOT"].'/imports.php');
+
+?>
 <!DOCTYPE html>
 <html lang="pt" >
 
@@ -18,12 +24,6 @@
 
 <body>
 
-  <?php 
-
-    require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
-    require ($_SERVER["DOCUMENT_ROOT"].'/imports.php');
-
-   ?>
 <br><br><br><br><br>
   <div class="table-users">
    <div class="header">Turmas Cadastradas</div>

@@ -71,6 +71,8 @@
     $login = '/loginCadastro/loginCadastro.php';
     $listagemProb = '/professor/listarProblemas.php';
     $listagemAlunos = '/professor/listarAlunos.php';
+    $cadProblema = '/professor/cadastrarProblema.php';
+
 
 
 
@@ -112,7 +114,7 @@
 
     <?php
 
-    if(strcasecmp($arquivo, $listagemProb) == 0 || strcasecmp($arquivo, $listagemAlunos) == 0){
+    if(strcasecmp($arquivo, $listagemProb) == 0 || strcasecmp($arquivo, $listagemAlunos) == 0 || strcasecmp($arquivo, $cadProblema) == 0){
 
 
  ?>

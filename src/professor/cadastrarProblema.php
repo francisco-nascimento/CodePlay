@@ -1,6 +1,6 @@
 <?php
-  require ($_SERVER["DOCUMENT_ROOT"].'/blocosJS.php');
   require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
+  require ($_SERVER["DOCUMENT_ROOT"].'/blocosJS.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -46,44 +46,54 @@
     </script>
 	</head>
 	<body>
-    <div class="container-fluid">
-      <br>
-      <div class="row">
-        <div class="col-sm-4">
+      <div class="table-users">
+        <div class="header">Cadastro de Problemas</div>
           <form name="formulario" onsubmit="return recebeResposta();"
            class="form form-control" action="/professor/recebeProblema.php" method="POST">
-            <input type="hidden" name="resposta" required="required">
-
-              <label>Descrição do Problema *</label>
-              <textarea name="descricao" required="required" placeholder="Digite Aqui"></textarea>
-              <br>
-              
-              <label>Classificação do Problema *</label>
+           <input type="hidden" name="resposta" required="required">
+        <table>
+          <tr>
+            <th width="25%"><label>Descrição*</label></th>
+            <td>
+              <textarea name="descricao" rows="4" cols="60" required="required" placeholder="Digite Aqui"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              <label>Classificação*</label>
+            </th>
+            <td>
               <select name="classificacao" required="required">
                 <option value="">Selecione a dificuldade</option>
                 <option value="fácil">Fácil</option>
                 <option value="médio"> Médio</option>
                 <option value="difícil"> Difícil</option>
               </select>
-              <br>
-
-              <label>Assunto do Problema*</label>
-              <input type="text" name="assunto" required="required" placeholder="Escreva aqui">
-              <br>
+            </td>
+          <tr>
+            <th><label>Assunto *</label></th>
+            <td>
+              <input type="text" size="40" name="assunto" required="required" placeholder="Escreva aqui">
+            </td>
+          </tr>
+          <tr>
+            <th colspan="2">
+              <center>Responder nessa parte abaixo. <br/>
+              <?php 
+                require ($_SERVER["DOCUMENT_ROOT"].'/util/blocos.php');
+              ?>
+              </center>
+            </th>
+          </tr>
+          <tr>
+            <th colspan="2">
               <button type="submit" class="btn btn-sm btn-success">Enviar Problema</button>
-            </form>
-        </div>
-        <div class="col-sm-8" style="background-color:lavenderblush;">
+            </th>
+          </tr>
 
-        <center>
-        Responder nessa parte abaixo.
-        <br>
-        <?php 
-          require ($_SERVER["DOCUMENT_ROOT"].'/util/blocos.php');
-        ?>
-        </center>
-        </div>
+    </tr>
+  </table>
+      </form>
       </div>
-    </div>
   </body>
 </html>
