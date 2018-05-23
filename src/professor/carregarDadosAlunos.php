@@ -40,7 +40,7 @@ function salvarDadosAlunos($con, $filename, $nome_turma){
       $senha = $senhaCriptografada;
       $nome = $array[1];
       $email = $array[2];
-      $situacao = '2';
+      $situacao = '0';
 
       $sql = "insert into Aluno(matricula, nome, email, senha, situacao, id_turma) values(?,?,?,?,?,?)";
 
