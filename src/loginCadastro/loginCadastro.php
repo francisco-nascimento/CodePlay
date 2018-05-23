@@ -92,7 +92,7 @@
           </span>
 
           <div class="wrap-input100">
-            <input class="input100" type="text" name="email" required placeholder="Digite sua matricula ou seu Email">
+            <input class="input100" type="email" name="email" required placeholder="Digite seu Email">
             <span class="focus-input100"></span>
             <span class="symbol-input100">
               <i class="fa fa-envelope" aria-hidden="true"></i>
