@@ -13,10 +13,9 @@
             Cadastro
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="/professor/listarAlunos.php">Alunos Cadastrados</a>
-            <a class="dropdown-item" href="/professor/cadastrarAluno.php">Cadastrar Alunos</a>
+            <a class="dropdown-item" href="/professor/listarAlunos.php"> Pesquisar Alunos</a>
+            <a class="dropdown-item" href="/professor/importarAlunos.php">Importar alunos</a>
             <a class="dropdown-item" href="/professor/cadastrarProblema.php">Cadastrar Problemas</a>
-            <a class="dropdown-item" href="/professor/turmas.php">Cadastrar Turmas</a>
           </div>
         </li>
       </ul>

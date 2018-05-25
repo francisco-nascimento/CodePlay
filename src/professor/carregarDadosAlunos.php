@@ -1,19 +1,12 @@
 <?php
-
 session_start();
 require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
 
-$file_alunos = $_FILES['file_alunos'];
-$nome_turma = $_POST['nome_turma'];
-
-if(isset($file_alunos)){
-   salvarDadosAlunos($conexao, $file_alunos, $nome_turma);   
-}
-
-function criarTurma($pdo, $nome_turma){   
-   $sql = "INSERT INTO Turma(desc_Turma) VALUES (?)";
+function criarTurma($pdo, $nome_turma, $id_professor){   
+   $sql = "INSERT INTO Turma(desc_Turma, id_professor) VALUES (?, ?)";
    $stmt = $pdo->prepare($sql);
    $stmt->bindValue(1, $nome_turma);
+   $stmt->bindValue(2, $id_professor);
    $stmt->execute();
 
    $select = $pdo->query("select MAX(id) as id from Turma");
@@ -22,11 +15,27 @@ function criarTurma($pdo, $nome_turma){
    return $id_turma;
 }
 
-function salvarDadosAlunos($con, $filename, $nome_turma){
+function exibirDadosAlunos($con, $filename, $nome_turma){
+
+   $dados = array();
+   $i = 0;
+   $file = fopen($filename['tmp_name'], "r");
+   while(($linha = fgetcsv($file)) != FALSE){
+      $array = explode(";",$linha[0]);
+      if (sizeof($array) < 3 || !isset($array[0])){
+         continue;
+      }
+      $dados[$i] = $array;
+      $i++;
+   }
+   return $dados;
+}
+
+function salvarDadosAlunos($con, $filename, $nome_turma, $id_professor){
    $senhaPadrao = "codeplay123";
    $senhaCriptografada = password_hash($senhaPadrao, PASSWORD_DEFAULT);
 
-   $id_turma = criarTurma($con, $nome_turma);
+   $id_turma = criarTurma($con, $nome_turma, $id_professor);
 
    $file = fopen($filename['tmp_name'], "r");
    while(($linha = fgetcsv($file)) != FALSE){
@@ -40,7 +49,7 @@ function salvarDadosAlunos($con, $filename, $nome_turma){
       $senha = $senhaCriptografada;
       $nome = $array[1];
       $email = $array[2];
-      $situacao = '2';
+      $situacao = '0';
 
       $sql = "insert into Aluno(matricula, nome, email, senha, situacao, id_turma) values(?,?,?,?,?,?)";
 
@@ -55,6 +64,5 @@ function salvarDadosAlunos($con, $filename, $nome_turma){
       $stmt->execute();
    }
    fclose($file);
-
 }
 ?>

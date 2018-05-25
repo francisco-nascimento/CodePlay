@@ -69,12 +69,6 @@
     $arquivo = $_SERVER['PHP_SELF'];
 
     $login = '/loginCadastro/loginCadastro.php';
-    $listagemProb = '/professor/listarProblemas.php';
-    $listagemAlunos = '/professor/listarAlunos.php';
-    $cadProblema = '/professor/cadastrarProblema.php';
-
-
-
 
     if(!isset($_SESSION["USUARIO_LOGADO"]) && strcmp($arquivo, $login) == 0){
 
@@ -114,8 +108,21 @@
 
     <?php
 
-    if(strcasecmp($arquivo, $listagemProb) == 0 || strcasecmp($arquivo, $listagemAlunos) == 0 || strcasecmp($arquivo, $cadProblema) == 0){
+    $paginas = array();
+    $paginas[$i++] = '/professor/listarProblemas.php';
+    $paginas[$i++] = '/professor/listarAlunos.php';
+    $paginas[$i++] = '/professor/cadastrarProblema.php';
+    $paginas[$i++] = '/professor/importarAlunos.php';
 
+    $cond_incluir_link = FALSE;
+    foreach ($paginas as $pag) {
+        if (strcasecmp($arquivo, $pag) == 0) {
+            $cond_incluir_link = TRUE;
+            break;
+        }
+    }
+
+    if($cond_incluir_link){
 
  ?>
 

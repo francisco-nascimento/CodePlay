@@ -169,3 +169,28 @@ table tr:nth-child(2n+1) {
     overflow: visible;
   }
 }
+
+.bt-ok {
+  background-color: #327a81;
+  color: white;
+  font-size: 0.8em;
+  padding: 0.5rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.title1 {
+  color: #327a81;
+  font-size: 1.2em;
+  padding: 0.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.title2 {
+  color: #327a81;
+  font-size: 1em;
+  padding: 0.5rem;
+  text-transform: uppercase;
+  font-weight: bold;
+}

@@ -16,6 +16,39 @@
   			return "Pendente";
   	}
   }
+
+  function pesquisarAlunos($con, $nome, $turma){
+  	if (!isset($nome) && !isset($turma)){
+  		return null;
+  	}
+  	$sql = "SELECT * FROM Aluno where ";
+    $param = '';
+  	if (strcasecmp($turma,"-1") != 0){
+  		$sql .= " id_turma = ? ";
+  		$param = $turma;
+  	} else {
+  		$sql .= " upper(nome) like ? ";
+  		$param = "%".strtoupper($nome) . "%";
+  	}
+  	$stmt = $con->prepare($sql);
+	$stmt->bindValue(1, $param);
+	$stmt->execute();
+	return $stmt->fetchAll();
+  }
+
+  function gerarSelectTurmas($con){
+  	$sql = "SELECT t.id, t.desc_Turma, p.nome FROM Turma t, Professor p " .
+    "where t.id_professor = p.id order by t.desc_Turma";
+	$stmt = $con->prepare($sql);
+	$stmt->execute();
+	$html_select = "<SELECT name ='pesq-turma' id='pesq-turma' readonly=true>";
+	$html_select .= "<option value='-1'>Selecione uma turma</option>";
+	while($linha = $stmt->fetch(PDO::FETCH_ASSOC)){
+		$html_select .= "<option value='$linha[id]'>$linha[desc_Turma] ($linha[nome])</option>";
+	}
+	$html_select .= "</select>";
+	return $html_select;
+  }
 ?>
 <!DOCTYPE html>
 <html lang="pt" >
@@ -46,14 +79,86 @@
         		// $
         		// window.open(url);
     		});
+    		$('#opt-pesq1').change(function(){
+    			if (this.checked){
+    				$('#pesq-turma').removeAttr("disabled");
+    				$('#pesq-turma').focus();
+    				$('#pesq-nome').val('');
+    			} else {
+    				$('#pesq-turma').attr("disabled", true);
+    				$('#pesq-turma').val("-1");
+    			}
+    		});
+    		$('#pesq-nome').click(function(){
+    			$('#pesq-nome').removeAttr("readonly");
+    			$('#pesq-turma').val("-1");
+    			$('#opt-pesq2').prop("checked", true);
+    			$('#pesq-nome').focus();
+    		});
+    		$('#pesq-turma').click(function(){
+    			$('#pesq-turma').removeAttr("readonly");
+    			$('#pesq-nome').val("");
+    			$('#opt-pesq1').prop("checked", true);
+    			$('#pesq-turma').focus();
+    		});
+    		$('#opt-pesq2').change(function(){
+    			if (this.checked){
+    				$('#pesq-nome').removeAttr("disabled");
+    				$('#pesq-turma').val("-1");
+    				$('#pesq-nome').focus();
+    			} else {
+    				$('#pesq-nome').attr("disabled", true);
+    				
+    			}
+    		});
+    		$('button#btn-pesquisar').click(function(){
+        		if ($('#pesq-turma').val() == '-1' &&
+        			$('#pesq-nome').val() == ''){
+        			alert('Preencha um dos campos de pesquisa');
+        			return false;
+        		}
+        		this.submit();
+    		});    		
 		});
 	</script>
 	</head>
 	<body>
 		<br>
 		<div class="table-users">
-	  		<div class="header">Lista de alunos cadastrados</div>
+	  	<div class="header">Pesquisar alunos</div>
+		<div class="table-users">
+			<form method="POST">
+				<table>
+          <tr>
+            <th class="title1">Preencha um dos filtros para pesquisar</th>
+          </tr>
+					<tr>
+						<td>
+							<input type="radio" name="opt-pesq" id="opt-pesq1">
+						
+							<label>Turma: </label>
+							<?=gerarSelectTurmas($conexao);?>
+							<BR/>
+							<input type="radio" name="opt-pesq" id="opt-pesq2">
+							<label>Nome: </label>
+							<input type="text" name="pesq-nome" id="pesq-nome" readonly="true">
+						</td>
+					</tr>
+					<tr>
+						<td >
+						<button class="bt-ok" name="btn-pesquisar" id="btn-pesquisar" value="1">Pesquisar</button>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<?php
+		if (isset($_POST["btn-pesquisar"])){
+			$resultado = pesquisarAlunos($conexao, $_POST["pesq-nome"], $_POST["pesq-turma"]);
+		?>
+  		<div class="table-users">
 	      	<table cellspacing="0">
+	      		<tr><td colspan="4">Resultado da pesquisa de alunos: </td></tr>
 	      		<tr>
 		         	<th>Nome</th>
 		         	<th>Matrícula</th>
@@ -61,8 +166,7 @@
 		         	<th>Editar dados</th>
 	      		</tr>
 				<?php
-					$resultado = $conexao->prepare("select id, nome, matricula, situacao from Aluno");
-					$resultado->execute();
+
 					foreach($resultado as $linha){ 
 				?>
 	      		<tr>
@@ -79,39 +183,13 @@
 	       			</td>
 	    		</tr>
 		    	<?php 
-		        	}
+			        }
 		       	?>  
 			</table>
 		</div>
-
-  		<div class="table-users">
-  			<table>
-  				<tr>
-  					<th>Carregar dados de uma turma</th>
-  				</tr>
-  				<tr>
-  					<td>
-			  			<form method="POST" enctype="multipart/form-data">
-			  				<table>
-			  					<tr>
-			  						<th>
-						  				<label>Nome da turma: </label>
-						  				<input type="text" name="nome_turma">
-						  			<br/>
-			  						<label>Arquivo com dados dos alunos
-			  						</label>
-			  						(Formato CSV: matricula;nome;email;)
-			  						<br/>
-			  						<input type="file" name="file_alunos" > 
-			  						<br/>
-			  						<button type="submit">Carregar</button>
-			  						</th>
-			  					</tr>
-			  			</form>
-  					</td>
-  				</tr>
-  			</table>
-  		</div>
+    	<?php 
+	        }
+       	?>  
 	</body>
 </html>
 
