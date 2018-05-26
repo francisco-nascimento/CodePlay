@@ -1,7 +1,9 @@
 <?php 
   require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
   require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
-  require ($_SERVER["DOCUMENT_ROOT"].'/professor/carregarDadosAlunos.php');
+ // require ($_SERVER["DOCUMENT_ROOT"].'/professor/carregarDadosAlunos.php');
+  require ($_SERVER["DOCUMENT_ROOT"].'/professor/selecionar_problemas.php');
+
   $IMG_PATH = $_SERVER["DOCUMENT_ROOT"] . "/img/";
   $id_professor = $_SESSION["id"];
 
@@ -9,7 +11,11 @@
   $nome_turma = $_POST['nome_turma'];
 
   if(isset($_POST['btn-confirmar'])){
-   salvarDadosAlunos($conexao, $file_alunos, $nome_turma, $id_professor);   
+     $id_turma = salvarDadosAlunos($conexao, $file_alunos, $nome_turma, $id_professor);   
+  }
+
+  if(isset($_POST['id_turma'])){
+     gerarProblemasTurma($conexao, $_POST['id_turma']);
   }
 
   function exibirSituacao($situacao){
@@ -43,7 +49,13 @@
         			return false;
         		}
         		this.submit();
-    		});    		
+    		});  
+    // 		$('#btn-start').click(function(){
+				// var clickBtnValue = $(this).val();
+    //     		var url = 'importarAlunos.php';
+    //     		data =  {'btn-start': clickBtnValue};
+    //     		$.post(url, data);
+    //     	});  		
 		});
 	</script>
 	</head>
@@ -110,7 +122,22 @@
 	    		</tr>
 		    	<?php 
 			        }
-		       	?>  
+		       	?>
+		       	<tr>
+		       		<td colspan="3">
+		       			<?php 
+		       				if (isset($id_turma)){
+		       					?>
+		       					<form method="POST">
+		       						<input type="hidden" value="<?=$id_turma?>" name="id_turma">
+		       						<button type="submit" id="btn-start">Start turma</button>
+		       					</form>
+		       			<?php
+		       				}
+		       			?>
+		       		</td>
+		       	</tr>
+
 			</table>
 		</form>
 		</div>

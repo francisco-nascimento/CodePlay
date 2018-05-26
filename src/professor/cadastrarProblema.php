@@ -1,6 +1,20 @@
 <?php
   require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
+
   require ($_SERVER["DOCUMENT_ROOT"].'/blocosJS.php');
+
+    function gerarSelectAssuntos($con){
+    $sql = "SELECT id, descricao FROM Assunto";
+  $stmt = $con->prepare($sql);
+  $stmt->execute();
+  $html_select = "<SELECT name ='sel-assunto' id='sel-assunt'>";
+  $html_select .= "<option value='-1'>Selecione um assunto</option>";
+  while($linha = $stmt->fetch(PDO::FETCH_ASSOC)){
+    $html_select .= "<option value='$linha[id]'>$linha[descricao]</option>";
+  }
+  $html_select .= "</select>";
+  return $html_select;
+  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -65,15 +79,15 @@
             <td>
               <select name="classificacao" required="required">
                 <option value="">Selecione a dificuldade</option>
-                <option value="fácil">Fácil</option>
-                <option value="médio"> Médio</option>
-                <option value="difícil"> Difícil</option>
+                <option value="F">Fácil</option>
+                <option value="M"> Médio</option>
+                <option value="D"> Difícil</option>
               </select>
             </td>
           <tr>
             <th><label>Assunto *</label></th>
             <td>
-              <input type="text" size="40" name="assunto" required="required" placeholder="Escreva aqui">
+              <?=gerarSelectAssuntos($conexao);?>
             </td>
           </tr>
           <tr>

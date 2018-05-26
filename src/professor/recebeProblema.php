@@ -10,10 +10,10 @@ session_start();
 		$idProfessor = $_SESSION["id"];
 		$classificacao = $_POST["classificacao"];
 		$resposta = $_POST["resposta"];
-		$assunto = $_POST["assunto"];
+		$assunto = $_POST["sel-assunto"];
 		
 
-		$InserirProblema = $conexao->prepare("insert into Problema (desc_Problema, id_Professor, classificacao, assunto) values (?,?,?,?)");
+		$InserirProblema = $conexao->prepare("insert into Problema (desc_Problema, id_Professor, classificacao, id_assunto) values (?,?,?,?)");
 
 			$InserirProblema->bindValue(1, $descricaoProblema);
 			$InserirProblema->bindValue(2, $idProfessor);
