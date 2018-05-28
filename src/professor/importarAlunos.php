@@ -130,7 +130,7 @@
 		       					?>
 		       					<form method="POST">
 		       						<input type="hidden" value="<?=$id_turma?>" name="id_turma">
-		       						<button type="submit" id="btn-start">Start turma</button>
+		       						<button type="submit" id="btn-start" class="bt-ok">Start turma</button>
 		       					</form>
 		       			<?php
 		       				}

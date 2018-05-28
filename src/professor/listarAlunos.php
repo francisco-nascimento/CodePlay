@@ -17,24 +17,24 @@
   	}
   }
 
-  function pesquisarAlunos($con, $nome, $turma){
-  	if (!isset($nome) && !isset($turma)){
-  		return null;
-  	}
-  	$sql = "SELECT * FROM Aluno where ";
-    $param = '';
-  	if (strcasecmp($turma,"-1") != 0){
-  		$sql .= " id_turma = ? ";
-  		$param = $turma;
-  	} else {
-  		$sql .= " upper(nome) like ? ";
-  		$param = "%".strtoupper($nome) . "%";
-  	}
-  	$stmt = $con->prepare($sql);
-	$stmt->bindValue(1, $param);
-	$stmt->execute();
-	return $stmt->fetchAll();
-  }
+ //  function pesquisarAlunos($con, $nome, $turma){
+ //  	if (!isset($nome) && !isset($turma)){
+ //  		return null;
+ //  	}
+ //  	$sql = "SELECT * FROM Aluno where ";
+ //    $param = '';
+ //  	if (strcasecmp($turma,"-1") != 0){
+ //  		$sql .= " id_turma = ? ";
+ //  		$param = $turma;
+ //  	} else {
+ //  		$sql .= " upper(nome) like ? ";
+ //  		$param = "%".strtoupper($nome) . "%";
+ //  	}
+ //  	$stmt = $con->prepare($sql);
+	// $stmt->bindValue(1, $param);
+	// $stmt->execute();
+	// return $stmt->fetchAll();
+ //  }
 
   function gerarSelectTurmas($con){
   	$sql = "SELECT t.id, t.desc_Turma, p.nome FROM Turma t, Professor p " .
@@ -154,25 +154,29 @@
 		</div>
 		<?php
 		if (isset($_POST["btn-pesquisar"])){
-			$resultado = pesquisarAlunos($conexao, $_POST["pesq-nome"], $_POST["pesq-turma"]);
+
+      $alunoDAO = new AlunoDAO($conexao);
+			$resultado = $alunoDAO->pesquisarAlunos($_POST["pesq-nome"], $_POST["pesq-turma"]);
 		?>
   		<div class="table-users">
 	      	<table cellspacing="0">
-	      		<tr><td colspan="4">Resultado da pesquisa de alunos: </td></tr>
+	      		<tr><td colspan="5">Resultado da pesquisa de alunos: </td></tr>
 	      		<tr>
 		         	<th>Nome</th>
 		         	<th>Matrícula</th>
-		         	<th>Situação</th>
+		         	<th>Pontuação</th>
+              <th>Situação</th>
 		         	<th>Editar dados</th>
 	      		</tr>
 				<?php
 
-					foreach($resultado as $linha){ 
+					foreach($resultado as $aluno){ 
 				?>
 	      		<tr>
-	         		<td><?=$linha['nome'];?></td>
-	         		<td><?=$linha['matricula'];?></td>
-	         		<td><?=exibirSituacao($linha['situacao'])?></td>
+	         		<td><?=$aluno->nome;?></td>
+	         		<td><?=$aluno->matricula?></td>
+              <td><?=$aluno->pontuacao?></td>
+	         		<td><?=exibirSituacao($aluno->situacao)?></td>
 	         		<td>
 	         			<button id="btn-editar" value="<?=$linha['id']?>">
 	         			<img src="../img/icone-editar.png" class="icone">

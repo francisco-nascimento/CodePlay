@@ -77,8 +77,8 @@ function salvarDadosAlunos($con, $filename, $nome_turma, $id_professor){
       $id_aluno = getLastIdAluno($con);
       // Gerar objeto AreaAluno
       $areaAluno = new AreaAluno();
-      $aluno = new Aluno();
-      $aluno->id = $id_aluno;
+      $aluno = new Aluno($id_aluno);
+      // $aluno->id = ;
       $areaAluno->aluno = $aluno;
 
       $assuntoDAO = new AssuntoDAO($con);

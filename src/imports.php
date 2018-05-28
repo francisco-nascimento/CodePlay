@@ -113,6 +113,8 @@
     $paginas[$i++] = '/professor/listarAlunos.php';
     $paginas[$i++] = '/professor/cadastrarProblema.php';
     $paginas[$i++] = '/professor/importarAlunos.php';
+    $paginas[$i++] = '/aluno/exibir_area_aluno.php';
+    $paginas[$i++] = '/aluno/responderProblema.php';
 
     $cond_incluir_link = FALSE;
     foreach ($paginas as $pag) {

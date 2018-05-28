@@ -1,5 +1,5 @@
 <?php
-  require ($_SERVER["DOCUMENT_ROOT"].'/imports.php');
+  include ($_SERVER["DOCUMENT_ROOT"].'/imports.php');
 ?>
 <head>
   <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
@@ -13,8 +13,9 @@
             Área do Aluno
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="nav-link js-scroll-trigger" href="/aluno/Sranking.php">Ranking</a>
-            <a class="nav-link js-scroll-trigger" href="/aluno/problemas/telas/listar_problemas.php">Ver problemas</a>
+            <a class="dropdown-item" href="/aluno/exibir_area_aluno.php">Painel geral</a>
+            <a class="dropdown-item" href="/aluno/Sranking.php">Ranking</a>
+            <a class="dropdown-item" href="/aluno/problemas/telas/listar_problemas.php">Ver problemas</a>
           </div>
         </li>
       </ul>
@@ -24,9 +25,9 @@
             Turma
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="nav-link js-scroll-trigger" href="ranking.php">Ranking da turma</a>
-            <a class="nav-link js-scroll-trigger" href="/aluno/problemas/telas/listar_problemas.php">Ver problemas</a>
-            <a href="/aluno/listarAtividade.php" class="nav-link js-scroll-trigger">Ver Atividades
+            <a class="dropdown-item" href="ranking.php">Ranking da turma</a>
+            <a class="dropdown-item" href="/aluno/problemas/telas/listar_problemas.php">Ver problemas</a>
+            <a href="/aluno/listarAtividade.php" class="dropdown-item">Ver Atividades
             </a>
           </div>
         </li>
