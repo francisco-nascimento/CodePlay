@@ -30,6 +30,25 @@ img {
   width: 80px;
 }
 
+.icone2 .hint {
+    visibility: hidden;
+    width: 70px;
+    background-color: #327a81;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 2px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;    
+}
+.icone2:hover .hint {
+    visibility: visible;
+}
+.icone2:hover:after .hint {
+    content: "500";
+}
 .table-users {
   border: 1px solid #327a81;
   border-radius: 10px;

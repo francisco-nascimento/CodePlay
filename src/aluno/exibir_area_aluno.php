@@ -7,7 +7,8 @@
   $paginaResponderProblema = "responderProblema.php";
 
   $id_usuario = $_SESSION["id"];
-  $areaAlunoDAO = new areaAlunoDAO($conexao);
+  $areaAlunoDAO = new AreaAlunoDAO($conexao);
+  $itemBlocoDAO = new ItemBlocoDAO($conexao);
   $area_atual = $areaAlunoDAO->getByAluno($id_usuario);
   $qtdProblemas = 10;
  // var_dump($area_atual);
@@ -66,12 +67,22 @@
 		          <tr>
 		            <td align="middle" valign="center">
 		            	<?php 
-		            		$itensBloco = $bloco->itens;
-		            		foreach ($itensBloco as $item) {
-		            			$ordem = $item->ordem;
-		            			$status = $item->situacao->status;
-		            			$id_problema = $item->id_problema;
-		            			$urlPaginaResponder = $paginaResponderProblema . "?id=" . $id_problema;
+		            		$itensBloco = $itemBlocoDAO->getByBloco($bloco->id);
+		            		for ($i = 1; $i <= 6; $i++){
+		            		// foreach ($itensBloco as $item) {
+
+		            			$item = $itensBloco[$i-1];
+		            			if (isset($item)){
+			            			$ordem = $item->ordem;
+			            			$status = $item->situacao->status;
+			            			$id_problema = $item->id_problema;
+			            			$pontosProblema = $item->situacao->pontuacao_possivel; 
+			            			$urlPaginaResponder = $paginaResponderProblema . "?id=" . $id_problema;
+			            		} else {
+			            			$status = 0;
+			            			$ordem = $i;
+			            			$pontosProblema = 0;
+			            		}
 
 		            			$sufixoImg ='';
 		            			switch ($status) {
@@ -89,6 +100,10 @@
 		            			 	case 3:
 		            			 		$sufixoImg = '-notok';
 		            			 		break;
+		            			 	case 4:
+		            			 		$sufixoImg = '-cancel';
+		            			 		$urlPaginaResponder = '';
+		            			 		break;
 		            			 	default:
 		            			 		break;
 		            			} 
@@ -96,7 +111,10 @@
 		            			$idImagem = "problema" . $numProblemas++;
 		            			?>
 		            			<a href="<?=$urlPaginaResponder?>">
-		            				<img src="<?=$nomeImagem?>" class="icone2">
+		            				<span class="icone2">
+		            					<span class="hint"><?=$pontosProblema?> pts</span>
+			            				<img src="<?=$nomeImagem?>">
+		            				</span>
 		            			</a>
 		            			<?php
 		            		}

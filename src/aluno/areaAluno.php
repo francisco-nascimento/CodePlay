@@ -5,6 +5,15 @@ const PENALIZACAO_ERRO = 100;
 const PONTUACAO_PADRAO_FACIL = 500;
 const PONTUACAO_PADRAO_MEDIO = 1000;
 const PONTUACAO_PADRAO_DIFICIL = 1500;
+const QUANTIDADE_TENTATIVAS_MAX = 3;
+const MAX_ORDEM = 6;
+
+// ACOMPANHAMENTO DOS ALUNOS :: TIPOS DE SITUACOES 
+const RESPOSTA_ERRADA = 1;
+const EXCEDEU_TEMPO_ESPERADO = 2;
+const SOLUCAO_INADEQUADA = 3;
+const FALHA_ENTENDIMENTO_PROBLEMA = 4;
+const REINCIDENCIA_ERRO = 5;
 
 function obterNivel($ordem){
 	if ($ordem <= 3){
@@ -14,6 +23,16 @@ function obterNivel($ordem){
 	} else {
 		return 'D';
 	}
+}
+
+function nextOrdem($id_assunto, $ordem){
+	if ($ordem == MAX_ORDEM){
+		$id_assunto++;
+		$ordem = 1;
+	} else {
+		$ordem++;
+	}
+	return array($id_assunto, $ordem);
 }
 
 abstract class Entity {
@@ -100,8 +119,9 @@ class ItemBlocoAluno extends Entity {
 	public $problema; // Problema problema;
 	public $situacao; // SituacaoItemBloco situacaoItem;
 	public $ordem; // [1..6]
+	public $bloco;
 
-	public function __constructor($problema, $situacao, $ordem){
+	public function __constructor($problema = NULL, $situacao = NULL, $ordem= NULL){
 		$this->problema = $problema;
 		$this->situacao = $situacao;
 		$this->ordem = $ordem;
@@ -143,7 +163,12 @@ class SituacaoItemBloco{
 	public function registrarFalha(){
 		$this->status = 3;
 		$this->quantidade_tentativas++;
-		$this->pontuacao_obtida -= PENALIZACAO_ERRO;
+		if ($this->pontuacao_possivel > 0) {
+			$this->pontuacao_possivel -= PENALIZACAO_ERRO;
+		}
+		if($this->quantidade_tentativas >= QUANTIDADE_TENTATIVAS_MAX){
+			$this->status = 4;
+		}
 	}
 }
 
@@ -151,11 +176,17 @@ class RespostaAluno extends Entity{
 	public $desc_resposta;
 	public $aluno;
 	public $problema;
+	public $tipo_situacao;
 
 	public function RespostaAluno($descricao, $aluno, $problema){
 		$this->desc_resposta = $descricao;
 		$this->aluno = $aluno;
 		$this->problema = $problema;
 	}
+}
+
+class Gabarito extends Entity {
+	public $problema;
+	public $desc_gabarito;
 }
 ?>

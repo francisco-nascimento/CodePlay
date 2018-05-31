@@ -9,6 +9,7 @@
 	$problemaDAO = new ProblemaDAO($conexao);
 	$itemBlocoDAO = new ItemBlocoDAO($conexao);
 	$blocoAreaDAO = new BlocoAreaDAO($conexao);
+	$gabaritoDAO = new GabaritoDAO($conexao);
 
 	$id_problema = $_GET["id"];
 	$problema = $problemaDAO->getById("Problema", $id_problema);
@@ -25,25 +26,37 @@
 
 		$situacaoItemDAO = new SituacaoItemBlocoDAO($conexao);
 		$situacao = $situacaoItemDAO->getByAlunoProblema($id_aluno, $id_problema);
-		if (verificarResposta($resposta_js, $id)){
+
+		$gabarito = $gabaritoDAO->getByProblema($id_problema);
+
+		if (verificarResposta($resposta_js, $gabarito->desc_gabarito)){
 			$situacao->registrarSucesso();
 
 			$itemBloco = $itemBlocoDAO->getByAlunoProblema($id_aluno, $id_problema);
-			$bloco = $blocoAreaDAO->getById("BlocoArea", $itemBloco->id_bloco);	
-			$proxOrdem = $itemBloco->ordem;
-			$proxOrdem++;
-			$itemBlocoDAO->createNextProblem($bloco, $proxOrdem);
+			// $bloco = $blocoAreaDAO->getById("BlocoArea", $itemBloco->id_bloco);	
+			$itemBlocoDAO->createNextProblem($itemBloco, $id_aluno);
 
 		} else {
 			$situacao->registrarFalha();
+			// Modificar o problema
+			$itemBloco = $itemBlocoDAO->getByAlunoProblema($id_aluno, $id_problema);
+
+			if($situacao->status == 4){
+				$itemBlocoDAO->createNextProblem($itemBloco, $id_aluno);
+			} else {
+				$itemBlocoDAO->substituirProblema($itemBloco);
+			}
 		}
 		$situacaoItemDAO->update($situacao);
-
 		$mensagemSucesso = "Solução submetida com sucesso.";
 	}
 
-	function verificarResposta($resposta, $id_problema){
-		return 1;
+	function verificarResposta($resposta, $gabarito){
+		if (strcasecmp($resposta, $gabarito) == 0){
+			return 1;	
+		} else {
+			return 0;
+		}
 	}
 ?>
 
@@ -89,6 +102,38 @@
           return false;
         }
       }    
+
+    function verificaResposta(){
+      var gabarito = document.formulario.resposta.value;
+      var code = Blockly.JavaScript.workspaceToCode(demoWorkspace);
+      if ((code != "" && code != null) && (gabarito != "" && gabarito != null)){
+
+        document.formulario.respostaAluno.value = code;
+
+            if (code == gabarito) {
+              alert("Acertou Mizeravi");
+
+              document.formulario.correcao.value = 1;
+
+              return true;
+              
+            }else{
+              alert("Erroooooooooou");
+              
+              document.formulario.correcao.value = 0;
+
+              return true;
+              
+            }
+
+      }else{
+
+        alert("Preencha a resposta");
+        return false;
+
+      }
+    }
+
   </script>
 </head>
 <body>

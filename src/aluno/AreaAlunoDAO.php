@@ -79,12 +79,12 @@ class AreaAlunoDAO extends DAO {
 class BlocoAreaDAO extends DAO {
 
 	private $assuntoDAO;
-	private $itemBlocoDAO;
+//	private $itemBlocoDAO;
 
 	public function __construct($pdo) {
         parent::__construct($pdo);
         $this->assuntoDAO = new AssuntoDAO($pdo);
-        $this->itemBlocoDAO = new ItemBlocoDAO($pdo);
+//        $this->itemBlocoDAO = new ItemBlocoDAO($pdo);
     }
 	
    public function getByArea($id_area) {
@@ -112,9 +112,10 @@ class BlocoAreaDAO extends DAO {
    }
 
    public function loadAttributes($obj){
-      $obj->assunto = $this->assuntoDAO->getById("Assunto", 
-      	$obj->id_assunto);
-   	  $obj->itens = $this->itemBlocoDAO->getByBloco($obj->id);	
+	   	if($obj){
+	      $obj->assunto = $this->assuntoDAO->getById("Assunto", 
+	      	$obj->id_assunto);
+	  	}
    }
 
    public function save($bloco, $areaAluno){
@@ -152,9 +153,11 @@ class ItemBlocoDAO extends DAO{
 
 	private $problemaDAO;
 	private $situacaoItemDAO;
+	private $blocoAreaDAO;
 	
 	public function __construct($pdo) {
         parent::__construct($pdo);
+        $this->blocoAreaDAO = new BlocoAreaDAO($pdo);
         $this->problemaDAO = new ProblemaDAO($pdo);
         $this->situacaoItemDAO = new SituacaoItemBlocoDAO($pdo);
     }
@@ -184,18 +187,54 @@ class ItemBlocoDAO extends DAO{
         return $res;
    }
 
-   public function loadAttributes($obj){
-      $obj->problema = $this->problemaDAO->getById("Problema", 
-      	$obj->id_problema);
-      $obj->situacao = $this->situacaoItemDAO->getById("SituacaoItemBloco", 
-      	$obj->id_situacaoitem);
+   public function getByAssuntoOrdem($id_assunto, $ordem) {
+        $stmt = $this->db->prepare("SELECT i.* FROM ItemBloco i, BlocoArea b WHERE i.id_bloco = b.id and b.id_assunto = ? and i.ordem = ?");
+        $stmt->bindValue(1, $id_assunto);
+        $stmt->bindValue(2, $ordem);
+        $stmt->execute();
+        $obj = $stmt->fetchObject("ItemBlocoAluno");
+        $this->loadAttributes($obj);
+        return $obj;
    }
 
-   public function createNextProblem($bloco, $ordem){
-   		$id_bloco = $bloco->id;
-   		$id_assunto = $bloco->assunto->id;
+   public function loadAttributes($obj){
+   	 if (isset($obj)){
+	      $obj->problema = $this->problemaDAO->getById("Problema", 
+	      	$obj->id_problema);
+	      $obj->situacao = $this->situacaoItemDAO->getById("SituacaoItemBloco", 
+	      	$obj->id_situacaoitem);
+	      $obj->bloco = $this->blocoAreaDAO->getById("BlocoArea", $obj->id_bloco);   	 	
+   	 }
+   }
 
+   public function obterNextItemBloco($id_assunto, $ordemAtual){
+		if ($ordemAtual == MAX_ORDEM){
+			$id_assunto++;
+			$proxOrdem = 1;
+		} else {
+			$proxOrdem = $ordemAtual+1;
+		}
+		// return $this->getByAssuntoOrdem($id_assunto, $proxOrdem);
+		return array($id_assunto, $proxOrdem);
+
+   }
+
+   public function createNextProblem($itemBlocoAtual, $id_aluno){
+
+   		$ret = $this->obterNextItemBloco($itemBlocoAtual->problema->assunto->id, $itemBlocoAtual->ordem);
+
+   		$id_assunto = $ret[0];
+   		$ordem = $ret[1];
    		$nivel = obterNivel($ordem);
+
+   		// $id_assunto = $proxItem->problema->assunto->id;
+   		if ($itemBlocoAtual->bloco->assunto->id != $id_assunto){
+   			$bloco = $blocoAreaDAO->getByAlunoAssunto($id_aluno, $id_assunto);
+   			$id_bloco = $bloco->id;
+   		} else {
+   			$id_bloco = $itemBlocoAtual->bloco->id;
+   		}
+   		
    		$problema = $this->problemaDAO->selecionarPorNivel($nivel, $id_assunto, $id_bloco);
    		$id_problema = $problema->id;
 
@@ -218,7 +257,18 @@ class ItemBlocoDAO extends DAO{
    		} else {
    			return false;
    		}
+   }
 
+   public function substituirProblema($itembloco){
+   		$nivel = obterNivel($itembloco->ordem);
+   		$id_assunto = $itembloco->problema->assunto->id;
+   		$problema = $this->problemaDAO->selecionarPorNivel($nivel, $id_assunto, $itembloco->id_bloco);
+   		$id_problema = $problema->id;
+   		$sql = "update ItemBloco set id_problema = ? where id = ?";
+ 		$stmt = $this->db->prepare($sql);
+        $stmt->bindValue(1, $id_problema);		
+        $stmt->bindValue(2, $itembloco->id);
+        $stmt->execute();
    }
 
    public function getByAlunoProblema($id_aluno, $id_problema){
@@ -228,6 +278,7 @@ class ItemBlocoDAO extends DAO{
         $stmt->bindValue(2, $id_aluno);
         $stmt->execute();
         $obj = $stmt->fetchObject('ItemBlocoAluno');
+        $this->loadAttributes($obj);
         $stmt->closeCursor();
         return $obj;
    }
@@ -244,7 +295,7 @@ class SituacaoItemBlocoDAO extends DAO{
 		$stmt->execute();
    }
    public function update($situacao){
-   		$sql = "update SituacaoItemBloco set status = ?, quantidade_tentativas = ?, pontuacao_possivel = ?, pontuacao_obtida = ? where id = ?";
+   		$sql = "update SituacaoItemBloco set status = ?, quantidade_tentativas = ?, pontuacao_possivel = ?, pontuacao_obtida = ?, data_ultima_submissao = CURRENT_TIMESTAMP where id = ?";
 		$stmt = $this->db->prepare($sql);
 		$stmt->bindValue(1, $situacao->status);
 		$stmt->bindValue(2, $situacao->quantidade_tentativas);
@@ -285,13 +336,16 @@ class ProblemaDAO extends DAO {
         $stmt->bindValue(3, $id_bloco);
         $stmt->execute();
         $obj = $stmt->fetchObject('Problema');
+        $this->loadAttributes($obj);
         $stmt->closeCursor();
         return $obj;
    }
 
    public function loadAttributes($obj){
-	$obj->assunto = $this->assuntoDAO->getById("Assunto", 
-      	$obj->id_assunto);
+   	if (isset($obj)){
+		$obj->assunto = $this->assuntoDAO->getById("Assunto", 
+      		$obj->id_assunto);   		
+   	}
    }
 }
 
@@ -305,6 +359,17 @@ class RespostaAlunoDAO extends DAO {
 		$stmt->execute();			   	
    }
 
+}
+
+
+class GabaritoDAO extends DAO {
+	public function getByProblema($id_problema){
+		$stmt = $this->db->prepare("SELECT * FROM Gabarito where id_problema = ?");
+		$stmt->bindValue(1, $id_problema);
+        $stmt->execute();
+        $obj = $stmt->fetchObject("Gabarito");
+        return $obj;	
+	}
 }
 
 class AlunoDAO extends DAO {
