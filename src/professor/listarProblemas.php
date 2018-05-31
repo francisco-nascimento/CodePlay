@@ -1,8 +1,5 @@
 <?php 
-
   require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
-  require ($_SERVER["DOCUMENT_ROOT"].'/imports.php');
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,6 +17,7 @@
       <table cellspacing="0">
       <tr>
          <th>Professor</th>
+         <th>Assunto</th>
          <th>Questões</th>
          <th>Classificação</th>
          <th>Opções</th>
@@ -29,7 +27,7 @@
   require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
 
 
-   $resultado = $conexao->prepare("select proble.id, profe.nome, proble.desc_Problema, proble.classificacao from Professor as profe right join Problema as proble on profe.id = proble.id_Professor where profe.id = ? limit 100");
+   $resultado = $conexao->prepare("select proble.id, proble.assunto, profe.nome, proble.desc_Problema, proble.classificacao from Professor as profe right join Problema as proble on profe.id = proble.id_Professor where profe.id = ? limit 100");
 
    $resultado->bindValue(1, $_SESSION["id"]);
    $resultado->execute();
@@ -40,6 +38,7 @@
 ?>
       <tr>
          <td><?=$linha['nome'];?></td>
+         <td><?=$linha['assunto'];?></td>
          <td><a href=''><?=$linha['desc_Problema'];?></a></td>
          <td><?=$linha['classificacao'];?></td>
 

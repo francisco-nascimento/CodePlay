@@ -78,7 +78,6 @@
   margin: 0 auto;
 }
 .container:before, .container:after {
-  content: "";
   display: block;
   clear: both;
 }

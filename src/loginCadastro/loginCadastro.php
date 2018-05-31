@@ -1,7 +1,4 @@
 <?php
-  if (isset($_SESSION["USUARIO_LOGADO"])) {
-    header("Location: /index.php");
-  }
   include ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
 ?>
 <!DOCTYPE html>
@@ -10,6 +7,7 @@
   <meta charset="UTF-8">
   <title>Code && Play - Login </title>
   <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.ico">
+
   <script type="text/javascript">
 
       
@@ -78,7 +76,6 @@
         
   </script>
   </head>
-
   <body>
     <div class="container">
       <div class="wrap-login100">
@@ -90,15 +87,15 @@
           <span class="login100-form-title">
             Acesse sua conta
           </span>
-
+          <label>Email</label>
           <div class="wrap-input100">
-            <input class="input100" type="text" name="email" required placeholder="Digite sua matricula ou seu Email">
+            <input class="input100" type="text" name="email" required placeholder="Digite seu Email">
             <span class="focus-input100"></span>
             <span class="symbol-input100">
               <i class="fa fa-envelope" aria-hidden="true"></i>
             </span>
           </div>
-
+          <label>Senha</label>
           <div class="wrap-input100">
             <input class="input100" type="password" name="senha" required placeholder="*******">
             <span class="focus-input100"></span>
@@ -107,10 +104,16 @@
             </span>
           </div>
           <div align="center">
-          <label> Professor</label>
-          <input type="radio" name="tipoUsuario" required value="1">
-          <label>Aluno</label>
-          <input type="radio" name="tipoUsuario" value="0">
+	         
+	          <label>
+	          	<input type="radio" name="tipoUsuario" required value="1">
+	          </label>
+	          <span>Professor</span>
+	          &emsp;&emsp;&emsp;
+	          <label>
+	          	<input type="radio" name="tipoUsuario" value="0">
+	          </label>
+	          <span>Aluno</span>
           </div>
           <div class="container-login100-form-btn">
             <button type="submit" class="login100-form-btn">
@@ -137,6 +140,7 @@
               Crie uma conta
             </span>
 
+            <label>Mátricula</label>
             <div class="wrap-input100">
               <input onkeyup="limitarMatricula(this)" class="input100" type="text" required placeholder="Digite sua mátricula" minlength="7" maxlength="8" name="matricula" id="matricula">
               <span class="focus-input100"></span>
@@ -145,6 +149,7 @@
               </span>
             </div>
 
+            <label>Nome</label>
             <div class="wrap-input100">
               <input class="input100" type="text" required placeholder="Digite seu nome" name="nome">
               <span class="focus-input100"></span>
@@ -152,7 +157,7 @@
                 <i class="fa fa-address-card-o" aria-hidden="true"></i>
               </span>
             </div>
-            
+            <label>Senha</label>
             <div class="wrap-input100">
               <input class="input100" type="password" name="senha" required placeholder="Digite sua senha">
               <span class="focus-input100"></span>
@@ -162,6 +167,7 @@
             </div>
 
 
+            <label>Confirmar Senha</label>
             <div class="wrap-input100">
               <input class="input100" type="password" required id="confirmaSenha" placeholder="Confirmar senha">
               <span class="focus-input100"></span>
@@ -169,7 +175,7 @@
                 <i class="fa fa-lock" aria-hidden="true"></i>
               </span>
             </div>
-
+            <label>Email</label>
             <div class="wrap-input100 validate-input" data-validate="exemplo@exemplo.com">
               <input class="input100" type="email" required id="email" placeholder="Digite seu e-mail" name="email">
               <span class="focus-input100"></span>
