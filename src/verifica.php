@@ -5,7 +5,6 @@
 	 include 'conexao.php';
 
 	 if (!isset($_SESSION['USUARIO_LOGADO'])) {
-		# code...
 		require ($_SERVER["DOCUMENT_ROOT"].'/navegacao.php');
 		
 	}else{
