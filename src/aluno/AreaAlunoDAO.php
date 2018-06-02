@@ -374,7 +374,15 @@ class GabaritoDAO extends DAO {
 
 class AlunoDAO extends DAO {
 
-	function pesquisarAlunos($nome, $turma){
+  public function update($id_aluno, $pontuacao){
+    $sql = "update Aluno set pontuacao = ? where id = ?";
+    $stmt = $this->db->prepare($sql);
+    $stmt->bindValue(1, $pontuacao);
+    $stmt->bindValue(2, $id_aluno);
+    $stmt->execute();         
+  }
+
+	public function pesquisarAlunos($nome, $turma){
 		if (!isset($nome) && !isset($turma)){
 		  return null;
 		}

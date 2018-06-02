@@ -10,6 +10,7 @@
 	$itemBlocoDAO = new ItemBlocoDAO($conexao);
 	$blocoAreaDAO = new BlocoAreaDAO($conexao);
 	$gabaritoDAO = new GabaritoDAO($conexao);
+	$alunoDAO = new AlunoDAO($conexao);
 
 	$id_problema = $_GET["id"];
 	$problema = $problemaDAO->getById("Problema", $id_problema);
@@ -29,12 +30,16 @@
 
 		$gabarito = $gabaritoDAO->getByProblema($id_problema);
 
-		if (verificarResposta($resposta_js, $gabarito->desc_gabarito)){
+		if (verificarResposta($resposta_js, $gabarito->desc_Gabarito)){
 			$situacao->registrarSucesso();
 
 			$itemBloco = $itemBlocoDAO->getByAlunoProblema($id_aluno, $id_problema);
-			// $bloco = $blocoAreaDAO->getById("BlocoArea", $itemBloco->id_bloco);	
+
+			$nova_pontuacao = $aluno->pontuacao + $itemBloco->pontuacao_possivel;
+			$alunoDAO->update($id_aluno, $nova_pontuacao);
+
 			$itemBlocoDAO->createNextProblem($itemBloco, $id_aluno);
+
 
 		} else {
 			$situacao->registrarFalha();
@@ -52,6 +57,8 @@
 	}
 
 	function verificarResposta($resposta, $gabarito){
+		// TODO: case 1: variaveis criadas em ordem diferente
+
 		if (strcasecmp($resposta, $gabarito) == 0){
 			return 1;	
 		} else {

@@ -187,6 +187,6 @@ class RespostaAluno extends Entity{
 
 class Gabarito extends Entity {
 	public $problema;
-	public $desc_gabarito;
+	public $desc_Gabarito;
 }
 ?>
