@@ -47,6 +47,7 @@ function salvarDadosAlunos($con, $filename, $nome_turma, $id_professor){
    $id_turma = criarTurma($con, $nome_turma, $id_professor);
 
    $dao = new AreaAlunoDAO($con);
+   $alunoDAO = new AlunoDAO($con);
 
    $file = fopen($filename['tmp_name'], "r");
    while(($linha = fgetcsv($file)) != FALSE){
@@ -62,22 +63,13 @@ function salvarDadosAlunos($con, $filename, $nome_turma, $id_professor){
       $email = $array[2];
       $situacao = '0';
 
-      $sql = "insert into Aluno(matricula, nome, email, senha, situacao, id_turma) values(?,?,?,?,?,?)";
+      $alunoDAO->save($matricula, $nome, $email, $senhaCriptografada, $situacao, $id_turma, $_SESSION['id']);
 
-      $stmt = $con->prepare($sql);
-      $stmt->bindValue(1, $matricula);
-      $stmt->bindValue(2, $nome);
-      $stmt->bindValue(3, $email);
-      $stmt->bindValue(4, $senhaCriptografada);
-      $stmt->bindValue(5, $situacao);
-      $stmt->bindValue(6, $id_turma);
-
-      $stmt->execute();
-
-      $id_aluno = getLastIdAluno($con);
+      $id_aluno = $alunoDAO->getLastId("Aluno");
       // Gerar objeto AreaAluno
       $areaAluno = new AreaAluno();
-      $aluno = new Aluno($id_aluno);
+      $aluno = new Aluno();
+      $aluno->id = $id_aluno;
       // $aluno->id = ;
       $areaAluno->aluno = $aluno;
 

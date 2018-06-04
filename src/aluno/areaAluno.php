@@ -43,9 +43,9 @@ class Aluno extends Entity {
 	public $email;
 	public $pontuacao;
 	public $matricula;
-	public function Aluno($id){
-		$this->id = $id;
-	}
+	// public function Aluno($id){
+	// 	$this->id = $id;
+	// }
 }
 
 class Problema extends Entity {
@@ -53,6 +53,11 @@ class Problema extends Entity {
 	public $professor;
 	public $assunto;
 	public $classificacao;
+	public $id_assunto;
+
+	public function __constructor(){
+		$this->assunto = new Assunto();
+	}
 }
 
 class Assunto extends Entity {
@@ -136,6 +141,7 @@ class SituacaoItemBloco{
 	public $pontuacao_possivel; // int pontuacaoPossivel;
 	public $pontuacao_obtida; // int pontuacaoObtida;
 	public $dataUltimaSubmissao; // Date dataUltimaSubmissao;
+	public $feedback;
 
 	public function definirPontuacao($ordem){
 		switch ($ordem) {
@@ -176,17 +182,24 @@ class RespostaAluno extends Entity{
 	public $desc_resposta;
 	public $aluno;
 	public $problema;
-	public $tipo_situacao;
+	public $id_situacaoitem;
+	public $situacao;
 
-	public function RespostaAluno($descricao, $aluno, $problema){
+	public function set($descricao, $aluno, $problema, $id_situacaoitem){
 		$this->desc_resposta = $descricao;
 		$this->aluno = $aluno;
 		$this->problema = $problema;
+		$this->id_situacaoitem = $id_situacaoitem;
 	}
 }
 
 class Gabarito extends Entity {
 	public $problema;
 	public $desc_Gabarito;
+}
+
+class Turma extends Entity {
+	public $id;
+	public $desc_Turma;
 }
 ?>

@@ -23,24 +23,6 @@
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-	<script type="text/javascript">
-		// $(document).ready(function(){
-		// 	for (i = 0; i <= <?=$qtdProblemas?>; i++){
-		// 		var id_img = "#problema" + i;
-  //   			$(id_img).click(function(){
-  //       			var btnValue = $(this).val();
-  //       			alert(btnValue);
-  //   			});
-  //   		}
-  //   	});
-   //  	$(document).ready(function(){
-			// $(".btn-problema").click(function(){
-			// 	alert($(this).val());
-			// 	// var id = $(this).attr("id");
-   //  // 			alert($('#' + id).val());
-			// });
-   //  	});
-</script>
 </head>
 	<body>
 		<br>
@@ -68,7 +50,7 @@
 		            <td align="middle" valign="center">
 		            	<?php 
 		            		$itensBloco = $itemBlocoDAO->getByBloco($bloco->id);
-		            		for ($i = 1; $i <= 6; $i++){
+		            		for ($i = 1; $i <= MAX_ORDEM; $i++){
 		            		// foreach ($itensBloco as $item) {
 
 		            			$item = $itensBloco[$i-1];

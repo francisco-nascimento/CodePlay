@@ -1,8 +1,8 @@
 <?php 
   require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
   require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
- // require ($_SERVER["DOCUMENT_ROOT"].'/professor/carregarDadosAlunos.php');
-  require ($_SERVER["DOCUMENT_ROOT"].'/professor/selecionar_problemas.php');
+  require ($_SERVER["DOCUMENT_ROOT"].'/professor/carregarDadosAlunos.php');
+  // require ($_SERVER["DOCUMENT_ROOT"].'/professor/selecionar_problemas.php');
 
   $IMG_PATH = $_SERVER["DOCUMENT_ROOT"] . "/img/";
   $id_professor = $_SESSION["id"];
@@ -14,9 +14,9 @@
      $id_turma = salvarDadosAlunos($conexao, $file_alunos, $nome_turma, $id_professor);   
   }
 
-  if(isset($_POST['id_turma'])){
-     gerarProblemasTurma($conexao, $_POST['id_turma']);
-  }
+  // if(isset($_POST['id_turma'])){
+  //    gerarProblemasTurma($conexao, $_POST['id_turma']);
+  // }
 
   function exibirSituacao($situacao){
   	switch ($situacao) {
@@ -128,9 +128,9 @@
 		       			<?php 
 		       				if (isset($id_turma)){
 		       					?>
-		       					<form method="POST">
+		       					<form method="POST" action="gerar_atividades_aluno.php">
 		       						<input type="hidden" value="<?=$id_turma?>" name="id_turma">
-		       						<button type="submit" id="btn-start" class="bt-ok">Start turma</button>
+		       						<button type="submit" id="btn-start" class="bt-ok">Iniciar atividades</button>
 		       					</form>
 		       			<?php
 		       				}

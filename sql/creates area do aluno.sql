@@ -23,10 +23,14 @@ create table SituacaoItemBloco (
  quantidade_tentativas int default 0,
  pontuacao_possivel int default 0,
  pontuacao_obtida int default 0,
+ feedback text(1000),
  data_ultima_submissao timestamp NULL,
  data_Alteracao timestamp default current_timestamp,
  primary key (id)
 );
+
+-- alter table SituacaoItemBloco add column feedback text(1000);
+
 
 create table ItemBloco (
  id int AUTO_INCREMENT,

@@ -19,14 +19,16 @@
 	$mensagemSucesso = '';
 	if(isset($_POST['btn-submit'])){
 		$respostaAlunoDAO = new RespostaAlunoDAO($conexao);
-		$aluno = new Aluno($id_aluno);
-
-		$resposta_js = $_POST['resposta'];
-		$respostaAluno = new RespostaAluno($resposta_js, $aluno, $problema);
-		$respostaAlunoDAO->save($respostaAluno);
+		$aluno = new Aluno();
+		$aluno->id = $id_aluno;
 
 		$situacaoItemDAO = new SituacaoItemBlocoDAO($conexao);
 		$situacao = $situacaoItemDAO->getByAlunoProblema($id_aluno, $id_problema);
+
+		$resposta_js = $_POST['resposta'];
+		$respostaAluno = new RespostaAluno();
+		$respostaAluno->set($resposta_js, $aluno, $problema, $situacao->id);
+		$respostaAlunoDAO->save($respostaAluno);
 
 		$gabarito = $gabaritoDAO->getByProblema($id_problema);
 
@@ -35,19 +37,27 @@
 
 			$itemBloco = $itemBlocoDAO->getByAlunoProblema($id_aluno, $id_problema);
 
+			$aluno = $alunoDAO->getById("Aluno", $id_aluno);
+
 			$nova_pontuacao = $aluno->pontuacao + $itemBloco->pontuacao_possivel;
+
 			$alunoDAO->update($id_aluno, $nova_pontuacao);
 
-			$itemBlocoDAO->createNextProblem($itemBloco, $id_aluno);
+			$id_assunto = $itemBloco->bloco->assunto->id;
+			$ordem = $itemBloco->ordem;
 
+			$itemBlocoDAO->createNextProblem($id_aluno, $id_assunto, $ordem);
 
 		} else {
 			$situacao->registrarFalha();
 			// Modificar o problema
 			$itemBloco = $itemBlocoDAO->getByAlunoProblema($id_aluno, $id_problema);
 
+			$id_assunto = $itemBloco->bloco->assunto->id;
+			$ordem = $itemBloco->ordem;
+
 			if($situacao->status == 4){
-				$itemBlocoDAO->createNextProblem($itemBloco, $id_aluno);
+				$itemBlocoDAO->createNextProblem($id_aluno, $id_assunto, $ordem);
 			} else {
 				$itemBlocoDAO->substituirProblema($itemBloco);
 			}
@@ -103,7 +113,6 @@
         alert(code);
         if (code != "" && code != null) {
         	document.formulario.resposta.value = code;
-        	document.formBanco.resposta.value = code;
         }else{
           window.alert("Preencha a resposta do Problema!");
           return false;

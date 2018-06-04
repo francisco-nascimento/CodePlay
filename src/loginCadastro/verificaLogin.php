@@ -65,7 +65,7 @@
 				
 				$_SESSION["situacao"] = $linha["situacao"];
 
-				$sql1 = "select a.id, at.id_turma from Aluno as a left join Aluno_Turma as at on a.id = at.id_aluno where at.id_aluno = ?;";
+				$sql1 = "select * from Aluno where id = ?";
 
 				$stmt1 = $conexao->prepare($sql1);
 				$stmt1->bindValue(1, $_SESSION["id"]);

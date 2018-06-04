@@ -27,7 +27,7 @@
   require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
 
 
-   $resultado = $conexao->prepare("select proble.id, proble.assunto, profe.nome, proble.desc_Problema, proble.classificacao from Professor as profe right join Problema as proble on profe.id = proble.id_Professor where profe.id = ? limit 100");
+   $resultado = $conexao->prepare("select proble.id, proble.id_assunto, profe.nome, proble.desc_Problema, proble.classificacao from Professor as profe right join Problema as proble on profe.id = proble.id_Professor where profe.id = ? limit 100");
 
    $resultado->bindValue(1, $_SESSION["id"]);
    $resultado->execute();

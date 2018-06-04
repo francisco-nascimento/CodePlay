@@ -10,12 +10,11 @@
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Cadastro
+            Alunos
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="/professor/listarAlunos.php"> Pesquisar Alunos</a>
             <a class="dropdown-item" href="/professor/importarAlunos.php">Importar alunos</a>
-            <a class="dropdown-item" href="/professor/cadastrarProblema.php">Cadastrar Problemas</a>
+            <a class="dropdown-item" href="/professor/listarAlunos.php"> Pesquisar Alunos</a>
             <a class="dropdown-item" href="/professor/listarPorRanking.php">Ranking</a>
           </div>
         </li>
@@ -26,9 +25,9 @@
             Atividades
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            
-            <a class="dropdown-item" href="/professor/listarProblemas.php">Listar Problemas Cadastrados</a>
-            <a class="dropdown-item" href="/professor/listarAtividades.php">Listar Atividades</a>
+            <a class="dropdown-item" href="/professor/cadastrarProblema.php">Cadastrar Problemas</a>            
+            <a class="dropdown-item" href="/professor/listarProblemas.php">Listar Problemas</a>
+            <a class="dropdown-item" href="/professor/acompanhar_submissoes.php">Acompanhar submissões</a>
           </div>
         </li>
       </ul>

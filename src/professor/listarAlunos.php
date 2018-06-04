@@ -4,7 +4,7 @@
   require ($_SERVER["DOCUMENT_ROOT"].'/professor/carregarDadosAlunos.php');
   $IMG_PATH = $_SERVER["DOCUMENT_ROOT"] . "/img/";
 
-  function exibirSituacao($situacao){
+  function exibirSituacaoLogin($situacao){
   	switch ($situacao) {
   		case '1':
   			return "Ativo";
@@ -17,38 +17,21 @@
   	}
   }
 
- //  function pesquisarAlunos($con, $nome, $turma){
- //  	if (!isset($nome) && !isset($turma)){
- //  		return null;
- //  	}
- //  	$sql = "SELECT * FROM Aluno where ";
- //    $param = '';
- //  	if (strcasecmp($turma,"-1") != 0){
- //  		$sql .= " id_turma = ? ";
- //  		$param = $turma;
- //  	} else {
- //  		$sql .= " upper(nome) like ? ";
- //  		$param = "%".strtoupper($nome) . "%";
- //  	}
- //  	$stmt = $con->prepare($sql);
-	// $stmt->bindValue(1, $param);
-	// $stmt->execute();
-	// return $stmt->fetchAll();
- //  }
-
   function gerarSelectTurmas($con){
-  	$sql = "SELECT t.id, t.desc_Turma, p.nome FROM Turma t, Professor p " .
-    "where t.id_professor = p.id order by t.desc_Turma";
-	$stmt = $con->prepare($sql);
-	$stmt->execute();
-	$html_select = "<SELECT name ='pesq-turma' id='pesq-turma' readonly=true>";
-	$html_select .= "<option value='-1'>Selecione uma turma</option>";
-	while($linha = $stmt->fetch(PDO::FETCH_ASSOC)){
-		$html_select .= "<option value='$linha[id]'>$linha[desc_Turma] ($linha[nome])</option>";
-	}
-	$html_select .= "</select>";
-	return $html_select;
+    $turmaDAO = new TurmaDAO($con);
+    $turmas = $turmaDAO->listAll();
+    $html_select = "<SELECT name ='pesq-turma' id='pesq-turma' readonly=true>";
+    $html_select .= "<option value='-1'>Selecione uma turma</option>";
+    foreach($turmas as $turma){
+      $idTurma = $turma->id;
+      $nomeTurma = $turma->desc_Turma;
+      $nomeProfessor = $turma->nome;
+      $html_select .= "<option value='$idTurma'>$nomeTurma ($nomeProfessor)</option>";
+    }
+    $html_select .= "</select>";
+    return $html_select;
   }
+
 ?>
 <!DOCTYPE html>
 <html lang="pt" >
@@ -64,20 +47,18 @@
         		var clickBtnValue = $(this).val();
         		var url = 'deletarAluno.php';
         		data =  {'idAluno': clickBtnValue};
-        		$.get(url, data, function (response) {
-            		// Response div goes here.
-            		alert("Aluno removido!");
-            		location.reload();
-        		});
+            var conf = confirm('Confirma a exclusão do aluno?');
+            if (conf){
+          		$.get(url, data, function (response) {
+              		location.reload();
+          		});
+            }
     		});
     		$('button#btn-editar').click(function(){
         		var clickBtnValue = $(this).val();
         		var url = 'alterarAluno.php';
         		data =  {'idAluno': clickBtnValue};
         		$.get(url, data);
-        		// var url = 'alterarAluno.php?idAluno=' + clickBtnValue;
-        		// $
-        		// window.open(url);
     		});
     		$('#opt-pesq1').change(function(){
     			if (this.checked){
@@ -118,7 +99,10 @@
         			return false;
         		}
         		this.submit();
-    		});    		
+    		});
+        $("#check-all").click(function () {
+          $(".check-class").prop('checked', $(this).prop('checked'));
+        });
 		});
 	</script>
 	</head>
@@ -159,13 +143,16 @@
 			$resultado = $alunoDAO->pesquisarAlunos($_POST["pesq-nome"], $_POST["pesq-turma"]);
 		?>
   		<div class="table-users">
+          <form action="gerar_atividades_aluno.php" method="POST">
 	      	<table cellspacing="0">
-	      		<tr><td colspan="5">Resultado da pesquisa de alunos: </td></tr>
+	      		<tr><td colspan="7">Resultado da pesquisa de alunos: </td></tr>
 	      		<tr>
+              <th><input type="checkbox" id="check-all" class="checkAll-class"></th>
 		         	<th>Nome</th>
 		         	<th>Matrícula</th>
-		         	<th>Pontuação</th>
               <th>Situação</th>
+		         	<th>Pontuação</th>
+              <th>Atividades</th>
 		         	<th>Editar dados</th>
 	      		</tr>
 				<?php
@@ -173,15 +160,27 @@
 					foreach($resultado as $aluno){ 
 				?>
 	      		<tr>
+              <td>
+                <?php 
+                  if ($aluno->nivel == 0){ 
+                ?>
+                  <input type="checkbox" name="alunos[]" class="check-class" id="selecao" value="<?=$aluno->id?>">
+                  <?
+                  } else {
+                    echo "&nbsp;";
+                  }
+                ?>
+              </td>
 	         		<td><?=$aluno->nome;?></td>
 	         		<td><?=$aluno->matricula?></td>
+	         		<td><?=exibirSituacaoLogin($aluno->situacao)?></td>
               <td><?=$aluno->pontuacao?></td>
-	         		<td><?=exibirSituacao($aluno->situacao)?></td>
+              <td><?=$aluno->nivel?></td>
 	         		<td>
-	         			<button id="btn-editar" value="<?=$linha['id']?>">
+	         			<button id="btn-editar" value="<?=$aluno->id?>">
 	         			<img src="../img/icone-editar.png" class="icone">
 	         			</button>
-	           			<button id="btn-remover" value="<?=$linha['id']?>">
+	           			<button id="btn-remover" value="<?=$aluno->id?>">
 	         				<img src="../img/icone-remover.png" class="icone">
 	         			</button>
 	       			</td>
@@ -189,7 +188,9 @@
 		    	<?php 
 			        }
 		       	?>  
+          <tr><td colspan="7">Iniciar atividades para os alunos selecionados: <button type="submit" class="bt-ok" name="btn-iniciar" id="btn-iniciar">Iniciar</button></td></tr>            
 			</table>
+    </form>
 		</div>
     	<?php 
 	        }

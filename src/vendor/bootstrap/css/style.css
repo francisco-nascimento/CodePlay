@@ -21,6 +21,15 @@ img {
   width: 60px;
 }
 
+pre.code {
+  border: 2px solid navy;
+  border-radius: 5px;
+  text-align: left;
+  font-family: "Courier new";
+  background-color: #EFEFEF;
+  padding: 1rem;
+}
+
 .icone {
   height: 30px;
   width: 30px;

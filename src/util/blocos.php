@@ -6,7 +6,7 @@
         <input type="submit" name="inserir resposta" value="INserir no banco">
 </form> -->
 
-<div id="blocklyDiv" style="height: 500px; width: 800px;"></div>
+<div id="blocklyDiv" style="height: 400px; width: 750px;"></div>
 
   <xml id="toolbox" style="display: none">
     <category name="Logicos" colour="%{BKY_LOGIC_HUE}">
