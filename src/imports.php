@@ -65,6 +65,7 @@
     $paginas[$i++] = '/professor/listarPorRanking.php';
     $paginas[$i++] = '/professor/acompanhar_submissoes.php';
     $paginas[$i++] = '/professor/analisar_respostas.php';
+    $paginas[$i++] = '/professor/gerar_atividades_aluno.php';
 
 
     $cond_incluir_link = FALSE;

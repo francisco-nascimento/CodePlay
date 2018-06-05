@@ -232,7 +232,6 @@ class ItemBlocoDAO extends DAO{
    		$bloco = $this->blocoAreaDAO->getByAlunoAssunto($id_aluno, $id_assunto);
    		$id_bloco = $bloco->id;
    		
-      echo "selecionarPorNivel($nivel, $id_assunto, $id_bloco) <br>";
    		$problema = $this->problemaDAO->selecionarPorNivel($nivel, $id_assunto, $id_bloco);
    		$id_problema = $problema->id;
 
@@ -298,14 +297,13 @@ class SituacaoItemBlocoDAO extends DAO{
 		$stmt->execute();
    }
    public function update($situacao){
-   		$sql = "update SituacaoItemBloco set status = ?, quantidade_tentativas = ?, pontuacao_possivel = ?, pontuacao_obtida = ?, feedback = ?, data_ultima_submissao = CURRENT_TIMESTAMP where id = ?";
+   		$sql = "update SituacaoItemBloco set status = ?, quantidade_tentativas = ?, pontuacao_possivel = ?, pontuacao_obtida = ?, data_ultima_submissao = CURRENT_TIMESTAMP where id = ?";
 		$stmt = $this->db->prepare($sql);
 		$stmt->bindValue(1, $situacao->status);
 		$stmt->bindValue(2, $situacao->quantidade_tentativas);
 		$stmt->bindValue(3, $situacao->pontuacao_possivel);
 		$stmt->bindValue(4, $situacao->pontuacao_obtida);
-    $stmt->bindValue(5, $situacao->feedback);
-		$stmt->bindValue(6, $situacao->id);
+		$stmt->bindValue(5, $situacao->id);
 		$stmt->execute();			   	
    }
 
@@ -359,10 +357,6 @@ class ProblemaDAO extends DAO {
 
    public function loadAttributes($obj){
    	if (isset($obj)){
-      // var_dump($obj);
-      // var_dump($obj->assunto);
-      // var_dump($obj->id_assunto);
-      // var_dump($this->assuntoDAO);
 		  $obj->assunto = $this->assuntoDAO->getById("Assunto", 
       		$obj->id_assunto);   		
    	}
@@ -383,17 +377,27 @@ class RespostaAlunoDAO extends DAO {
   }
 
   public function save($resposta){
-   	$sql = "insert into Resposta_Aluno (desc_resposta, id_aluno, id_problema, id_situacaoitem) values (?,?,?,?)";
+   	$sql = "insert into RespostaAluno (desc_resposta, id_aluno, id_problema, id_situacaoitem, pontuacao_possivel) values (?,?,?,?,?)";
 		$stmt = $this->db->prepare($sql);
 		$stmt->bindValue(1, $resposta->desc_resposta);
 		$stmt->bindValue(2, $resposta->aluno->id);
 		$stmt->bindValue(3, $resposta->problema->id);
     $stmt->bindValue(4, $resposta->id_situacaoitem);
+    $stmt->bindValue(5, $resposta->pontuacao_possivel);
 		$stmt->execute();			   	
   }
 
+  public function update($resposta){
+    $sql = "update RespostaAluno set feedback = ?, resposta_correta = ? where id = ?";
+    $stmt = $this->db->prepare($sql);
+    $stmt->bindValue(1, $resposta->feedback);
+    $stmt->bindValue(2, $resposta->resposta_correta);
+    $stmt->bindValue(3, $resposta->id);
+    $stmt->execute();         
+  }
+
    public function getByAlunoProblema($id_aluno, $id_problema){
-      $sql = "SELECT * FROM Resposta_Aluno where id_aluno = ? and id_problema = ?";
+      $sql = "SELECT * FROM RespostaAluno where id_aluno = ? and id_problema = ?";
       $stmt = $this->db->prepare($sql);
       $stmt->bindValue(1, $id_aluno);
       $stmt->bindValue(2, $id_problema);
@@ -404,7 +408,7 @@ class RespostaAlunoDAO extends DAO {
    }
 
    public function getBySituacaoItem($id_situacaoitem){
-      $sql = "SELECT * FROM Resposta_Aluno where id_situacaoitem = ? order by data_Alteracao";
+      $sql = "SELECT * FROM RespostaAluno where id_situacaoitem = ? order by data_Alteracao";
       $stmt = $this->db->prepare($sql);
       $stmt->bindValue(1, $id_situacaoitem);
       $stmt->execute();

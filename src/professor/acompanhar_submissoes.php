@@ -65,31 +65,39 @@
   }
 
   if (isset($_POST['btn-salvar-feedback'])){
-  	$id_situacao = $_POST['id_situacao'];
+  	$id_resposta = $_POST['id_resposta'];
   	$avaliacao = $_POST['avaliacao'];
-  	$id_aluno = $_POST['id_aluno'];
+  	
 
-  	$situacao = $situacaoItemDAO->getById("SituacaoItemBloco", $id_sit);
-  	$situacao->feedback = $_POST['feedback'];
+  	$resposta = $respostaAlunoDAO->getById("RespostaAluno", $id_resposta);
+  	$situacao = $resposta->situacao;
+  	$aluno = $resposta->aluno;
+  	$id_aluno = $aluno->id;
 
   	// status atual ERRO
-  	if ($situacao->status == 3 && $avaliacao == 1){
- 		$situacao->status = 2;
-		$situacao->pontuacao_obtida = $situacao->pontuacao_possivel;
-	  	$aluno = $alunoDAO->getById("Aluno", $id_aluno);
-	  	$resposta = $respostaAlunoDAO->getBySituacaoItem($id_situacao);
+  	if ($situacao->status == 5 || $situacao->status == 3) {
+  		if ($avaliacao == 1){
+	 		$situacao->registrarAvaliacao(true);
+	 		$resposta->resposta_correta = 1;
 
-		$itemBloco = $itemBlocoDAO->getByAlunoProblema($id_aluno, $resposta->problema->id);
+			$itemBloco = $itemBlocoDAO->getByAlunoProblema($id_aluno, $resposta->problema->id);
 
-		$nova_pontuacao = $aluno->pontuacao + $itemBloco->pontuacao_possivel;
+			$nova_pontuacao = $aluno->pontuacao + $resposta->pontuacao_possivel;
 
-		$alunoDAO->update($id_aluno, $nova_pontuacao);
+			$alunoDAO->update($aluno->id, $nova_pontuacao);
 
-		$id_assunto = $itemBloco->bloco->assunto->id;
-		$ordem = $itemBloco->ordem;
+			$id_assunto = $itemBloco->bloco->assunto->id;
+			$ordem = $itemBloco->ordem;
 
-		$itemBlocoDAO->createNextProblem($id_aluno, $id_assunto, $ordem);
+			$itemBlocoDAO->createNextProblem($aluno->id, $id_assunto, $ordem);
+		} else {
+			$resposta->resposta_correta = -1;
+	 		$situacao->registrarAvaliacao(false);			
+		}
   	}
+  	$resposta->feedback = $_POST['feedback'];
+  	var_dump($resposta);
+  	$respostaAlunoDAO->update($resposta);
   	$situacaoItemDAO->update($situacao);
 
   }

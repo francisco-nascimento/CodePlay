@@ -9,7 +9,7 @@
 	// $stmt->bindValue(1, $aluno);
 	// $stmt->execute();
 
-	$sql = "DELETE FROM Resposta_Aluno WHERE id_Aluno = ?";
+	$sql = "DELETE FROM RespostaAluno WHERE id_Aluno = ?";
 	$stmt = $conexao->prepare($sql);
 	$stmt->bindValue(1, $aluno);
 	$stmt->execute();

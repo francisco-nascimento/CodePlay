@@ -136,12 +136,11 @@ class ItemBlocoAluno extends Entity {
 
 class SituacaoItemBloco{
 
-	public $status; // int status: // 0 - Inativo, 1 - Habilitado, 2 - ResolvidoSucesso, 3 - ResolvidoErro
+	public $status; // 0 - Inativo, 1 - Habilitado, 2 - ResolvidoSucesso, 3 - ResolvidoErro, 4 - Cancelado, 5 - Para analise
 	public $quantidade_tentativas; // int quantidadeTentativas;
 	public $pontuacao_possivel; // int pontuacaoPossivel;
 	public $pontuacao_obtida; // int pontuacaoObtida;
 	public $dataUltimaSubmissao; // Date dataUltimaSubmissao;
-	public $feedback;
 
 	public function definirPontuacao($ordem){
 		switch ($ordem) {
@@ -167,7 +166,7 @@ class SituacaoItemBloco{
 		$this->pontuacao_obtida = $this->pontuacao_possivel;
 	}
 	public function registrarFalha(){
-		$this->status = 3;
+		$this->status = 5; // em analise
 		$this->quantidade_tentativas++;
 		if ($this->pontuacao_possivel > 0) {
 			$this->pontuacao_possivel -= PENALIZACAO_ERRO;
@@ -176,6 +175,15 @@ class SituacaoItemBloco{
 			$this->status = 4;
 		}
 	}
+	public function registrarAvaliacao($correto){
+		if ($correto === true){
+			$this->status = 2;
+			$this->pontuacao_obtida = $this->pontuacao_possivel;
+		} else {
+			$this->status = 3;
+		}
+	}
+
 }
 
 class RespostaAluno extends Entity{
@@ -184,12 +192,17 @@ class RespostaAluno extends Entity{
 	public $problema;
 	public $id_situacaoitem;
 	public $situacao;
+	public $feedback;
+	public $pontuacao_possivel;
+	public $resposta_correta;
 
-	public function set($descricao, $aluno, $problema, $id_situacaoitem){
+	public function set($descricao, $aluno, $problema, $id_situacaoitem, $pontuacao_possivel, $correta){
 		$this->desc_resposta = $descricao;
 		$this->aluno = $aluno;
 		$this->problema = $problema;
 		$this->id_situacaoitem = $id_situacaoitem;
+		$this->pontuacao_possivel = $pontuacao_possivel;
+		$this->resposta_correta = $correta;
 	}
 }
 

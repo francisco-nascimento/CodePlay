@@ -96,7 +96,6 @@ create table SituacaoItemBloco (
  quantidade_tentativas int default 0,
  pontuacao_possivel int default 0,
  pontuacao_obtida int default 0,
- feedback text(1000),
  data_ultima_submissao timestamp NULL,
  data_Alteracao timestamp default current_timestamp,
  primary key (id)
@@ -118,12 +117,15 @@ create table ItemBloco (
 );
 
 
-create table Resposta_Aluno (
+create table RespostaAluno (
 id int AUTO_INCREMENT,
 desc_resposta text(10000),
 id_Aluno int,
 id_Problema int,
 id_situacaoitem int,
+pontuacao_possivel int,
+feedback text(1000),
+resposta_correta tinyint(1) default 0,
 data_Alteracao timestamp default current_timestamp,
 primary key (id),
 foreign key (id_Aluno) references Aluno (id),

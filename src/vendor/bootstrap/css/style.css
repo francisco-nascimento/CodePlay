@@ -21,43 +21,6 @@ img {
   width: 60px;
 }
 
-pre.code {
-  border: 2px solid navy;
-  border-radius: 5px;
-  text-align: left;
-  font-family: "Courier new";
-  background-color: #EFEFEF;
-  padding: 1rem;
-}
-
-.icone {
-  height: 30px;
-  width: 30px;
-}
-.icone2 {
-  height: 80px;
-  width: 80px;
-}
-
-.icone2 .hint {
-    visibility: hidden;
-    width: 70px;
-    background-color: #327a81;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 2px 0;
-
-    /* Position the tooltip */
-    position: absolute;
-    z-index: 1;    
-}
-.icone2:hover .hint {
-    visibility: visible;
-}
-.icone2:hover:after .hint {
-    content: "500";
-}
 .table-users {
   border: 1px solid #327a81;
   border-radius: 10px;
@@ -231,4 +194,58 @@ table tr:nth-child(2n+1) {
   padding: 0.5rem;
   text-transform: uppercase;
   font-weight: bold;
+}
+.title3 {
+  color: black;
+  font-size: 1em;
+  padding: 0.5rem;
+  font-weight: bold;
+}
+
+pre.code-resp {
+  border: 2px solid red;
+  border-radius: 5px;
+  text-align: left;
+  font-family: "Courier new";
+  background-color: #EFEFEF;
+  padding: 1rem;
+}
+
+pre.code-gab {
+  border: 2px solid navy;
+  border-radius: 5px;
+  text-align: left;
+  font-family: "Courier new";
+  background-color: #EDEDED;
+  padding: 1rem;
+  font-weight: bolder;
+}
+
+.icone {
+  height: 30px;
+  width: 30px;
+}
+.icone2 {
+  height: 80px;
+  width: 80px;
+}
+
+.icone2 .hint {
+    visibility: hidden;
+    width: 70px;
+    background-color: #327a81;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 2px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;    
+}
+.icone2:hover .hint {
+    visibility: visible;
+}
+.icone2:hover:after .hint {
+    content: "500";
 }

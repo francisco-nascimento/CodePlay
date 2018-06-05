@@ -44,63 +44,63 @@
 
 			$respostas = $respostaDAO->getBySituacaoItem($id_situacao);
 			$id_aluno = $respostas[0]->aluno->id;
+			$problema = $respostas[0]->problema;
+        	$gabarito = $gabaritoDAO->getByProblema($problema->id);
+
 		?>
 		<div class="table-users">
 			<div class="title2">
-				Aluno: <?=$respostas[0]->aluno->nome?><br/>
-				Assunto: <?=$respostas[0]->problema->assunto->descricao?><br/>
+				Aluno: <?=$respostas[0]->aluno->nome?><br/>					Assunto: <?=$problema->assunto->descricao?>
+			</div>
+			<div class="title3">
+				Problema: <?=$problema->desc_Problema?> <br/>
+				<pre class="code-gab"><?=$gabarito->desc_Gabarito?></pre>
 			</div>
   			<div class="table-users">
 	      	<table cellspacing="0">
 	      		<?php
 	      		foreach($respostas as $resposta){ 
-	      			$status = $resposta->situacao->status;
-	      			$checkedSim = $status == 2 ? "checked" : "";
-	      			$checkedNao = $status == 3 ? "checked" : "";
-	      			$disabled = $status == 2 ? "disabled='true'" : "";
+	      			$status = $resposta->resposta_correta;
+	      			$checkedSim = $status == 1 ? "checked" : "";
+	      			$checkedNao = $status == -1 ? "checked" : "";
+	      			$disabled = $status == 0 ? "" : "disabled='true'";
 	      		?>
-	      		<tr class="title2">
-		        	<td colspan="2">
-		         		Problema: <?=$resposta->problema->desc_Problema?>
-		        	</td>
-		        </tr>
 		        <tr>
-		        	<th>Gabarito</th>
-		        	<th>Resposta do aluno</th>
+		        	<th colspan="2">
+		        		Resposta enviada em <?=$resposta->data_Alteracao?>
+		        		<br/>
+		        		Valendo: <?=$resposta->pontuacao_possivel?> pontos
+		        	</th>
 	      		</tr>
 	      		<tr>
-		        	<td width="50%" align="left">
-		        	<?php
-		        	$gabarito = $gabaritoDAO->getByProblema($resposta->problema->id);
-		        	?>
-		        	<pre class="code"><?=$gabarito->desc_Gabarito?></pre>
-		        	</td>
-		        	<td align="left">
-		        		<pre class="code"><?=$resposta->desc_resposta?></pre>
-		        	</td>
-		        </tr>
-		        <tr>
-		        	<form method="POST">
-		        		<input type="hidden" name="id_situacao" value="<?=$id_sit?>">
-		        		<input type="hidden" name="id_aluno" value="<?=$id_aluno?>">
-		       		<th>
+		        	<td colspan="2">
+		        		<pre class="code-resp"><?=$resposta->desc_resposta?></pre>
+		        	<form method="POST" action="acompanhar_submissoes.php">
+		        		<input type="hidden" name="id_resposta" value="<?=$resposta->id?>">
+	       				<input type="hidden" name="pesq-assunto" value="<?=$_GET['id_ass']?>">
+	       				<input type="hidden" name="pesq-turma" value="<?=$_GET['id_tur']?>"">
+		        	<table>
+		        		<tr>
+		        			<td>
 		       			Solução correta? <br/>
 		       			<input type="radio" name="avaliacao" value="1" <?=$checkedSim?> <?=$disabled?>> Sim 
 		       			&nbsp;&nbsp;&nbsp;&nbsp;
 		       			<input type="radio" name="avaliacao" value="0" <?=$checkedNao?> <?=$disabled?>> Não
 		       			<br/>
-		       			<button class="btn btn-sm btn-success" name="btn-salvar-feedback">Salvar</button>
-		       		</th>
-		       		<th>Feedback: <br/>
-		       			<textarea rows="3" cols="50"></textarea>
-		       		</th>
+		       			<button class="btn btn-sm btn-success" name="btn-salvar-feedback" value="1">Salvar</button>
+		       			</td>
+		       			<td>Feedback: <br/>
+		       				<textarea rows="3" cols="50" <?=$disabled?>><?=$resposta->feedback?></textarea>
+		       			</td>
+		       			</tr>
+		       		</table>
 		       		</form>
 		       	</tr>
 		    	<?php 
 			        }
 		       	?>  
 		       	<tr>
-		       		<td colspan="2">
+		       		<td>
 		       			<form method="POST" action="acompanhar_submissoes.php">
 		       				<input type="hidden" name="pesq-assunto" value="<?=$_GET['id_ass']?>">
 		       				<input type="hidden" name="pesq-turma" value="<?=$_GET['id_tur']?>"">

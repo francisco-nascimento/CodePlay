@@ -10,7 +10,7 @@
 	$idProblema = $_POST["id"];
 	$classificacao = $_POST["classificacao"];
 
-	$inserirResposta = "insert into Resposta_Aluno (desc_resposta, id_aluno) values (?,?)";
+	$inserirResposta = "insert into RespostaAluno (desc_resposta, id_aluno) values (?,?)";
 
 	$stmt = $conexao->prepare($inserirResposta);
 

@@ -16,6 +16,8 @@
 	$problema = $problemaDAO->getById("Problema", $id_problema);
 	$id_aluno = $_SESSION["id"];
 
+	const IMG_PATH = "../img/";
+
 	$mensagemSucesso = '';
 	if(isset($_POST['btn-submit'])){
 		$respostaAlunoDAO = new RespostaAlunoDAO($conexao);
@@ -27,19 +29,20 @@
 
 		$resposta_js = $_POST['resposta'];
 		$respostaAluno = new RespostaAluno();
-		$respostaAluno->set($resposta_js, $aluno, $problema, $situacao->id);
-		$respostaAlunoDAO->save($respostaAluno);
 
 		$gabarito = $gabaritoDAO->getByProblema($id_problema);
 
 		if (verificarResposta($resposta_js, $gabarito->desc_Gabarito)){
 			$situacao->registrarSucesso();
 
+			$respostaAluno->set($resposta_js, $aluno, $problema, $situacao->id, $situacao->pontuacao_possivel, 1);
+			$respostaAlunoDAO->save($respostaAluno);
+
 			$itemBloco = $itemBlocoDAO->getByAlunoProblema($id_aluno, $id_problema);
 
 			$aluno = $alunoDAO->getById("Aluno", $id_aluno);
 
-			$nova_pontuacao = $aluno->pontuacao + $itemBloco->pontuacao_possivel;
+			$nova_pontuacao = $aluno->pontuacao + $itemBloco->situacao->pontuacao_possivel;
 
 			$alunoDAO->update($id_aluno, $nova_pontuacao);
 
@@ -50,16 +53,20 @@
 
 		} else {
 			$situacao->registrarFalha();
-			// Modificar o problema
-			$itemBloco = $itemBlocoDAO->getByAlunoProblema($id_aluno, $id_problema);
 
-			$id_assunto = $itemBloco->bloco->assunto->id;
-			$ordem = $itemBloco->ordem;
+			$respostaAluno->set($resposta_js, $aluno, $problema, $situacao->id, $situacao->pontuacao_possivel, 0);
+			$respostaAlunoDAO->save($respostaAluno);
 
 			if($situacao->status == 4){
+				// Modificar o problema
+				$itemBloco = $itemBlocoDAO->getByAlunoProblema($id_aluno, $id_problema);
+
+				$id_assunto = $itemBloco->bloco->assunto->id;
+				$ordem = $itemBloco->ordem;
+
 				$itemBlocoDAO->createNextProblem($id_aluno, $id_assunto, $ordem);
-			} else {
-				$itemBlocoDAO->substituirProblema($itemBloco);
+			// } else {
+			// 	$itemBlocoDAO->substituirProblema($itemBloco);
 			}
 		}
 		$situacaoItemDAO->update($situacao);
@@ -118,38 +125,6 @@
           return false;
         }
       }    
-
-    function verificaResposta(){
-      var gabarito = document.formulario.resposta.value;
-      var code = Blockly.JavaScript.workspaceToCode(demoWorkspace);
-      if ((code != "" && code != null) && (gabarito != "" && gabarito != null)){
-
-        document.formulario.respostaAluno.value = code;
-
-            if (code == gabarito) {
-              alert("Acertou Mizeravi");
-
-              document.formulario.correcao.value = 1;
-
-              return true;
-              
-            }else{
-              alert("Erroooooooooou");
-              
-              document.formulario.correcao.value = 0;
-
-              return true;
-              
-            }
-
-      }else{
-
-        alert("Preencha a resposta");
-        return false;
-
-      }
-    }
-
   </script>
 </head>
 <body>
@@ -159,7 +134,13 @@
   		<?php
   		if (isset($mensagemSucesso) && $mensagemSucesso != ''){
 		?>
-			<div class="title1"><?=$mensagemSucesso?></div>
+			<div class="title1"><?=$mensagemSucesso?> <BR/>
+				<a href="exibir_area_aluno.php">
+				<button class="bt-ok">
+		       	<img class="icone" src="<?=IMG_PATH?>icon-seta-back2.png">&nbsp;&nbsp;Painel Geral</button>
+		       </a>
+
+			</div>
 		<?  			
   		} else {
   		?>

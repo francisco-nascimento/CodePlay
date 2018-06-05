@@ -86,6 +86,10 @@
 		            			 		$sufixoImg = '-cancel';
 		            			 		$urlPaginaResponder = '';
 		            			 		break;
+		            			 	case 5:
+		            			 		$sufixoImg = '-wait';
+		            			 		//$urlPaginaResponder = '';
+		            			 		break;
 		            			 	default:
 		            			 		break;
 		            			} 
