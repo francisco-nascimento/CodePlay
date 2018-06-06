@@ -99,7 +99,7 @@
   		if (isset($mensagemSucesso) && $mensagemSucesso != ''){
 		?>
 			<div class="title1"><?=$mensagemSucesso?></div>
-		<?  			
+		<?php  			
   		} else {
   		?>
 		<table>

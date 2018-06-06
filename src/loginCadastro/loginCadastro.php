@@ -77,16 +77,26 @@
   </script>
   </head>
   <body>
+    <?php if (isset($_GET["msg"])): ?>
+      <center>
+      <h2><?=$_GET["msg"];?></h2>
+    </center>
+      
+    <?php endif ?>
+    
     <div class="container">
       <div class="wrap-login100">
         <div  class="login100-pic js-tilt" data-tilt="" style="transform: perspective(300px) rotateX(7.8deg) rotateY(-3.01deg) scale3d(1.1, 1.1, 1.1); will-change: transform; transition: 400ms cubic-bezier(0.03, 0.98, 0.52, 0.99);">
           <img src="/img/blockly/image.jpg" alt="IMG">
         </div>
-
-        <form id="idLogin" action="/loginCadastro/verificaLogin.php" method="POST">
+          
+        <form id="idLogin" action="/loginCadastro/loga.php" method="POST">
           <span class="login100-form-title">
             Acesse sua conta
           </span>
+         
+            
+          
           <label>Email</label>
           <div class="wrap-input100">
             <input class="input100" type="text" name="email" required placeholder="Digite seu Email">
