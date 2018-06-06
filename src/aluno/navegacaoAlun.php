@@ -14,7 +14,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="/aluno/exibir_area_aluno.php">Painel geral</a>
-            <a class="dropdown-item" href="/aluno/Sranking.php">Ranking</a>
+            <a class="dropdown-item" href="/aluno/listarPorRanking.php">Ranking</a>
             <a class="dropdown-item" href="/aluno/problemas/telas/listar_problemas.php">Ver problemas</a>
           </div>
         </li>
