@@ -27,9 +27,7 @@
   require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
 
 
-   $resultado = $conexao->prepare("select proble.id, proble.id_assunto, profe.nome, proble.desc_Problema, proble.classificacao from Professor as profe right join Problema as proble on profe.id = proble.id_Professor where profe.id = ? limit 100");
-
-   $resultado->bindValue(1, $_SESSION["id"]);
+   $resultado = $conexao->prepare("select prof.nome, prob.desc_Problema, prob.classificacao, a.descricao from Professor prof inner join Problema prob on (prof.id = prob.id_Professor) inner join Assunto a on (a.id = prob.id_assunto) limit 100");
    $resultado->execute();
 
 
@@ -38,7 +36,7 @@
 ?>
       <tr>
          <td><?=$linha['nome'];?></td>
-         <td><?=$linha['assunto'];?></td>
+         <td><?=$linha['descricao'];?></td>
          <td><a href=''><?=$linha['desc_Problema'];?></a></td>
          <td><?=$linha['classificacao'];?></td>
 
