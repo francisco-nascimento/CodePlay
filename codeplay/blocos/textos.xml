@@ -1,0 +1,5 @@
+<category name="Text">
+      <block type="text"></block>
+      <block type="text_length"></block>
+      <block type="text_print"></block>
+</category>

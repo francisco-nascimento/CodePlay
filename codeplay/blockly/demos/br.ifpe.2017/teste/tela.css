@@ -1,0 +1,23 @@
+body{
+	background-color: #FFE4E1;
+
+}
+
+div.buttons{
+
+	border-style: hidden;
+	border-color: #000;
+
+}
+div.workspace{
+	background-color: #aaa;
+	height: 480px; width: 600px;
+}
+.pergunta{
+	border: hidden;
+	border-color: #000;
+}
+
+.usuario{
+	margin: 80%;
+}
