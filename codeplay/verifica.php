@@ -2,7 +2,7 @@
 	
 	 session_start();	
 	 include ('conexao.php');
-	 include ('imports.php');
+
 
 	 if (!isset($_SESSION['USUARIO_LOGADO'])) {
 		include ('navegacao.php');
@@ -18,11 +18,11 @@
 
 		if (strcasecmp($usuario, $professor) == 0) {
 
-			include ('navegacaoProf.php');
+			include ("professor/navegacaoProf.php");
 			
 		}else if (strcasecmp($usuario, $aluno) == 0) {
 
-			include ('navegacaoAlun.php');
+			include ('aluno/navegacaoAlun.php');
 
 		}
 

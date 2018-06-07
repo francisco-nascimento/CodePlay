@@ -1,5 +1,5 @@
 <?php
-  include ('../imports.php');
+  include ('imports.php');
 ?>
 <head>
   <link rel="shortcut icon" type="image/x-icon" href="/codeplay/img/favicon.ico">
