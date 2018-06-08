@@ -39,7 +39,7 @@ $situacao = 1;
 	
 
 	if (verificaEmail($email, $conexao) == 1) {
-			$msg = "Login ou senha incorretos!";
+			$msg = "Email ou Matricula Já cadastrados";
 			header("Location: /loginCadastro/loginCadastro.php?msg=$msg");
 	}else{
 

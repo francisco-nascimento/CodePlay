@@ -1,11 +1,6 @@
 <?php 
-  session_start();
-  if (!isset($_SESSION["id"])) {
-    header("Location: /loginCadastro/loginCadastro.php");
-  }
   require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
   require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
-  
      function gerarSelectAssuntos($con){
         $sql = "SELECT id, descricao FROM Assunto";
         $stmt = $con->prepare($sql);
@@ -25,7 +20,7 @@
   <meta charset="UTF-8">
   <title>Code && Play - Listar Problemas</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  <!-- <link rel="stylesheet" href="../css/style.css"> -->
+  <!-- <link rel="stylesheet" href="/css/style.css"> -->
 </head>
 <body>
 <br><br><br>
@@ -38,7 +33,7 @@
             <fieldset>
             <legend>Pesquisar por Nível ou assunto:</legend>
             <table  cellspacing="0">
-              <form action="/professor/listarProblemas.php" method="POST">
+              <form action="/professor/listarProblemasFiltro.php" method="POST">
                 <tr>
                   <td><label>Assunto:</label></td>
                   <td><?=gerarSelectAssuntos($conexao);?></td>
@@ -73,8 +68,6 @@
 
   require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
 
-  if (isset($_POST["classificacao"]) || isset($_POST["sel-assunto"])) {  
-
   $sql = "select proble.id, proble.id_assunto, profe.nome, proble.desc_Problema, proble.classificacao from Professor as profe right join Problema as proble on profe.id = proble.id_Professor where profe.id = ? limit 100";
 
   if (($_POST["sel-assunto"] != null || strcasecmp($_POST["sel-assunto"], "") != 0) && ($_POST["classificacao"] == null || strcasecmp($_POST["classificacao"], "") == 0)) {
@@ -100,17 +93,10 @@
    $resultado->bindValue(1, $_SESSION["id"]);
    $resultado->bindValue(2, $_POST["classificacao"]);
    $resultado->bindValue(3, $_POST["sel-assunto"]);
-   }elseif (($_POST["sel-assunto"] == null || strcasecmp($_POST["sel-assunto"], "") == 0) && ($_POST["classificacao"] == null || strcasecmp($_POST["classificacao"], "") == 0)){
-
-    $resultado = $conexao->prepare("select proble.id, proble.id_assunto, profe.nome, proble.desc_Problema, proble.classificacao from Professor as profe right join Problema as proble on profe.id = proble.id_Professor where profe.id = ? limit 100");
-    $resultado->bindValue(1, $_SESSION["id"]);
-
-    }
-  }else{
-  
-    $resultado = $conexao->prepare("select proble.id, proble.id_assunto, profe.nome, proble.desc_Problema, proble.classificacao from Professor as profe right join Problema as proble on profe.id = proble.id_Professor where profe.id = ? limit 100");
-    $resultado->bindValue(1, $_SESSION["id"]);
   }
+
+
+  
    $resultado->execute();
 
 
