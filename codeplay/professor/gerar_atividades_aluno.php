@@ -1,8 +1,8 @@
 <?php
-  require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
-  require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
+  require ('../verifica.php');
+  require ('../conexao.php');
 
-  require ($_SERVER["DOCUMENT_ROOT"].'/professor/carregarDadosAlunos.php');
+  require ('carregarDadosAlunos.php');
 
 if(isset($_POST['id_turma'])){
 	gerarProblemasTurma($conexao, $_POST['id_turma'], NULL);
