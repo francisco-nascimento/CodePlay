@@ -1,10 +1,10 @@
 <?php 
   require ('../verifica.php');
   require ('../conexao.php');
-  require ('professor/carregarDadosAlunos.php');
+  require ('carregarDadosAlunos.php');
   // require ($_SERVER["DOCUMENT_ROOT"].'/professor/selecionar_problemas.php');
 
-  $IMG_PATH = "/codeplay/img/";
+  $IMG_PATH = "../img/";
   $id_professor = $_SESSION["id"];
 
   $file_alunos = $_FILES['file_alunos'];

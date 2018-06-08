@@ -1,6 +1,6 @@
 <?php
   require ('../verifica.php');
-
+  require ('imports.php');
   require ('../blocosJS.php');
   require ('../util/analyzeJSCode.php');
 
@@ -91,7 +91,7 @@
             <th colspan="2">
               Resolva o problema usando Blockly<br/>
               <?php 
-                require ($_SERVER["DOCUMENT_ROOT"].'/util/blocos.php');
+                require ('../util/blocos.php');
               ?>
             </th>
           </tr>

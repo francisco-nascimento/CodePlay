@@ -1,8 +1,8 @@
 <?php
-	require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
+	require ('../conexao.php');
 
-	require ($_SERVER["DOCUMENT_ROOT"].'/aluno/areaAluno.php');
-	require ($_SERVER["DOCUMENT_ROOT"].'/aluno/AreaAlunoDAO.php');
+	require ('../aluno/areaAluno.php');
+	require ('../aluno/AreaAlunoDAO.php');
 
 	$gabaritoDAO = new GabaritoDAO($conexao);
 	$respostaDAO = new RespostaAlunoDAO($conexao);

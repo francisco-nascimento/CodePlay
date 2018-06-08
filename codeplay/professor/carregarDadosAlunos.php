@@ -1,8 +1,8 @@
 <?php
 session_start();
-require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
-require ($_SERVER["DOCUMENT_ROOT"].'/aluno/areaAluno.php');
-require ($_SERVER["DOCUMENT_ROOT"].'/aluno/AreaAlunoDAO.php');
+require ('../conexao.php');
+require ('../aluno/areaAluno.php');
+require ('../aluno/AreaAlunoDAO.php');
 
 function criarTurma($pdo, $nome_turma, $id_professor){   
    $sql = "INSERT INTO Turma(desc_Turma, id_professor) VALUES (?, ?)";

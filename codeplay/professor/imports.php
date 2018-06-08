@@ -31,23 +31,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
 <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900'>
 <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Montserrat:400,700'>
-<?php   
-
-    $arquivo = $_SERVER['PHP_SELF'];
-    $login = 'loginCadastro/loginCadastro.php';
-    if(!isset($_SESSION["USUARIO_LOGADO"]) && strcmp($arquivo, $login) == 0){
- ?>
-    <link href="../vendor/bootstrap/css/styleLogin.css" rel="stylesheet">  
-    <link rel="stylesheet" type="text/css" href="./Login_V1_files/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="./Login_V1_files/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="./Login_V1_files/animate.css">
-    <link rel="stylesheet" type="text/css" href="./Login_V1_files/hamburgers.min.css">
-    <link rel="stylesheet" type="text/css" href="./Login_V1_files/select2.min.css">
-    <link rel="stylesheet" type="text/css" href="./Login_V1_files/util.css">
-    <link rel="stylesheet" type="text/css" href="./Login_V1_files/main.css">
-    <?php
-}
-?>
 <!-- Bootstrap core CSS -->
 <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Fontes personalizadas para este modelo -->
@@ -55,6 +38,7 @@
 <link href="../vendor/bootstrap/js/freelancer.min.js" rel="stylesheet" type="text/css">
 <link href="../vendor/bootstrap/css/dropdown.css" rel="stylesheet" type="text/css">
  <?php
+    $arquivo = "/codeplay/";
     $paginas = array();
     $paginas[$i++] = 'professor/listarProblemas.php';
     $paginas[$i++] = 'professor/listarAlunos.php';
