@@ -15,6 +15,7 @@ function gerarProblemasTurma($con, $turma, $selecao){
 	$blocoAreaDAO = new BlocoAreaDAO($con);
 	$itemBlocoDAO = new ItemBlocoDAO($con);
 	$id_assunto = 1;
+	$i = 0;
 
 	// selecionar os alunos da turma
 	if (isset($turma)){
@@ -22,15 +23,15 @@ function gerarProblemasTurma($con, $turma, $selecao){
 		foreach($alunos as $aluno){
 			$id_aluno = $aluno->id;
 			$itemBlocoDAO->createNextProblem($id_aluno, $id_assunto, 0);
+			$i++;
 		}
 	} else if (isset($selecao)){
 		// para cada aluno
 		//   escolher um problema aleatorio de nivel F
 		//   gerar um item de bloco de ordem 1
-		echo "Quantidade: " . count($selecao);
 		foreach($selecao as $id_aluno){
-			echo "<br/>Aluno: $id_aluno";
 			$itemBlocoDAO->createNextProblem($id_aluno, $id_assunto, 0);
+			$i++;
 		}		
 	}
 
@@ -48,11 +49,8 @@ function gerarProblemasTurma($con, $turma, $selecao){
 	<body>
 		<div class="table-users">
 	  	<div class="header">Geração de atividades</div>
-		<div class="table-users">
-  			<div class="table-users">
-	      		<table cellspacing="0">
-
-	      		</table>
+		<div class="title2">
+			Atividades geradas para os alunos selecionados.
 	      	</div>
 	     </div>
 	 </div>
