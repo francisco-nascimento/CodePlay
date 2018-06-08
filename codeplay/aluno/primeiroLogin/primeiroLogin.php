@@ -40,12 +40,7 @@
 	        document.formulario.passwd2.focus();
 	        return false;
 	    }
-	    if (document.formulario.email.value == "" || document.formulario.email.value.indexOf('@')==-1 || document.formulario.email.value.indexOf('.')==-1 ){
-	    	alert ("Preencha corretamente o campo email!");
-	    	document.formulario.email.focus();
-	    	return false;
-	    }
-}
+	}
 	</script>
 </head>
 <body>
@@ -53,22 +48,10 @@
 
 	<div class="container-contact100">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form" name="formulario" onsubmit="return validarSenha();" action="/aluno/primeiroLogin/atualiza.php" method="POST">
+			<form class="contact100-form validate-form" name="formulario" onsubmit="return validarSenha();" action="atualiza.php" method="POST">
 				<span class="contact100-form-title">
 					Primeiro Login Code && Play!
 				</span>
-
-				<div class="wrap-input100 validate-input" data-validate="Name is required">
-					<span class="label-input100">Digite Seu Nome</span>
-					<input class="input100" required="required" type="text" name="nome" placeholder="Enter your name">
-					<span class="focus-input100"></span>
-				</div>
-
-				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-					<span class="label-input100">Digite Seu Email</span>
-					<input class="input100" required="required" type="text" name="email" placeholder="Enter your email addess">
-					<span class="focus-input100"></span>
-				</div>
 
 				<div class="wrap-input100 validate-input" data-validate = "Valid Password is required: The password must be a minimum of 8 characters and a maximum of 32 characters, which must be at least one number and one uppercase and lowercase letter.">
 					<span class="label-input100">Digite Sua Senha</span>

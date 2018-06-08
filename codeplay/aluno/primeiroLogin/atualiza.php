@@ -2,38 +2,38 @@
 
 	session_start();
 
-	require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
+	require ('../../conexao.php');
 
 	$id = $_SESSION["id"];
-
-	$nome = $_POST["nome"];
-
-	$email = $_POST["email"];
 
 	$senha = $_POST["senha"];
 
 	$senhaCriptografada = password_hash($senha, PASSWORD_DEFAULT);
 
-	$sql = "UPDATE Aluno SET nome = ?, email = ?, senha = ?, situacao = ? WHERE id = ?";
+	$sql = "UPDATE Aluno SET senha = ?, situacao = ? WHERE id = ?";
 
 	try {
 		
 		$stmt = $conexao->prepare($sql);
-		$stmt->bindValue(1, $nome);
-		$stmt->bindValue(2, $email);
-		$stmt->bindValue(3, $senhaCriptografada);
-		$stmt->bindValue(4, 1);
-		$stmt->bindValue(5, $id);
+		$stmt->bindValue(1, $senhaCriptografada);
+		$stmt->bindValue(2, 1);
+		$stmt->bindValue(3, $id);
 
 		$stmt->execute();
 
-		$_SESSION["email"] = $email;
-		$_SESSION["nome"] = $nome;
+		$sql = "SELECT * FROM Aluno where id = ? ";
+		$stmt = $conexao->prepare($sql);
+		$stmt->bindValue(1, $id);
+		$stmt->execute();
+		$res = $stmt->fetch(PDO::FETCH_ASSOC);
 
-		header("Location: /index.php");
+		$_SESSION["email"] = $res['email'];
+		$_SESSION["nome"] = $res['nome'];
+
+		header("Location: codeplay/index.php");
 
 	} catch (Exception $e) {
-		
+		echo "Erro: " ;
 	}
 
 ?>
