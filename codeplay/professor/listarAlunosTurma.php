@@ -13,8 +13,8 @@
 
 	<?php
 
-			require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
-			require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
+			require ('../verifica.php');
+			require ('../conexao.php');
 			$idTurma = $_GET["idturma"];
 			$sql = "select * from Turma where id = ?";
 			$stmt = $conexao->prepare($sql);
@@ -56,7 +56,7 @@
 			<tr>
 				<td colspan="2">
 				<center>
-					<form method="GET" name="formDesc" action="/professor/descricaoTurma.php">
+					<form method="GET" name="formDesc" action="/codeplay/professor/descricaoTurma.php">
 						<label> Descrição da Turma: </label>
 						
 								<input type="hidden" name="idTurma" value="<?=$idTurma?>">
@@ -113,7 +113,7 @@
 								<?=$key["matricula"];?>
 							</td>
 							<td>
-								<form action="/professor/tirarAlunoTurma.php" name="formTirar" method="GET">
+								<form action="/codeplay/professor/tirarAlunoTurma.php" name="formTirar" method="GET">
 									<input type="hidden" name="idAluno" value="<?=$key['id']?>">
 									<input type="hidden" name="descTurma">
 									<input type="hidden" name="idTurma" value="<?=$idTurma?>">

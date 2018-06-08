@@ -7,8 +7,8 @@
 
 	<?php
 
-			require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
-			require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
+			require ('../verifica.php');
+			require ('../conexao.php');
 
 
 			$sql = "select * from Problema where id_Professor = ?";
@@ -38,7 +38,7 @@
 		?>
 
 		<table border="1" class="table">
-		<form action="/professor/criarAtividades.php" name="formulario" method="GET" onsubmit="return verificaChecks()">
+		<form action="criarAtividades.php" name="formulario" method="GET" onsubmit="return verificaChecks()">
 
 			<tr>
 				<th colspan="2">

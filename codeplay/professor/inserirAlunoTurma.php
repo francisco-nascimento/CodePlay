@@ -1,7 +1,7 @@
 <?php 
 	session_start();
 
-	require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
+	require ('../conexao.php');
 
 	$idTurma = $_GET["idTurma"];
 
@@ -14,5 +14,5 @@
 		$stmt->bindValue(2, $idTurma);
 		$stmt->execute();
 
-	header("Location: /professor/listarAlunosTurma.php?idturma=$idTurma");
+	header("Location: /codeplay/professor/listarAlunosTurma.php?idturma=$idTurma");
 ?>

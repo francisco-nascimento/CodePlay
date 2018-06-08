@@ -1,6 +1,6 @@
 <?php
 
-	require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
+	require ('../conexao.php');
 	$aluno = $_GET["idAluno"];
 
 	// $sql = "DELETE FROM Aluno_Turma WHERE id_aluno = ?;";
@@ -47,6 +47,6 @@
 	$stmt2->bindValue(1, $aluno);
 	$stmt2->execute();
 
-	header("Location: /professor/listarAlunos.php");
+	header("Location: /codeplay/professor/listarAlunos.php");
 
 ?>

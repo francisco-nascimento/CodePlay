@@ -1,7 +1,7 @@
 <?php 
 
-    require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
-    require ($_SERVER["DOCUMENT_ROOT"].'/imports.php');
+    require ('../verifica.php');
+    require ('imports.php');
 
 ?>
 <!DOCTYPE html>
@@ -35,7 +35,7 @@
       </tr>
    <?php
 
-  require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
+  require ('../conexao.php');
 
    $resultado = $conexao->prepare("select * from Turma where id_Professor = ?");
    $resultado->bindValue(1, $_SESSION["id"]);
@@ -48,15 +48,15 @@
       <tr>
          <td><?=$linha['desc_Turma'];?></td>
          <td>
-            <form action="/professor/listarAlunosTurma.php" action="GET">
+            <form action="listarAlunosTurma.php" action="GET">
              <input type="hidden" name="idturma" value="<?=$linha["id"];?>">
              <button type="submit" class="btn btn-sm btn-warning">Editar Turma</button>
            </form>
-           <form action="/professor/deletarTurma.php" action="GET" onsubmit="return confirme()">
+           <form action="deletarTurma.php" action="GET" onsubmit="return confirme()">
              <input type="hidden" name="idturma" value="<?=$linha["id"];?>">
              <button type="submit" class="btn btn-sm btn-danger"> Deletar Turma </button>
            </form>
-           <form action="/professor/atividadesTurma.php" action="GET">
+           <form action="atividadesTurma.php" action="GET">
              <input type="hidden" name="descTurma" value="<?=$linha['desc_Turma'];?>">
              <input type="hidden" name="idTurma" value="<?=$linha["id"];?>">
              <button type="submit" class="btn btn-sm btn-primary"> Atividades nesta turma </button>
@@ -71,7 +71,7 @@
       <tr>
         <td colspan="3">
         <center>
-          <a href="/professor/criarTurma.php" style="color: #fff">
+          <a href="criarTurma.php" style="color: #fff">
           <button class="btn btn-success btn-sm">
             Criar nova turma
           </button>

@@ -1,6 +1,6 @@
 <?php 
 	session_start();
-	require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
+	require ('../conexao.php');
 
 	$matricula = $_POST["matricula"];
 
@@ -34,11 +34,11 @@
 
 		$stmt->execute();
 
-		header("Location: /professor/cadastrarAluno.php?msg=Aluno%20Cadastrado!");
+		header("Location: /codeplay/professor/cadastrarAluno.php?msg=Aluno%20Cadastrado!");
 		
 	}else{
 
-		header("Location: /professor/cadastrarAluno.php?msg=Aluno%20já%20existente!");
+		header("Location: /codeplay/professor/cadastrarAluno.php?msg=Aluno%20já%20existente!");
 
 	}
 	

@@ -1,6 +1,6 @@
 <?php
 
-	require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
+	require ('../conexao.php');
 
 	session_start();
 
@@ -15,7 +15,7 @@
 		$stmt->bindValue(2, $id);
 		$stmt->execute();
 
-		header("Location: /professor/criarTurma.php");
+		header("Location: /codeplay/professor/criarTurma.php");
 		
 	} catch (Exception $e) {
 		

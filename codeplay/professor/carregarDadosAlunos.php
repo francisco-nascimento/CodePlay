@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 require ('../conexao.php');
 require ('../aluno/areaAluno.php');
 require ('../aluno/AreaAlunoDAO.php');

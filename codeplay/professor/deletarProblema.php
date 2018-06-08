@@ -1,6 +1,6 @@
 <?php
 
-	require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
+	require ('../conexao.php');
 	$idProblema = $_GET["idProb"];
 
 	$sql = "DELETE FROM Gabarito WHERE id_Problema = ?";
@@ -21,6 +21,6 @@
 	$stmt2->bindValue(1, $idProblema);
 	$stmt2->execute();
 
-	header("Location: /professor/listarProblemas.php");
+	header("Location: /codeplay/professor/listarProblemas.php");
 
 ?>

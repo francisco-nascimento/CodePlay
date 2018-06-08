@@ -1,6 +1,6 @@
 <?php 
 	session_start();
-	require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
+	require ('../conexao.php');
 
 
 	$idAtividade = $_GET["idAtividade"];
@@ -22,6 +22,6 @@
 	$stmt2->bindValue(1, $idAtividade);
 	$stmt2->execute();
 
-	header("Location: /professor/listarAtividades.php");
+	header("Location: /codeplay/professor/listarAtividades.php");
 
 ?>

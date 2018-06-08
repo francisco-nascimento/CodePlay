@@ -1,6 +1,6 @@
 <?php
 
-	require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
+	require ('../conexao.php');
 
 	session_start();
 
@@ -44,7 +44,7 @@
 		
 
 
-		header("Location: /professor/listarProblemasAtividade.php?idAtividade=$idAtividade");
+		header("Location: /codeplay/professor/listarProblemasAtividade.php?idAtividade=$idAtividade");
 
 		
 	} catch (Exception $e) {

@@ -1,5 +1,5 @@
 <?php
-	require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
+	require ('../conexao.php');
 
 	session_start();
 
@@ -24,7 +24,7 @@
 			$idTurma = $key["id"];
 		}
 
-		header("Location: /professor/listarAlunosTurma.php?idturma=$idTurma");
+		header("Location: /codeplay/professor/listarAlunosTurma.php?idturma=$idTurma");
 		
 	} catch (Exception $e) {
 

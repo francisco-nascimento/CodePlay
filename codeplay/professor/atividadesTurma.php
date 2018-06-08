@@ -20,8 +20,8 @@
 
   <?php 
 
-    require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
-    require ($_SERVER["DOCUMENT_ROOT"].'/imports.php');
+    require ('../verifica.php');
+    require ('imports.php');
 
    ?>
 <br><br><br><br><br>
@@ -35,7 +35,7 @@
       </tr>
    <?php
 
-  require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
+  require ('../conexao.php');
 
    $resultado = $conexao->prepare("select a.*, a_t.id as id_a_t, a_t.data_limite from Atividade as a right join Atividade_Turma as a_t on a_t.id_Atividade = a.id where id_Turma = ?");
    $resultado->bindValue(1, $_GET["idTurma"]);
@@ -53,7 +53,7 @@
       <tr>
         <td colspan="3">
         <center>
-          <a href="/professor/turmas.php" style="color: #fff">
+          <a href="turmas.php" style="color: #fff">
           <button class="btn btn-success btn-sm">
             Voltar para Turmas
           </button>

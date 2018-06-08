@@ -1,6 +1,6 @@
 <?php
 
-include ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
+include ('../conexao.php');
 
 session_start();
 

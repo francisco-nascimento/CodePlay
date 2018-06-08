@@ -1,7 +1,7 @@
 <?php
 
-	require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
-	require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
+	require ('../verifica.php');
+	require ('../conexao.php');
 			
 ?>
 <!DOCTYPE html>
@@ -46,17 +46,17 @@
 			         <td><?=$linha['desc_Atividade'];?></td>
 			         <td><?=$linha['data_Alteracao'];?></td>
 			         <td> 
-			         <form method="GET" action="/professor/listarProblemasAtividade.php">
+			         <form method="GET" action="listarProblemasAtividade.php">
 			         	<input type="hidden" name="idAtividade" value="<?=$linha['id'];?>">
 			         	<button class="btn" type="submit"> Alterar </button>
 			         </form>
 
-			         <form method="GET" action="/professor/deletarAtividade.php">
+			         <form method="GET" action="deletarAtividade.php">
 			         	<input type="hidden" name="idAtividade" value="<?=$linha['id'];?>">
 			         	<button class="btn btn-sm btn-danger" type="submit"> Deletar </button>
 			         </form>
 
-			         <form method="GET" action="/professor/exibirLiberarAtividade.php">
+			         <form method="GET" action="exibirLiberarAtividade.php">
 			         	<input type="hidden" name="idAtividade" value="<?=$linha['id'];?>">
 			         	<button class="btn btn-sm btn-primary" type="submit"> Liberar para turma </button>
 			         </form>
@@ -73,7 +73,7 @@
 				<tr>
 					<td colspan="3">
 					<center>
-						<a href="/professor/atividade.php"><button class="btn btn-sm btn-success"> Criar uma lista </button></a>
+						<a href="atividade.php"><button class="btn btn-sm btn-success"> Criar uma lista </button></a>
 					</center>
 					</td>
 				</tr>

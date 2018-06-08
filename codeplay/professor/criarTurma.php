@@ -1,6 +1,6 @@
 <?php
-	require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
-	require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');			
+	require ('../verifica.php');
+	require ('../conexao.php');			
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +17,7 @@
 
 
 		<table border="1" class="table">
-		<form action="/professor/inserirTurma.php" name="formulario" method="POST">
+		<form action="inserirTurma.php" name="formulario" method="POST">
 
 			<tr>
 				<th>

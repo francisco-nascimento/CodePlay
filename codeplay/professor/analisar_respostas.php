@@ -1,9 +1,9 @@
 <?php 
-  require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
-  require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
+  require ('../verifica.php');
+  require ('../conexao.php');
 
-	require ($_SERVER["DOCUMENT_ROOT"].'/aluno/areaAluno.php');
-	require ($_SERVER["DOCUMENT_ROOT"].'/aluno/AreaAlunoDAO.php');
+	require ('../aluno/areaAluno.php');
+	require ('../aluno/AreaAlunoDAO.php');
 
   const IMG_PATH = "../img/";
 ?>

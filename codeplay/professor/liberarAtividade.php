@@ -1,6 +1,6 @@
 <?php
 
-	require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
+	require ('../conexao.php');
 	$idTurma = $_GET["idturma"];
 	$idAtv = $_GET["idAtv"];
 	$data = $_GET["dataLimite"];
@@ -23,7 +23,7 @@
 	if ($atividade == $idAtv && $turma == $idTurma) {
 
 		$msg = "Essa atividade já está aplicada à essa turma!";
-		header("Location: /professor/exibirLiberarAtividade.php?idAtividade=".'$idAtv');
+		header("Location: /codeplay/professor/exibirLiberarAtividade.php?idAtividade=".'$idAtv');
 		
 	}else{
 
@@ -38,7 +38,7 @@
 	$stmt->execute();
 
 
-	header("Location: /professor/turmas.php");
+	header("Location: /codeplay/professor/turmas.php");
 			
 		} catch (Exception $e) {
 

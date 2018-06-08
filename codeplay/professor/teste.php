@@ -1,7 +1,7 @@
 <?php
 
 	
-	require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
+	require ('../conexao.php');
 			$idAtividade = $_GET["id"];
 			$sql = "select * from Atividade where id = ?";
 			$stmt = $conexao->prepare($sql);

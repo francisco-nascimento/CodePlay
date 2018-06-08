@@ -1,7 +1,7 @@
 <?php 
 	session_start();
 
-	require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
+	require ('../conexao.php');
 
 	$idAtividade = $_GET["idAtividade"];
 
@@ -20,7 +20,7 @@
 	}
 
 	if ($problemas == 10) {
-		header("Location: /professor/listarProblemasAtividade.php?id=".$idAtividade);
+		header("Location: /codeplay/professor/listarProblemasAtividade.php?id=".$idAtividade);
 	}
 
 
@@ -38,7 +38,7 @@
 
 
 
-	header("Location: /professor/listarProblemasAtividade.php?idAtividade=$idAtividade");
+	header("Location: /codeplay/professor/listarProblemasAtividade.php?idAtividade=$idAtividade");
 
 
 ?>

@@ -1,6 +1,6 @@
 <?php
 
-require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
+require ('../conexao.php');
 
 $idProblema = $_GET["idProblema"];
 
@@ -17,5 +17,5 @@ $idAtividade = $_GET["idAtividade"];
 		$stmt->bindValue(2, $idProblema);
 		$stmt->execute();
 		
-	header("Location: /professor/listarProblemasAtividade.php?idAtividade="."$idAtividade");
+	header("Location: /codeplay/professor/listarProblemasAtividade.php?idAtividade="."$idAtividade");
 ?>

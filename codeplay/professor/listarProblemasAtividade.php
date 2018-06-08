@@ -25,8 +25,8 @@
 
 	<?php
 
-			require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
-			require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
+			require ('../verifica.php');
+			require ('../conexao.php');
 			$idAtividade = $_GET["idAtividade"];
 			$sql = "select * from Atividade where id = ?";
 			$stmt = $conexao->prepare($sql);
@@ -89,7 +89,7 @@
 
    			<tr>
    				
-				<form method="GET" action="/professor/descricao.php">
+				<form method="GET" action="descricao.php">
 					<th colspan="2">
 						<center>
 						 	Descrição da Atividade:
@@ -144,7 +144,7 @@
 						<?=$key["classificacao"];?>
 					</td>
 					<td>
-						<form action="/professor/tirarProblemaAtividade.php" method="GET">
+						<form action="tirarProblemaAtividade.php" method="GET">
 							<input type="hidden" name="idProblema" value="<?=$key['id']?>">
 							<input type="hidden" name="idAtividade" value="<?=$idAtividade?>">
 							<button type="submit" class="btn btn-danger btn-sm"> Retirar Problema	</button>
@@ -194,7 +194,7 @@
 							<?=$key["classificacao"]?>
 						</td>
 						<td>
-							<form action="/professor/inserirAtividade.php" name="inserir" onsubmit="return verifica()" method="GET">
+							<form action="inserirAtividade.php" name="inserir" onsubmit="return verifica()" method="GET">
 								<input type="hidden" name="idProb" value="<?=$key["id"]?>">
 								<input type="hidden" name="idAtividade" value="<?=$idAtividade;?>">
 								<input type="hidden" name="cadastrados" value="<?=$problemasAtv;?>">

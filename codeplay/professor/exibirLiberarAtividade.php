@@ -20,8 +20,8 @@
 
   <?php 
 
-    require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
-    require ($_SERVER["DOCUMENT_ROOT"].'/imports.php');
+    require ('../verifica.php');
+    require ('imports.php');
 
    ?>
 <br><br><br><br><br>
@@ -35,7 +35,7 @@
       </tr>
    <?php
 
-  require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
+  require ('../conexao.php');
 
    $resultado = $conexao->prepare("select * from Turma where id_Professor = ?");
    $resultado->bindValue(1, $_SESSION["id"]);
@@ -48,7 +48,7 @@
       <tr>
          <td><?=$linha['desc_Turma'];?></td>
          <td>
-            <form action="/professor/liberarAtividade.php" action="GET">
+            <form action="/codeplay/professor/liberarAtividade.php" action="GET">
              <input type="hidden" name="idturma" value="<?=$linha["id"];?>">
              <input type="hidden" name="idAtv" value="<?=$_GET["idAtividade"];?>">
           

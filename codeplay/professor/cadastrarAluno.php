@@ -1,6 +1,6 @@
 <?php
 
-	require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
+	require ('../verifica.php');
 
     $msg = $_GET["msg"];
 			
@@ -26,7 +26,7 @@
       <?=$msg;?>
     </p>
 		
-    <form action="/professor/inserirAluno.php" method="POST">
+    <form action="inserirAluno.php" method="POST">
       <div class="form-group">
         <label for="exampleInputEmail1">Matricula do Aluno</label>
         <input type="text" id="exampleInputEmail1" required="required" minlength="13" maxlength="13" name="matricula" aria-describedby="Matricula" placeholder="Digite a Matricula">
