@@ -38,12 +38,9 @@
 <link href="../vendor/bootstrap/js/freelancer.min.js" rel="stylesheet" type="text/css">
 <link href="../vendor/bootstrap/css/dropdown.css" rel="stylesheet" type="text/css">
  <?php
-    $arquivo = "/codeplay/";
+    $arquivo = "/codeplay/professor/importarAlunos.php";
     $paginas = array();
-    $paginas[$i++] = 'professor/listarProblemas.php';
-    $paginas[$i++] = 'professor/listarAlunos.php';
-    $paginas[$i++] = 'professor/cadastrarProblema.php';
-    $paginas[$i++] = 'professor/importarAlunos.php';
+    $paginas[$i++] = '/codeplay/professor/importarAlunos.php';
     $paginas[$i++] = 'aluno/exibir_area_aluno.php';
     $paginas[$i++] = 'aluno/responderProblema.php';
     $paginas[$i++] = 'aluno/listarPorRanking.php';
