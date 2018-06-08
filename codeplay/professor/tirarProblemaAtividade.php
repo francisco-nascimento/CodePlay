@@ -1,0 +1,21 @@
+<?php
+
+require ('../conexao.php');
+
+$idProblema = $_GET["idProblema"];
+
+
+$descAtividade = $_GET["descAtividade"];
+
+
+$idAtividade = $_GET["idAtividade"];
+
+	$sql = "DELETE FROM Problema_Atividade WHERE id_atividade = ? and id_problema = ?";
+
+		$stmt = $conexao->prepare($sql);
+		$stmt->bindValue(1, $idAtividade);
+		$stmt->bindValue(2, $idProblema);
+		$stmt->execute();
+		
+	header("Location: /codeplay/professor/listarProblemasAtividade.php?idAtividade="."$idAtividade");
+?>
