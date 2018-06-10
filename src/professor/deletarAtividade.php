@@ -1,9 +1,6 @@
 <?php 
 	session_start();
-	require ($_SERVER["DOCUMENT_ROOT"].'/util/autorizador-professor.php');
-
 	require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
-
 
 	$idAtividade = $_GET["idAtividade"];
 

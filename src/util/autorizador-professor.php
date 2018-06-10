@@ -7,7 +7,9 @@
 
 	$usuario = $_SESSION['USUARIO_LOGADO'];
 
-	if (strcmp($pasta, "//") == 0){
+	$pasta = str_replace("/", "", $pasta);
+
+	if (strcmp($pasta, "") == 0 || strcmp($pasta, "loginCadastro") == 0){
 		return true;
 	}
 

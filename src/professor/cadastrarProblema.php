@@ -1,8 +1,5 @@
 <?php
-  require ($_SERVER["DOCUMENT_ROOT"].'/util/autorizador-professor.php');
-
   require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
-
   require ($_SERVER["DOCUMENT_ROOT"].'/blocosJS.php');
   require ($_SERVER["DOCUMENT_ROOT"].'/util/analyzeJSCode.php');
 
