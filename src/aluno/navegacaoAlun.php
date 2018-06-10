@@ -15,8 +15,8 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="/aluno/exibir_area_aluno.php">Painel geral</a>
-            <a class="dropdown-item" href="/aluno/Sranking.php">Ranking</a>
-            <a class="dropdown-item" href="/aluno/problemas/telas/listar_problemas.php">Ver problemas</a>
+            <a class="dropdown-item" href="/aluno/listarPorRanking_aluno.php">Ranking</a>
+            <a class="dropdown-item" href="/aluno/listar_problemas.php">Ver problemas</a>
           </div>
         </li>
       </ul>
@@ -39,7 +39,7 @@
             Usuário: <?=$_SESSION["nome"];?>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Alterar Dados</a>
+            <a class="dropdown-item" href="/aluno/alterar_senha.php">Alterar senha</a>
           </div>
         </li>
       </ul>

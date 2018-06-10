@@ -1,5 +1,6 @@
 <?php 
   require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
+  $id_turma = $_SESSION["idTurma"];
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,9 +21,11 @@
           </tr>
           <?php
             require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
-            $resultado = $conexao->prepare("select nome, pontuacao from Aluno order by pontuacao desc, nome limit 50");
-            $resultado->execute();
-            foreach($resultado as $linha){ 
+            $stmt = $conexao->prepare("select nome, pontuacao from Aluno where id_turma = ? order by pontuacao desc, nome limit 50");
+            $stmt->bindValue(1, $id_turma);            
+            $stmt->execute();
+            $res = $stmt->fetchAll();
+            foreach($res as $linha){ 
           ?>
           <tr>
             <td><?=$linha['nome'];?></td>

@@ -66,7 +66,8 @@
     $paginas[$i++] = '/professor/acompanhar_submissoes.php';
     $paginas[$i++] = '/professor/analisar_respostas.php';
     $paginas[$i++] = '/professor/gerar_atividades_aluno.php';
-
+    $paginas[$i++] = '/aluno/listarPorRanking_aluno.php';
+    $paginas[$i++] = '/aluno/alterar_senha.php';
 
     $cond_incluir_link = FALSE;
     foreach ($paginas as $pag) {

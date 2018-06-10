@@ -73,17 +73,16 @@ if ($professor == 1) {
 				$_SESSION["idTurma"] = $usuario["id_turma"];
 
 			}
-			if ($linha["situacao"] == 0) {
+			// if (strcmp($usuario["situacao"], "0") == 0) {
 
-					header("Location: /aluno/primeiroLogin/primeiroLogin.php");
+			// 		header("Location: /aluno/alterar_senha.php");
 
-			}elseif ($linha["situacao"] == null || strcmp($linha["situacao"], "")) {
+			// }
+			if ($usuario["situacao"] == null || strcmp($usuario["situacao"], "")) {
 
 				header("Location: ".'/index.php');
 
 			}
-
-			header("Location: ".'/index.php');
 
 		}else{
 			header("Location: /loginCadastro/loginCadastro.php?msg=1");
