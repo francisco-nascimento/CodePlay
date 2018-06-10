@@ -1,4 +1,5 @@
 <?php
+  require ($_SERVER["DOCUMENT_ROOT"].'/util/autorizador-professor.php');
   include ($_SERVER["DOCUMENT_ROOT"].'/imports.php');
 ?>
 <head>
@@ -26,7 +27,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="/professor/cadastrarProblema.php">Cadastrar Problemas</a>            
-            <a class="dropdown-item" href="/professor/listarProblemas.php">Listar Problemas</a>
+            <a class="dropdown-item" href="/professor/listarProblemas.php">Pesquisar Problemas</a>
             <a class="dropdown-item" href="/professor/acompanhar_submissoes.php">Acompanhar submissões</a>
           </div>
         </li>

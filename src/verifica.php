@@ -3,6 +3,7 @@
 	session_start();
 		
 	 include 'conexao.php';
+	 
 
 	 if (!isset($_SESSION['USUARIO_LOGADO'])) {
 		require ($_SERVER["DOCUMENT_ROOT"].'/navegacao.php');

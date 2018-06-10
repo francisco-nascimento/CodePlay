@@ -1,4 +1,5 @@
 <?php
+  require ($_SERVER["DOCUMENT_ROOT"].'/util/autorizador-professor.php');
   include ($_SERVER["DOCUMENT_ROOT"].'/imports.php');
 ?>
 <head>

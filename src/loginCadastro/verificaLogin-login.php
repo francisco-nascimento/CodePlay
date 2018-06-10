@@ -7,34 +7,26 @@
   $professor = $_POST["tipoUsuario"];
   $email = $_POST["email"];
   $sql;
-  $email;
 
-  try{
+  include ($_SERVER['DOCUMENT_ROOT'] .'/conexao.php');
 
-	include ($_SERVER['DOCUMENT_ROOT'] .'/conexao.php');
+  if ($professor == 1) {
 
-
-
-	if ($professor == 1) {
-
-		if (strlen($email) == 13) {
-			$sql = "select * from Professor where matricula = ? ";		
-		}else{
+		
 	
 		$sql = "select * from Professor where email = ? ";
 
-		}
+	
 
 	}else{
 
-		if (strlen($email) == 13) {
-			$sql = "select * from Aluno where matricula = ? ";		
-		}else{
-
+		
 		$sql = "select * from Aluno where email = ? ";
 
-		}
+		
 	}
+
+  try{
 
 	$stmt = $conexao->prepare($sql);
 
@@ -45,6 +37,12 @@
 	$resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	
 	foreach($resultado as $linha){
+
+		if (!isset($linha["email"])) {
+			$msg = "Login ou senha incorretos!";
+
+			header("Location: teste.php?".$msg);
+		}
 	
 		if(password_verify($senha, $linha["senha"])){
 

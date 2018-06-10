@@ -76,17 +76,23 @@
         
   </script>
   </head>
-  <body>
+  <body>    
     <div class="container">
       <div class="wrap-login100">
         <div  class="login100-pic js-tilt" data-tilt="" style="transform: perspective(300px) rotateX(7.8deg) rotateY(-3.01deg) scale3d(1.1, 1.1, 1.1); will-change: transform; transition: 400ms cubic-bezier(0.03, 0.98, 0.52, 0.99);">
           <img src="/img/blockly/image.jpg" alt="IMG">
         </div>
-
-        <form id="idLogin" action="/loginCadastro/verificaLogin.php" method="POST">
+          
+        <form id="idLogin" action="/loginCadastro/loga.php" method="POST">
           <span class="login100-form-title">
             Acesse sua conta
           </span>
+            <?php if (isset($_GET["msg"])){ ?>
+              <div class="msgerror">Login ou senha incorretos!</div>
+            <?php } ?>
+         
+            
+          
           <label>Email</label>
           <div class="wrap-input100">
             <input class="input100" type="text" name="email" required placeholder="Digite seu Email">
@@ -121,12 +127,10 @@
             </button>
           </div>
 
-          <div class="text-center p-t-12">
-            <span class="txt1">
-              Esqueci
-            </span>
+<!--           <div class="text-center p-t-12">
+
             <a class="txt2" href="#">
-              Senha
+              Esqueci a Senha
             </a>
             <br>
             <button  class="txt2" onclick="ocultaLogin('idLogin','idCadastro')">
@@ -134,13 +138,13 @@
               <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true" ></i>
             </button>
           </div>
-        </form>
+ -->        </form>
         <form id="idCadastro" style="display:none" onsubmit="return validaCadastro();" name="formulario" action="/loginCadastro/inserindo_dados_banco.php" method="POST">
             <span class="login100-form-title">
               Crie uma conta
             </span>
 
-            <label>Mátricula</label>
+            <label>Matricula</label>
             <div class="wrap-input100">
               <input onkeyup="limitarMatricula(this)" class="input100" type="text" required placeholder="Digite sua mátricula" minlength="7" maxlength="8" name="matricula" id="matricula">
               <span class="focus-input100"></span>

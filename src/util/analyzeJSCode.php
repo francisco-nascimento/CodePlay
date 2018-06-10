@@ -4,6 +4,10 @@
 	require ($_SERVER["DOCUMENT_ROOT"].'/aluno/areaAluno.php');
 	require ($_SERVER["DOCUMENT_ROOT"].'/aluno/AreaAlunoDAO.php');
 
+
+
+function compareJSCode($conexao, $id_problema, $id_aluno){
+
 	$gabaritoDAO = new GabaritoDAO($conexao);
 	$respostaDAO = new RespostaAlunoDAO($conexao);
 	$id_problema = 2;
@@ -12,10 +16,8 @@
 	$gabarito = $gabaritoDAO->getByProblema($id_problema);
 	$resposta = $respostaDAO->getByAlunoProblema($id_aluno, $id_problema);
 
-	compareJSCode($gabarito->desc_Gabarito, $resposta->desc_resposta);
-
-
-function compareJSCode($solucao1, $solucao2){
+	$solucao1 = $gabarito->desc_Gabarito;
+	$solucao2 = $resposta->desc_resposta;
 
 	$i = 0;
 	$registro = array();

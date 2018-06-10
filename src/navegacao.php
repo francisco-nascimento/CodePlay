@@ -1,4 +1,5 @@
 <?php
+  require ($_SERVER["DOCUMENT_ROOT"].'/util/autorizador-professor.php');
   include $_SERVER['DOCUMENT_ROOT']."/imports.php";
 ?>
 <head>
@@ -15,7 +16,7 @@
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link" href="/loginCadastro/loginCadastro.php">
-          Logar-se ou Criar conta
+          Logar <!-- ou Criar conta -->
         </a> 
       </li>
     </ul>

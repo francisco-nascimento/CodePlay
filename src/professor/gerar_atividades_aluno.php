@@ -1,4 +1,5 @@
 <?php
+  require ($_SERVER["DOCUMENT_ROOT"].'/util/autorizador-professor.php');
   require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
   require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
 
@@ -51,7 +52,7 @@ function gerarProblemasTurma($con, $turma, $selecao){
 		<div class="table-users">
   			<div class="table-users">
 	      		<table cellspacing="0">
-
+	      			Atividades criadas para os alunos selecionados.
 	      		</table>
 	      	</div>
 	     </div>

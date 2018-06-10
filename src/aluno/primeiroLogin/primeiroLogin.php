@@ -1,3 +1,8 @@
+<?php
+if (!isset($_SESSION["id"])) {
+	header("Location: /index.php");
+}
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,18 +62,6 @@
 				<span class="contact100-form-title">
 					Primeiro Login Code && Play!
 				</span>
-
-				<div class="wrap-input100 validate-input" data-validate="Name is required">
-					<span class="label-input100">Digite Seu Nome</span>
-					<input class="input100" required="required" type="text" name="nome" placeholder="Enter your name">
-					<span class="focus-input100"></span>
-				</div>
-
-				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-					<span class="label-input100">Digite Seu Email</span>
-					<input class="input100" required="required" type="text" name="email" placeholder="Enter your email addess">
-					<span class="focus-input100"></span>
-				</div>
 
 				<div class="wrap-input100 validate-input" data-validate = "Valid Password is required: The password must be a minimum of 8 characters and a maximum of 32 characters, which must be at least one number and one uppercase and lowercase letter.">
 					<span class="label-input100">Digite Sua Senha</span>

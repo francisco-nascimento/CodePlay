@@ -1,4 +1,5 @@
 <?php 
+  require ($_SERVER["DOCUMENT_ROOT"].'/util/autorizador-professor.php');
   require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
   require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
   require ($_SERVER["DOCUMENT_ROOT"].'/professor/carregarDadosAlunos.php');

@@ -114,11 +114,11 @@
 				</table>
 			</form>
 		</div>
-		<?
+		<?php
 		} else {
 			?>
 			<div class="title2">Não há problemas liberados para você. Fale com o professor. </div>
-			<?
+			<?php
 		}
 		?>
     	</div>  

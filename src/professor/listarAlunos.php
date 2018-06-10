@@ -1,4 +1,5 @@
 <?php 
+  require ($_SERVER["DOCUMENT_ROOT"].'/util/autorizador-professor.php');
   require ($_SERVER["DOCUMENT_ROOT"].'/verifica.php');
   require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
   require ($_SERVER["DOCUMENT_ROOT"].'/professor/carregarDadosAlunos.php');
@@ -111,11 +112,10 @@
 		<div class="table-users">
 	  	<div class="header">Pesquisar alunos</div>
 		<div class="table-users">
-			<form method="POST">
-				<table>
-          <tr>
-            <th class="title1">Preencha um dos filtros para pesquisar</th>
-          </tr>
+        <fieldset>
+          <legend>Preencha um dos filtros para pesquisar</legend>
+          <form method="POST">
+				  <table>
 					<tr>
 						<td>
 							<input type="radio" name="opt-pesq" id="opt-pesq1">
@@ -134,7 +134,9 @@
 						</td>
 					</tr>
 				</table>
-			</form>
+        </form>
+        </fieldset>
+			
 		</div>
 		<?php
 		if (isset($_POST["btn-pesquisar"])){

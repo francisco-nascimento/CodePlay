@@ -141,7 +141,7 @@
 		       </a>
 
 			</div>
-		<?  			
+		<?php  			
   		} else {
   		?>
 		<table>
