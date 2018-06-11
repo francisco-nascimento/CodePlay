@@ -49,11 +49,7 @@ function gerarProblemasTurma($con, $turma, $selecao){
 		<div class="table-users">
 	  	<div class="header">Geração de atividades</div>
 		<div class="table-users">
-  			<div class="table-users">
-	      		<table cellspacing="0">
-	      			Atividades criadas para os alunos selecionados.
-	      		</table>
-	      	</div>
+	      	Atividades criadas para os alunos selecionados.
 	     </div>
 	 </div>
 	</body>

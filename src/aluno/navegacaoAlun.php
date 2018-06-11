@@ -16,11 +16,11 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="/aluno/exibir_area_aluno.php">Painel geral</a>
             <a class="dropdown-item" href="/aluno/listarPorRanking_aluno.php">Ranking</a>
-            <a class="dropdown-item" href="/aluno/listar_problemas.php">Ver problemas</a>
+            <a class="dropdown-item" href="/aluno/visualizar_respostas.php">Problemas resolvidos</a>
           </div>
         </li>
       </ul>
-      <ul class="navbar-nav">
+<!--       <ul class="navbar-nav">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Turma
@@ -33,7 +33,7 @@
           </div>
         </li>
       </ul>
-      <ul class="navbar-nav">
+ -->      <ul class="navbar-nav">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Usuário: <?=$_SESSION["nome"];?>

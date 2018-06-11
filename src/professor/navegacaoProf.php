@@ -38,7 +38,7 @@
             Usuário: <?=$_SESSION["nome"];?>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="/professor/listarAlunos.php">Alterar Dados</a>
+            <a class="dropdown-item" href="/professor/alterar_senha.php">Alterar senha</a>
           </div>
         </li>
       </ul>

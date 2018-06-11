@@ -68,6 +68,8 @@
     $paginas[$i++] = '/professor/gerar_atividades_aluno.php';
     $paginas[$i++] = '/aluno/listarPorRanking_aluno.php';
     $paginas[$i++] = '/aluno/alterar_senha.php';
+    $paginas[$i++] = '/professor/alterar_senha.php';
+    $paginas[$i++] = '/aluno/visualizar_respostas.php';
 
     $cond_incluir_link = FALSE;
     foreach ($paginas as $pag) {

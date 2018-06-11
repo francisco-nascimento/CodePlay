@@ -90,7 +90,7 @@
 		       			<button class="btn btn-sm btn-success" name="btn-salvar-feedback" value="1">Salvar</button>
 		       			</td>
 		       			<td>Feedback: <br/>
-		       				<textarea rows="3" cols="50" <?=$disabled?>><?=$resposta->feedback?></textarea>
+		       				<textarea rows="3" cols="50" name="feedback" <?=$disabled?>><?=$resposta->feedback?></textarea>
 		       			</td>
 		       			</tr>
 		       		</table>

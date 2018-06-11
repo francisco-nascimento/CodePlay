@@ -420,6 +420,20 @@ class RespostaAlunoDAO extends DAO {
       return $res;
    }
 
+   public function getByAlunoAssunto($id_aluno, $id_assunto){
+      $sql = "SELECT r.* FROM RespostaAluno r, Problema p where r.id_Problema = p.id and r.id_Aluno = ? and p.id_assunto = ? order by data_Alteracao";
+      $stmt = $this->db->prepare($sql);
+      $stmt->bindValue(1, $id_aluno);
+      $stmt->bindValue(2, $id_assunto);
+      $stmt->execute();
+      $res = $stmt->fetchAll(PDO::FETCH_OBJ);
+      foreach($res as $obj){
+        $this->loadAttributes($obj);
+      }
+      $stmt->closeCursor();
+      return $res;
+   }
+
   public function loadAttributes($obj){
     if (isset($obj)){
       $obj->aluno = $this->alunoDAO->getById("Aluno", 

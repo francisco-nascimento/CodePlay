@@ -96,7 +96,6 @@
 		}
   	}
   	$resposta->feedback = $_POST['feedback'];
-  	var_dump($resposta);
   	$respostaAlunoDAO->update($resposta);
   	$situacaoItemDAO->update($situacao);
 

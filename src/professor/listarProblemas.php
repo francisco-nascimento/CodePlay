@@ -65,40 +65,40 @@
 
   if (isset($_POST["classificacao"]) || isset($_POST["sel-assunto"])) {  
 
-    $sql = "select proble.id, proble.id_assunto, profe.nome, proble.desc_Problema, proble.classificacao from Professor as profe right join Problema as proble on profe.id = proble.id_Professor where profe.id = ? limit 100";
+    $sql = "select proble.id, proble.id_assunto, profe.nome, proble.desc_Problema, proble.classificacao, proble.id_Professor from Professor as profe right join Problema as proble on profe.id = proble.id_Professor  limit 100";
 
     if (($_POST["sel-assunto"] != null || strcasecmp($_POST["sel-assunto"], "") != 0) && ($_POST["classificacao"] == null || strcasecmp($_POST["classificacao"], "") == 0)) {
 
-      $sql = "select proble.id, proble.id_assunto, profe.nome, proble.desc_Problema, proble.classificacao from Professor as profe right join Problema as proble on profe.id = proble.id_Professor where profe.id = ? and proble.id_assunto = ? limit 100";
+      $sql = "select proble.id, proble.id_assunto, profe.nome, proble.desc_Problema, proble.classificacao, proble.id_Professor from Professor as profe right join Problema as proble on profe.id = proble.id_Professor where proble.id_assunto = ? limit 100";
       $resultado = $conexao->prepare($sql);
-      $resultado->bindValue(1, $_SESSION["id"]);
-      $resultado->bindValue(2, $_POST["sel-assunto"]);
+      //$resultado->bindValue(1, $_SESSION["id"]);
+      $resultado->bindValue(1, $_POST["sel-assunto"]);
    
     } elseif (($_POST["sel-assunto"] == null || strcasecmp($_POST["sel-assunto"], "") == 0) && ($_POST["classificacao"] != null || strcasecmp($_POST["classificacao"], "") != 0)) {
     
-      $sql = "select proble.id, proble.id_assunto, profe.nome, proble.desc_Problema, proble.classificacao from Professor as profe right join Problema as proble on profe.id = proble.id_Professor where profe.id = ? and proble.classificacao = ? limit 100";
+      $sql = "select proble.id, proble.id_assunto, profe.nome, proble.desc_Problema, proble.classificacao, proble.id_Professor from Professor as profe right join Problema as proble on profe.id = proble.id_Professor where proble.classificacao = ? limit 100";
       $resultado = $conexao->prepare($sql);
 
-      $resultado->bindValue(1, $_SESSION["id"]);
-      $resultado->bindValue(2, $_POST["classificacao"]);
+      // $resultado->bindValue(1, $_SESSION["id"]);
+      $resultado->bindValue(1, $_POST["classificacao"]);
     } elseif (($_POST["sel-assunto"] != null || strcasecmp($_POST["sel-assunto"], "") != 0) && ($_POST["classificacao"] != null || strcasecmp($_POST["classificacao"], "") != 0)) {
     
-      $sql = "select proble.id, proble.id_assunto, profe.nome, proble.desc_Problema, proble.classificacao from Professor as profe right join Problema as proble on profe.id = proble.id_Professor where profe.id = ? and proble.classificacao = ? and proble.id_assunto = ? limit 100";
+      $sql = "select proble.id, proble.id_assunto, profe.nome, proble.desc_Problema, proble.classificacao, proble.id_Professor from Professor as profe right join Problema as proble on profe.id = proble.id_Professor where proble.classificacao = ? and proble.id_assunto = ? limit 100";
       $resultado = $conexao->prepare($sql);
 
-      $resultado->bindValue(1, $_SESSION["id"]);
-      $resultado->bindValue(2, $_POST["classificacao"]);
-      $resultado->bindValue(3, $_POST["sel-assunto"]);
+      // $resultado->bindValue(1, $_SESSION["id"]);
+      $resultado->bindValue(1, $_POST["classificacao"]);
+      $resultado->bindValue(2, $_POST["sel-assunto"]);
     } elseif (($_POST["sel-assunto"] == null || strcasecmp($_POST["sel-assunto"], "") == 0) && ($_POST["classificacao"] == null || strcasecmp($_POST["classificacao"], "") == 0)){
 
-      $resultado = $conexao->prepare("select proble.id, proble.id_assunto, profe.nome, proble.desc_Problema, proble.classificacao from Professor as profe right join Problema as proble on profe.id = proble.id_Professor where profe.id = ? limit 100");
-      $resultado->bindValue(1, $_SESSION["id"]);
+      $resultado = $conexao->prepare("select proble.id, proble.id_assunto, profe.nome, proble.desc_Problema, proble.classificacao, proble.id_Professor from Professor as profe right join Problema as proble on profe.id = proble.id_Professor limit 100");
+      // $resultado->bindValue(1, $_SESSION["id"]);
 
     }
   } else{
   
-    $resultado = $conexao->prepare("select proble.id, proble.id_assunto, profe.nome, proble.desc_Problema, proble.classificacao from Professor as profe right join Problema as proble on profe.id = proble.id_Professor where profe.id = ? limit 100");
-    $resultado->bindValue(1, $_SESSION["id"]);
+    $resultado = $conexao->prepare("select proble.id, proble.id_assunto, profe.nome, proble.desc_Problema, proble.classificacao, proble.id_Professor from Professor as profe right join Problema as proble on profe.id = proble.id_Professor limit 100");
+    // $resultado->bindValue(1, $_SESSION["id"]);
   }
   $resultado->execute();
 
@@ -112,10 +112,16 @@
          <td><?=$linha['classificacao'];?></td>
 
          <td>
+          <?php
+           if(strcmp($linha["id_Professor"], $_SESSION["id"]) == 0) { 
+          ?>
            <form action="/professor/deletarProblema.php" action="GET">
              <input type="hidden" name="idProb" value="<?=$linha["id"];?>">
              <button type="submit" class="btn btn-sm btn-danger"> Deletar Problema </button>
            </form>
+          <?php 
+          }
+          ?>
          </td>
       <?php 
             
