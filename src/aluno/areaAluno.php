@@ -43,6 +43,7 @@ class Aluno extends Entity {
 	public $email;
 	public $pontuacao;
 	public $matricula;
+	public $situacao;
 	// public function Aluno($id){
 	// 	$this->id = $id;
 	// }

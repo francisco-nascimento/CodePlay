@@ -231,6 +231,11 @@ class ItemBlocoDAO extends DAO{
    		// $id_assunto = $proxItem->problema->assunto->id;
    		$bloco = $this->blocoAreaDAO->getByAlunoAssunto($id_aluno, $id_assunto);
    		$id_bloco = $bloco->id;
+      
+      if (!is_null($this->getByBlocoOrdem($id_bloco, $ordem))){
+        echo "Entrou";
+        return true;
+      }
    		
    		$problema = $this->problemaDAO->selecionarPorNivel($nivel, $id_assunto, $id_bloco);
    		$id_problema = $problema->id;
@@ -285,6 +290,21 @@ class ItemBlocoDAO extends DAO{
         return $obj;
    }
 
+   public function getByBlocoOrdem($id_bloco, $ordem){
+      $sql = "SELECT * FROM ItemBloco i where i.id_bloco = ? and i.ordem = ?";
+      $stmt = $this->db->prepare($sql);
+      $stmt->bindValue(1, $id_bloco);
+      $stmt->bindValue(2, $ordem);
+      $stmt->execute();
+      $obj = $stmt->fetchObject('ItemBlocoAluno');        
+      // $this->loadAttributes($obj);
+      $stmt->closeCursor();
+      if($stmt->rowCount() == 0){
+        return null;
+      } else {
+        return $obj;  
+      }
+   }
 
 }
 

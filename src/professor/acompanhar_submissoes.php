@@ -86,10 +86,10 @@
 
 			$alunoDAO->update($aluno->id, $nova_pontuacao);
 
-			$id_assunto = $itemBloco->bloco->assunto->id;
-			$ordem = $itemBloco->ordem;
+			// $id_assunto = $itemBloco->bloco->assunto->id;
+			// $ordem = $itemBloco->ordem;
 
-			$itemBlocoDAO->createNextProblem($aluno->id, $id_assunto, $ordem);
+			// $itemBlocoDAO->createNextProblem($aluno->id, $id_assunto, $ordem);
 		} else {
 			$resposta->resposta_correta = -1;
 	 		$situacao->registrarAvaliacao(false);			

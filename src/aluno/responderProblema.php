@@ -21,8 +21,8 @@
 	$mensagemSucesso = '';
 	if(isset($_POST['btn-submit'])){
 		$respostaAlunoDAO = new RespostaAlunoDAO($conexao);
-		$aluno = new Aluno();
-		$aluno->id = $id_aluno;
+
+		$aluno = $alunoDAO->getById("Aluno", $id_aluno);
 
 		$situacaoItemDAO = new SituacaoItemBlocoDAO($conexao);
 		$situacao = $situacaoItemDAO->getByAlunoProblema($id_aluno, $id_problema);
@@ -32,24 +32,22 @@
 
 		$gabarito = $gabaritoDAO->getByProblema($id_problema);
 
+		$itemBloco = $itemBlocoDAO->getByAlunoProblema($id_aluno, $id_problema);
+
 		if (verificarResposta($resposta_js, $gabarito->desc_Gabarito)){
 			$situacao->registrarSucesso();
 
 			$respostaAluno->set($resposta_js, $aluno, $problema, $situacao->id, $situacao->pontuacao_possivel, 1);
 			$respostaAlunoDAO->save($respostaAluno);
 
-			$itemBloco = $itemBlocoDAO->getByAlunoProblema($id_aluno, $id_problema);
-
-			$aluno = $alunoDAO->getById("Aluno", $id_aluno);
-
 			$nova_pontuacao = $aluno->pontuacao + $itemBloco->situacao->pontuacao_possivel;
 
 			$alunoDAO->update($id_aluno, $nova_pontuacao);
 
-			$id_assunto = $itemBloco->bloco->assunto->id;
-			$ordem = $itemBloco->ordem;
+			// $id_assunto = $itemBloco->bloco->assunto->id;
+			// $ordem = $itemBloco->ordem;
 
-			$itemBlocoDAO->createNextProblem($id_aluno, $id_assunto, $ordem);
+			// $itemBlocoDAO->createNextProblem($id_aluno, $id_assunto, $ordem);
 
 		} else {
 			$situacao->registrarFalha();
@@ -57,18 +55,25 @@
 			$respostaAluno->set($resposta_js, $aluno, $problema, $situacao->id, $situacao->pontuacao_possivel, 0);
 			$respostaAlunoDAO->save($respostaAluno);
 
-			if($situacao->status == 4){
-				// Modificar o problema
-				$itemBloco = $itemBlocoDAO->getByAlunoProblema($id_aluno, $id_problema);
+			// if($situacao->status == 4){
+			// 	// Modificar o problema
+			// 	$itemBloco = $itemBlocoDAO->getByAlunoProblema($id_aluno, $id_problema);
 
-				$id_assunto = $itemBloco->bloco->assunto->id;
-				$ordem = $itemBloco->ordem;
+			// 	$id_assunto = $itemBloco->bloco->assunto->id;
+			// 	$ordem = $itemBloco->ordem;
 
-				$itemBlocoDAO->createNextProblem($id_aluno, $id_assunto, $ordem);
-			// } else {
-			// 	$itemBlocoDAO->substituirProblema($itemBloco);
-			}
+			// 	$itemBlocoDAO->createNextProblem($id_aluno, $id_assunto, $ordem);
+			// // } else {
+			// // 	$itemBlocoDAO->substituirProblema($itemBloco);
+			// }
 		}
+
+		// criar novo problema independente se acertou ou nao
+		$id_assunto = $itemBloco->bloco->assunto->id;
+		$ordem = $itemBloco->ordem;
+		$itemBlocoDAO->createNextProblem($id_aluno, $id_assunto, $ordem);
+
+
 		$situacaoItemDAO->update($situacao);
 		$mensagemSucesso = "Solução submetida com sucesso.";
 	}
@@ -165,10 +170,13 @@
 			 <tr>
 			 	<td>
 				<form name="formulario" onsubmit="recebeResposta();" action="" method="POST">
+
+	              <button type="button" onclick="javascript:showCode()" class="btn btn-sm btn-success">Exibir JS</button> &nbsp;&nbsp;&nbsp;
+	              <button type="button" onclick="javascript:runCode()" class="btn btn-sm btn-success">Executar JS</button>&nbsp;&nbsp;&nbsp;
 	  				<input type="hidden" name="resposta">
 	  				<input type="hidden" name="id_problema" value="<?=$id_problema;?>">
 	  				<input type="hidden" name="classificacao" value="<?=$problema->classificacao?>">
-	  			    <button type="submit" name="btn-submit" class="btn btn-sm btn-success">Submeter resposta</button>
+	  			    <button type="submit" name="btn-submit" class="bt-ok">Submeter resposta</button>
 	  			</form>
 		  		</td>
 		  	</tr>
