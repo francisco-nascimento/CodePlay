@@ -377,13 +377,14 @@ class RespostaAlunoDAO extends DAO {
   }
 
   public function save($resposta){
-   	$sql = "insert into RespostaAluno (desc_resposta, id_aluno, id_problema, id_situacaoitem, pontuacao_possivel) values (?,?,?,?,?)";
+   	$sql = "insert into RespostaAluno (desc_resposta, id_aluno, id_problema, id_situacaoitem, pontuacao_possivel, resposta_correta) values (?,?,?,?,?,?)";
 		$stmt = $this->db->prepare($sql);
 		$stmt->bindValue(1, $resposta->desc_resposta);
 		$stmt->bindValue(2, $resposta->aluno->id);
 		$stmt->bindValue(3, $resposta->problema->id);
     $stmt->bindValue(4, $resposta->id_situacaoitem);
     $stmt->bindValue(5, $resposta->pontuacao_possivel);
+    $stmt->bindValue(6, $resposta->resposta_correta);
 		$stmt->execute();			   	
   }
 

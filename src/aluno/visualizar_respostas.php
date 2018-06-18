@@ -89,6 +89,13 @@
 					</tr>
 				<?php
 					foreach($respostas as $resposta){
+						switch ($resposta->resposta_correta) {
+							case -1: $resultado = "Não";
+							case 0: $resultado = "Em análise";
+							case 1: $resultado = "Sim";
+							default:
+								break;
+						}
 				?>
 					<tr>
 						<td class="title2">
@@ -106,7 +113,7 @@
 						<td>
 							<pre class="code-gab">Feedback: <?=$resposta->feedback?><br/>
 Solução correta? <?=$resultado?><br/>
-Pontuação: <?=$resposta->pontuacao_obtida?></pre>
+Pontuação: <?=$situacao->pontuacao_obtida?></pre>
 						</td>
 					</tr>
 

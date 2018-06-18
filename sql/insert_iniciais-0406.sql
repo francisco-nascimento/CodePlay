@@ -52,6 +52,8 @@ UNLOCK TABLES;
 LOCK TABLES `Professor` WRITE;
 /*!40000 ALTER TABLE `Professor` DISABLE KEYS */;
 INSERT INTO `Professor` VALUES (6,'2248410','Francisco do Nascimento','chico@gmail.com','$2y$10$33cinRei213w1Zjsh7x7TO1tRUAJfcSqGXYO7gSmd6vwlbbVSYrVq',1,'2018-05-25 22:12:56');
+INSERT INTO `Professor` VALUES (7,'2248239','Havana Alves','havana.alves@gmail.com','$2y$10$33cinRei213w1Zjsh7x7TO1tRUAJfcSqGXYO7gSmd6vwlbbVSYrVq',1,'2018-05-25 22:12:56');
+
 /*!40000 ALTER TABLE `Professor` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

@@ -75,7 +75,7 @@
   	$id_aluno = $aluno->id;
 
   	// status atual ERRO
-  	if ($situacao->status == 5 || $situacao->status == 3) {
+  	// if ($situacao->status == 5 || $situacao->status == 3) {
   		if ($avaliacao == 1){
 	 		$situacao->registrarAvaliacao(true);
 	 		$resposta->resposta_correta = 1;
@@ -94,7 +94,7 @@
 			$resposta->resposta_correta = -1;
 	 		$situacao->registrarAvaliacao(false);			
 		}
-  	}
+  	// }
   	$resposta->feedback = $_POST['feedback'];
   	$respostaAlunoDAO->update($resposta);
   	$situacaoItemDAO->update($situacao);

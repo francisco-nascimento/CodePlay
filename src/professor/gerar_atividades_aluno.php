@@ -27,9 +27,9 @@ function gerarProblemasTurma($con, $turma, $selecao){
 		// para cada aluno
 		//   escolher um problema aleatorio de nivel F
 		//   gerar um item de bloco de ordem 1
-		echo "Quantidade: " . count($selecao);
+		// echo "Quantidade: " . count($selecao);
 		foreach($selecao as $id_aluno){
-			echo "<br/>Aluno: $id_aluno";
+			// echo "<br/>Aluno: $id_aluno";
 			$itemBlocoDAO->createNextProblem($id_aluno, $id_assunto, 0);
 		}		
 	}

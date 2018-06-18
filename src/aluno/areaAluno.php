@@ -5,7 +5,7 @@ const PENALIZACAO_ERRO = 100;
 const PONTUACAO_PADRAO_FACIL = 500;
 const PONTUACAO_PADRAO_MEDIO = 1000;
 const PONTUACAO_PADRAO_DIFICIL = 1500;
-const QUANTIDADE_TENTATIVAS_MAX = 3;
+const QUANTIDADE_TENTATIVAS_MAX = 1;
 const MAX_ORDEM = 6;
 
 // ACOMPANHAMENTO DOS ALUNOS :: TIPOS DE SITUACOES 
@@ -196,7 +196,7 @@ class RespostaAluno extends Entity{
 	public $pontuacao_possivel;
 	public $resposta_correta;
 
-	public function set($descricao, $aluno, $problema, $id_situacaoitem, $pontuacao_possivel, $correta){
+	public function set($descricao, $aluno, $problema, $id_situacaoitem, $pontuacao_possivel, $correta = 0){
 		$this->desc_resposta = $descricao;
 		$this->aluno = $aluno;
 		$this->problema = $problema;
