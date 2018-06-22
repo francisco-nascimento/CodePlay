@@ -29,10 +29,24 @@ img {
   max-width: calc(100% - 2em);
   margin: 1em auto;
   overflow: hidden;
-  width: 800px;
+    border-collapse: collapse;
+  width: 900px;
+}
+
+.table-ranking {
+  border: 1px solid #327a81;
+  border-radius: 10px;
+  -webkit-box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+  max-width: calc(100% - 2em);
+  margin: 1em auto;
+  overflow: hidden;
+  border-collapse: collapse;
+  width: 600px;
 }
 
 table {
+  border-collapse: collapse;
   width: 100%;
 }
 table td, table th {
@@ -40,9 +54,10 @@ table td, table th {
   padding: 10px;
 }
 table td {
-  text-align: center;
+  text-align: left;
   vertical-align: middle;
 }
+
 table td:last-child {
   font-size: 0.95em;
   line-height: 1.4;
