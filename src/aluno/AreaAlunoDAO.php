@@ -509,6 +509,15 @@ class AlunoDAO extends DAO {
     $stmt->execute();         
   }
 
+  public function getByMatriculaEmail($matricula, $email){
+    $stmt = $this->db->prepare("SELECT * FROM Aluno where matricula = ? or email = ?");
+    $stmt->bindValue(1, $matricula);
+    $stmt->bindValue(2, $email);
+    $stmt->execute();
+    $obj = $stmt->fetchObject("Aluno");
+    return $obj;  
+  }
+
 	public function pesquisarAlunos($nome, $turma){
 		if (!isset($nome) && !isset($turma)){
 		  return null;

@@ -1,45 +1,27 @@
 <?php 
 	session_start();
 	require ($_SERVER["DOCUMENT_ROOT"].'/conexao.php');
+	require ($_SERVER["DOCUMENT_ROOT"].'/aluno/areaAluno.php');
+  	require ($_SERVER["DOCUMENT_ROOT"].'/aluno/AreaAlunoDAO.php');
 
+  	$id_professor = $_SESSION['id'];
 	$matricula = $_POST["matricula"];
-
-	$senha = "ifpe1234";
-
+	$nome = $_POST["nome"];
+	$email = $_POST["email"];
+	$id_turma = $_POST["pesq-turma"];
+	$senha = "codeplay123";
 	$senhaCriptografada = password_hash($senha, PASSWORD_DEFAULT);
+	$situacao = 0;
 
-	$sql = "SELECT id FROM Aluno WHERE matricula = ?";
+	$alunoDAO = new AlunoDAO($conexao);
+	$aluno = $alunoDAO->getByMatriculaEmail($matricula, $email);
 
-	$stmt = $conexao->prepare($sql);
+	if (!isset($aluno->id)) {
 
-	$stmt->bindValue(1, $matricula);
-	$stmt->execute();
-
-	$idAluno = 0;
-
-	foreach ($stmt as $key) {
-		$idAluno = $key["id"];
-	}
-
-
-
-	if ($idAluno == null || $idAluno == 0) {
-		$sql = "insert into Aluno(matricula, senha, situacao, id_professor) values(?,?,?,?)";
-
-		$stmt = $conexao->prepare($sql);
-		$stmt->bindValue(1, $matricula);
-		$stmt->bindValue(2, $senhaCriptografada);
-		$stmt->bindValue(3, 0);
-		$stmt->bindValue(4, $_SESSION["id"]);
-
-		$stmt->execute();
-
-		header("Location: /professor/cadastrarAluno.php?msg=Aluno%20Cadastrado!");
-		
+		$alunoDAO->save($matricula, $nome, $email, $senhaCriptografada, $situacao, $id_turma, $id_professor);
+		header("Location: /professor/cadastrarAluno.php?msg=2");
 	}else{
-
-		header("Location: /professor/cadastrarAluno.php?msg=Aluno%20já%20existente!");
-
+		header("Location: /professor/cadastrarAluno.php?msg=1");
 	}
 	
 		

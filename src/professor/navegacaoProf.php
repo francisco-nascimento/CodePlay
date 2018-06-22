@@ -16,6 +16,7 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="/professor/importarAlunos.php">Importar alunos</a>
             <a class="dropdown-item" href="/professor/listarAlunos.php"> Pesquisar Alunos</a>
+            <a class="dropdown-item" href="/professor/cadastrarAluno.php">Adicionar alunos</a>
             <a class="dropdown-item" href="/professor/listarPorRanking.php">Ranking</a>
           </div>
         </li>

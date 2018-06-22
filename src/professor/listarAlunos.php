@@ -112,7 +112,7 @@
 	  	<div class="header">Pesquisar alunos</div>
 		<div class="table-users">
         <fieldset>
-          <legend>Preencha um dos filtros para pesquisar</legend>
+          <legend class="title2">Preencha um dos filtros para pesquisar</legend>
           <form method="POST">
 				  <table>
 					<tr>
