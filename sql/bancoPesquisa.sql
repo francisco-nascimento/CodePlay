@@ -133,6 +133,48 @@ foreign key (id_Problema) references Problema(id),
 foreign key (id_situacaoitem) references SituacaoItemBloco(id)
 );
 
+-- Questionario
+
+create table QuestSentenca (
+id int AUTO_INCREMENT,
+desc_sentenca text(500),
+situacao tinyint(1),
+data_Alteracao timestamp default current_timestamp,
+primary key (id)
+);
+
+create table QuestOpcaoResposta (
+id int AUTO_INCREMENT,
+desc_opcaoresposta text(500),
+situacao tinyint(1),
+data_Alteracao timestamp default current_timestamp,
+primary key (id)
+);
+
+create table QuestSentencaOpcao (
+id int AUTO_INCREMENT,
+id_sentenca int,
+id_opcaoresposta int,
+data_Alteracao timestamp default current_timestamp,
+primary key (id),
+foreign key (id_sentenca) references QuestSentenca (id),
+foreign key (id_opcaoresposta) references QuestOpcaoResposta(id)
+);
+
+create table RespostaQuestionario (
+id int AUTO_INCREMENT,
+id_aluno int,
+id_sentencaopcao int,
+data_Alteracao timestamp default current_timestamp,
+primary key (id),
+foreign key (id_aluno) references Aluno (id),
+foreign key (id_sentencaopcao) references QuestSentencaOpcao(id)
+);
+
+
+
+
+
 -- alter table Resposta_Aluno add column id_situacaoitem int;
 -- alter table Resposta_Aluno ADD FOREIGN KEY (id_situacaoitem) REFERENCES SituacaoItemBloco(id);
 

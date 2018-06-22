@@ -67,7 +67,7 @@
 		foreach ($assuntos as $assunto) {
 		?>
 			<tr>
-				<td class="title2" colspan="2">
+				<td class="title2" >
 				Assunto: <?=$assunto->descricao?>
 				</td>
 			</tr>
@@ -83,7 +83,7 @@
 					$problema = $respostas[0]->problema;
 				?>
 					<tr>
-						<td class="title3" colspan="2">
+						<td class="title3">
 						Problema <?=$i++?>: <?=$problema->desc_Problema?>
 						</td>
 					</tr>
@@ -98,20 +98,10 @@
 						}
 				?>
 					<tr>
-						<td class="title2">
-						Resposta enviada
-						</td>
-						<td class="title2">
-						Análise do professor
-						</td>
-					</tr>
-					<tr>
 						<td>
 						Resposta enviada em <?=$resposta->data_Alteracao?>
 						<pre class="code-resp"><?=$resposta->desc_resposta?></pre>
-						</td>
-						<td>
-							<pre class="code-gab">Feedback: <?=$resposta->feedback?><br/>
+						Feedback: <?=$resposta->feedback?><br/>
 Solução correta? <?=$resultado?><br/>
 Pontuação: <?=$situacao->pontuacao_obtida?></pre>
 						</td>

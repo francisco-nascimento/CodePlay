@@ -1,0 +1,15 @@
+20171TIJG0363;Arthur Leal;arthur.leal@gmail.com;
+20172TIJG0624;Fernanda Williane;fernanda.williane@gmail.com;
+20172TIJG0560;Hugo Raniele;hugo.raniele@gmail.com;
+20172TIJG0616;Igor Leonardo;igor.leonardo@gmail.com;
+20171TIJG0061;Jean Valeriano;jean.valeriano@gmail.com;
+20172TIJG0578;Jose Ivanildo;jose.ivanildo@gmail.com;
+20172TIJG0500;Laila Roberta;laila.roberta@gmail.com;
+20172TIJG0608;Lays Dias;lays.dias@gmail.com;
+20172TIJG0462;Odilon Macedo;odilon.macedo@gmail.com;
+20152TIJG0156;Pedro Victor;pedro.victor@gmail.com;
+20171TIJG0339;Rayssa das Chagas;rayssa.chagas@gmail.com;
+20172TIJG0390;Rodrigo Silva;rodrigo.silva@gmail.com;
+20172TIJG0438;Symone Silva;symone.silva@gmail.com;
+20172TIJG0357;Thayane Laura;thayane.laura@gmail.com;
+20171TIJG0380;Thaysa Cristina;thaysa.cristina@gmail.com

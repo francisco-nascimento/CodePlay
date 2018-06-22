@@ -79,11 +79,25 @@
 			           	<a href="/aluno/alterar_senha.php">Alterar senha</a>
 			           </th>
 			       </tr>
+
 			       <?php
+			   		} else if (strcmp($aluno->situacao, "2") == 0){
+				?>
+<!-- 				<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd1Xi7fA8G0yudzEhRXoMwD_ofGXHWTA1F9niYyYz8FcFL_Ag/viewform?embedded=true" width="700" height="300" frameborder="0" marginheight="0" marginwidth="0" onsubmit="javascript:alert('submit... ');">Carregando…</iframe> -->
+				<?php
 					} else {
+						$fase = 1;
+				?>
+				<tr>
+				 	<td class="special_line">Fase <?=$fase++;?>: Pesquisa inicial - <a class="bt-ok" href="https://goo.gl/forms/OfMXaaykGuVTEHL92" target="_blank">Clique aqui para responder</a>
+				 	</td>
+				</tr> 
+
+				<?php
 
 				    $blocos = $area_atual->blocos;
 				    $numProblemas = 0;
+
 				    foreach ($blocos as $bloco) {
 				    	$assunto = $bloco->assunto;
 				    	if ($aluno->nivel < $numProblemas) {
@@ -94,12 +108,12 @@
 				 ?>
 				 <!-- Bloco da area  -->
 		          <tr>
-		            <th class="title2"><?=$assunto->descricao?>
+		            <th class="title2">Fase <?=$fase++;?>: <?=$assunto->descricao?>
 		            &nbsp;&nbsp;
 		            <?php $url = getURLVideoExemplo($assunto->id);
 		            if ($url !== '') { 
 		            ?>
-				  <button class="title3 video" data-video="<?=getURLVideoExemplo($assunto->id)?>" data-toggle="modal" data-target="#videoModal<?=$assunto->id?>">Exemplo <?=$assunto->id?></button>
+				  <button class="title2 video" data-video="<?=getURLVideoExemplo($assunto->id)?>" data-toggle="modal" data-target="#videoModal<?=$assunto->id?>">Exemplo <?=$assunto->id?></button>
 				  <div class="modal fade" id="videoModal<?=$assunto->id?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				    <div class="modal-dialog">
 				      <div class="modal-content">
@@ -179,8 +193,16 @@
 		          <?php
 				    	
 				    }
-
+				    if ($aluno->nivel > 7) {
 		          ?>
+		          <tr>
+				 	<td class="special_line">Fase <?=$fase++;?>: Pesquisa Final - <a class="bt-ok" href="https://goo.gl/forms/EXI5xa7WMIlebUvS2" target="_blank">Clique aqui para responder</a>
+				 	</td>
+				 </tr> 
+				 <?php
+				 	}
+				 ?>
+
 				</table>
 		</div>
 		<?php
