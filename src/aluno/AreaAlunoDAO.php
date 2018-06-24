@@ -501,6 +501,29 @@ class AlunoDAO extends DAO {
     $stmt->execute();         
   }
 
+  public function updateAll($nome, $matricula, $email, $id_aluno, $id_turma, $senha){
+    $sql = "update Aluno set nome = ?, matricula = ?, email = ?, id_turma = ?, data_Alteracao = CURRENT_TIMESTAMP ";
+    if (is_null($senha)){
+      $sql .= " where id = ?";
+      $stmt = $this->db->prepare($sql);
+      $stmt->bindValue(1, $nome);
+      $stmt->bindValue(2, $matricula);
+      $stmt->bindValue(3, $email);
+      $stmt->bindValue(4, $id_turma);
+      $stmt->bindValue(5, $id_aluno);
+    } else {
+      $sql .= ", senha = ? where id = ?";
+      $stmt = $this->db->prepare($sql);
+      $stmt->bindValue(1, $nome);
+      $stmt->bindValue(2, $matricula);
+      $stmt->bindValue(3, $email);
+      $stmt->bindValue(4, $id_turma);
+      $stmt->bindValue(5, $senha);
+      $stmt->bindValue(6, $id_aluno);
+    }
+    $stmt->execute();         
+  }
+
   public function updateNivel($id_aluno, $nivel){
     $sql = "update Aluno set nivel = ? where id = ?";
     $stmt = $this->db->prepare($sql);

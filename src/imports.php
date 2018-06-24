@@ -71,6 +71,8 @@
     $paginas[$i++] = '/professor/alterar_senha.php';
     $paginas[$i++] = '/aluno/visualizar_respostas.php';
     $paginas[$i++] = '/professor/cadastrarAluno.php';
+    $paginas[$i++] = '/professor/alterar_aluno.php';
+    $paginas[$i++] = '/professor/deletarAluno.php';
 
     $cond_incluir_link = FALSE;
     foreach ($paginas as $pag) {

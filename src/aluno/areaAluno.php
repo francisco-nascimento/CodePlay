@@ -44,9 +44,13 @@ class Aluno extends Entity {
 	public $pontuacao;
 	public $matricula;
 	public $situacao;
+	public $senha;
 	// public function Aluno($id){
 	// 	$this->id = $id;
 	// }
+	public function resetSenha(){
+		$this->senha = password_hash("codeplay123", PASSWORD_DEFAULT);
+	}
 }
 
 class Problema extends Entity {

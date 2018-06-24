@@ -43,23 +43,24 @@
 
 	<script type="text/javascript">
 		$(document).ready(function(){
-    		$('button#btn-remover').click(function(){
-        		var clickBtnValue = $(this).val();
-        		var url = 'deletarAluno.php';
-        		data =  {'idAluno': clickBtnValue};
-            var conf = confirm('Confirma a exclusão do aluno?');
-            if (conf){
-          		$.get(url, data, function (response) {
-              		location.reload();
-          		});
-            }
-    		});
-    		$('button#btn-editar').click(function(){
-        		var clickBtnValue = $(this).val();
-        		var url = 'alterarAluno.php';
-        		data =  {'idAluno': clickBtnValue};
-        		$.get(url, data);
-    		});
+    		// $('button#btn-remover').click(function(){
+      //   		var clickBtnValue = $(this).val();
+      //   		var url = 'deletarAluno.php';
+      //   		data =  {'idAluno': clickBtnValue};
+      //       var conf = confirm('Confirma a exclusão do aluno?');
+      //       if (conf){
+      //     		$.get(url, data, function (response) {
+      //         		location.reload();
+      //     		});
+      //       }
+    		// });
+    		// $('button#btn-editar').click(function(){
+      //   		var clickBtnValue = $(this).val();
+      //   		var url = 'alterar_aluno.php';
+      //   		data =  {'id': clickBtnValue};
+      //       alert('Teste');
+      //   		$.post(url, data);
+    		// });
     		$('#opt-pesq1').change(function(){
     			if (this.checked){
     				$('#pesq-turma').removeAttr("disabled");
@@ -150,7 +151,7 @@
 	      		<tr>
               <th><input type="checkbox" id="check-all" class="checkAll-class"></th>
 		         	<th>Nome</th>
-		         	<th>Matrícula</th>
+		         	<th>E-mail</th>
               <th>Situação</th>
 		         	<th>Pontuação</th>
               <th>Atividades</th>
@@ -173,17 +174,17 @@
                 ?>
               </td>
 	         		<td><?=$aluno->nome;?></td>
-	         		<td><?=$aluno->matricula?></td>
+	         		<td><?=$aluno->email?></td>
 	         		<td><?=exibirSituacaoLogin($aluno->situacao)?></td>
               <td><?=$aluno->pontuacao?></td>
               <td><?=$aluno->nivel?></td>
 	         		<td>
-	         			<button id="btn-editar" value="<?=$aluno->id?>">
+	         			<a href="/professor/alterar_aluno.php?id=<?=$aluno->id?>">
 	         			<img src="../img/icone-editar.png" class="icone">
-	         			</button>
-	           			<button id="btn-remover" value="<?=$aluno->id?>">
+	         			</a>
+                <a href="/professor/deletarAluno.php?id=<?=$aluno->id?>">
 	         				<img src="../img/icone-remover.png" class="icone">
-	         			</button>
+                </a>
 	       			</td>
 	    		</tr>
 		    	<?php 
