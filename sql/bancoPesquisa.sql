@@ -25,21 +25,26 @@ primary key (id),
 foreign key (id_Professor) references Professor (id)
 );
 
-create table Turma_configuracao (
+create table TurmaConfiguracao (
 	id int AUTO_INCREMENT,
 	id_turma int not null,
 	numero_problemas_fase int not null,
 	max_tentativas int not null, 
 	controle_tempo tinyint(1) not null, 
 	tempo_limite int null,
-	data_Alteracao timestamp default current_timestamp
+	data_Alteracao timestamp default current_timestamp,
+	primary key (id),
+	foreign key(id_turma) references Turma(id) 
 );
 
-create table Turma_configuracao_fases (
+create table TurmaConfiguracaoFases (
 	id int AUTO_INCREMENT,
 	id_turma_config int not null,
 	id_assunto int not null,
-	data_Alteracao timestamp default current_timestamp	
+	data_Alteracao timestamp default current_timestamp,
+	primary key (id),
+	foreign key(id_turma_config) references Turma_configuracao(id),
+	foreign key (id_assunto) references Assunto(id)
 );
 
 create table Aluno (

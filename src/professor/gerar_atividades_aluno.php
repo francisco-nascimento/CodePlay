@@ -4,6 +4,7 @@
 
   require ($_SERVER["DOCUMENT_ROOT"].'/professor/carregarDadosAlunos.php');
 
+
 if(isset($_POST['id_turma'])){
 	gerarProblemasTurma($conexao, $_POST['id_turma'], NULL);
 } elseif (isset($_POST['alunos'])){
@@ -11,17 +12,22 @@ if(isset($_POST['id_turma'])){
 }
 
 function gerarProblemasTurma($con, $turma, $selecao){
+	$alunoDAO = new AlunoDAO($con);
 	$problemaDAO = new ProblemaDAO($con);
 	$blocoAreaDAO = new BlocoAreaDAO($con);
 	$itemBlocoDAO = new ItemBlocoDAO($con);
-	$id_assunto = 1;
+	$turmaConfigDAO = new TurmaConfiguracaoDAO($con);
 
 	// selecionar os alunos da turma
 	if (isset($turma)){
+		
+		$config = $turmaConfigDAO->getByTurma($turma);		
+		$assunto = $config->assuntos[0];
+
 		$alunos = pesquisarAlunos($con, NULL, $turma);
 		foreach($alunos as $aluno){
 			$id_aluno = $aluno->id;
-			$itemBlocoDAO->createNextProblem($id_aluno, $id_assunto, 0);
+			$itemBlocoDAO->createNextProblem($id_aluno, $assunto->id, 0, $config);
 		}
 	} else if (isset($selecao)){
 		// para cada aluno
@@ -30,7 +36,11 @@ function gerarProblemasTurma($con, $turma, $selecao){
 		// echo "Quantidade: " . count($selecao);
 		foreach($selecao as $id_aluno){
 			// echo "<br/>Aluno: $id_aluno";
-			$itemBlocoDAO->createNextProblem($id_aluno, $id_assunto, 0);
+			$aluno = $alunoDAO->getById('Aluno', $id_aluno);
+			$config = $turmaConfigDAO->getByTurma($aluno->id_turma);
+			$assunto = $config->assuntos[0];
+
+			$itemBlocoDAO->createNextProblem($id_aluno, $assunto->id, 0, $config);
 		}		
 	}
 
@@ -48,7 +58,7 @@ function gerarProblemasTurma($con, $turma, $selecao){
 	<body>
 		<div class="table-users">
 	  	<div class="header">Geração de atividades</div>
-		<div class="table-users">
+		<div class="title2">
 	      	Atividades criadas para os alunos selecionados.
 	     </div>
 	 </div>

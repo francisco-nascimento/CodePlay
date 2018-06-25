@@ -7,7 +7,9 @@ $professor = $_POST["tipoUsuario"];
 $email = $_POST["email"];
 $sql = "verifique o sql";
 
-include ($_SERVER['DOCUMENT_ROOT'] .'/conexao.php');
+require ($_SERVER['DOCUMENT_ROOT'].'/conexao.php');
+require ($_SERVER["DOCUMENT_ROOT"].'/aluno/areaAluno.php');
+require ($_SERVER["DOCUMENT_ROOT"].'/aluno/AreaAlunoDAO.php');
 
 //Verificado se quem está logando é aluno ou um professor
 
@@ -69,9 +71,11 @@ if ($professor == 1) {
 				$_SESSION["USUARIO_LOGADO"] = 'P';
 			}else{
 				$_SESSION["USUARIO_LOGADO"] = 'A';
-														
 				$_SESSION["idTurma"] = $usuario["id_turma"];
 
+				$turmaConfigDAO = new TurmaConfiguracaoDAO($conexao);
+				$config = $turmaConfigDAO->getByTurma($usuario["id_turma"]);
+				$_SESSION["config"] = serialize($config);
 			}
 			// if (strcmp($usuario["situacao"], "0") == 0) {
 

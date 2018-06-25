@@ -208,10 +208,16 @@ class ItemBlocoDAO extends DAO{
    	 }
    }
 
-   public function obterNextItemBloco($id_assunto, $ordemAtual){
-		if ($ordemAtual == MAX_ORDEM){
-			$id_assunto++;
-			$proxOrdem = 1;
+   public function obterNextItemBloco($id_assunto, $ordemAtual, $config){
+		if ($ordemAtual == $config->numero_problemas_fase){
+			$assunto = $config->getNextAssunto($id_assunto);
+      if (isset($assunto)){
+        $id_assunto = $assunto->id;
+        $proxOrdem = 1;        
+      } else {
+        $proxOrdem = -1;
+        $id_assunto = -1;
+      }
 		} else {
 			$proxOrdem = $ordemAtual+1;
 		}
@@ -220,20 +226,22 @@ class ItemBlocoDAO extends DAO{
 
    }
 
-   public function createNextProblem($id_aluno, $id_assuntoAtual, $ordemAtual){
+   public function createNextProblem($id_aluno, $id_assuntoAtual, $ordemAtual, $config){
 
-   		$ret = $this->obterNextItemBloco($id_assuntoAtual, $ordemAtual);
+   		$ret = $this->obterNextItemBloco($id_assuntoAtual, $ordemAtual, $config);
 
    		$id_assunto = $ret[0];
    		$ordem = $ret[1];
-   		$nivel = obterNivel($ordem);
+      if($ordem === -1){
+        return false;
+      }
+   		$nivel = obterNivel($ordem, $config->numero_problemas_fase);
 
    		// $id_assunto = $proxItem->problema->assunto->id;
    		$bloco = $this->blocoAreaDAO->getByAlunoAssunto($id_aluno, $id_assunto);
    		$id_bloco = $bloco->id;
       
       if (!is_null($this->getByBlocoOrdem($id_bloco, $ordem))){
-        echo "Entrou";
         return true;
       }
    		
@@ -572,6 +580,80 @@ class TurmaDAO extends DAO {
     $stmt->execute();
     $obj = $stmt->fetchAll(PDO::FETCH_OBJ);
     return $obj;  
+  }
+
+  public function save($nome_turma, $id_professor){
+   $sql = "INSERT INTO Turma(desc_Turma, id_professor) VALUES (?, ?)";
+   $stmt = $this->db->prepare($sql);
+   $stmt->bindValue(1, $nome_turma);
+   $stmt->bindValue(2, $id_professor);
+   $stmt->execute();
+   return $this->getLastId('Turma');    
+  }
+
+}
+
+class TurmaConfiguracaoDAO extends DAO {
+  private $turmaConfigFasesDAO;
+
+  public function __construct($pdo) {
+     parent::__construct($pdo);
+     $this->turmaConfigFasesDAO = new TurmaConfiguracaoFasesDAO($pdo);
+  }
+
+  public function save($id_turma, $numero_problemas_fase, $max_tentativas, $controle_tempo, $tempo_limite){
+      $sql = "insert into TurmaConfiguracao(id_turma, numero_problemas_fase, max_tentativas, controle_tempo, tempo_limite) values(?,?,?,?,?)";
+      $stmt = $this->db->prepare($sql);
+      $stmt->bindValue(1, $id_turma);
+      $stmt->bindValue(2, $numero_problemas_fase);
+      $stmt->bindValue(3, $max_tentativas);
+      $stmt->bindValue(4, $controle_tempo);
+      $stmt->bindValue(5, $tempo_limite);
+      $stmt->execute();
+  }
+
+  public function getByTurma($id_turma){
+    $config = new TurmaConfiguracao();
+    $stmt = $this->db->prepare("SELECT * FROM TurmaConfiguracao where id_turma = ?");
+    $stmt->bindValue(1, $id_turma);
+    $stmt->execute();
+    $config = $stmt->fetchObject("TurmaConfiguracao");
+    if ($config){
+      $config->assuntos = $this->turmaConfigFasesDAO->getByTurmaConfig($config->id);
+    } else {      
+      $config->numero_problemas_fase = MAX_ORDEM;
+      $config->max_tentativas = QUANTIDADE_TENTATIVAS_MAX;
+      $config->assuntos = $assuntosDAO->listAll();      
+    }
+    return $config;
+  }
+
+}
+
+class TurmaConfiguracaoFasesDAO extends DAO {
+  private $assuntoDAO;
+  public function __construct($pdo) {
+     parent::__construct($pdo);
+     $this->assuntoDAO = new AssuntoDAO($pdo);
+  }
+
+  public function save($id_turma_config, $id_assunto){
+      $sql = "insert into TurmaConfiguracaoFases(id_turma_config, id_assunto) values(?,?)";
+      $stmt = $this->db->prepare($sql);
+      $stmt->bindValue(1, $id_turma_config);
+      $stmt->bindValue(2, $id_assunto);
+      $stmt->execute();
+  }
+  public function getByTurmaConfig($id_turma_config){
+    $stmt = $this->db->prepare("SELECT id_assunto FROM TurmaConfiguracaoFases where id_turma_config = ?");
+    $stmt->bindValue(1, $id_turma_config);
+    $stmt->execute();
+    $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $assuntos = array();
+    foreach ($res as $value) {
+      $assuntos[] = $this->assuntoDAO->getById('Assunto', $value['id_assunto']);
+    }
+    return $assuntos;      
   }
 
 }

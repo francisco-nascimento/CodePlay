@@ -6,6 +6,8 @@
 	require ($_SERVER["DOCUMENT_ROOT"].'/aluno/areaAluno.php');
 	require ($_SERVER["DOCUMENT_ROOT"].'/aluno/AreaAlunoDAO.php');
 
+    $config_session = unserialize($_SESSION["config"]);
+
 	$problemaDAO = new ProblemaDAO($conexao);
 	$itemBlocoDAO = new ItemBlocoDAO($conexao);
 	$blocoAreaDAO = new BlocoAreaDAO($conexao);
@@ -71,9 +73,10 @@
 		// criar novo problema independente se acertou ou nao
 		$id_assunto = $itemBloco->bloco->assunto->id;
 		$ordem = $itemBloco->ordem;
-		$itemBlocoDAO->createNextProblem($id_aluno, $id_assunto, $ordem);
-
-
+		$res = $itemBlocoDAO->createNextProblem($id_aluno, $id_assunto, $ordem, $config_session);
+		if (!$res){
+			// TODO: finalizou todos os problemas
+		}
 		$situacaoItemDAO->update($situacao);
 		$mensagemSucesso = "Solução submetida com sucesso.";
 	}

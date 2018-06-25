@@ -1,6 +1,6 @@
 <?php
-
 // PARAMETROS
+
 const PENALIZACAO_ERRO = 100;
 const PONTUACAO_PADRAO_FACIL = 500;
 const PONTUACAO_PADRAO_MEDIO = 1000;
@@ -15,24 +15,22 @@ const SOLUCAO_INADEQUADA = 3;
 const FALHA_ENTENDIMENTO_PROBLEMA = 4;
 const REINCIDENCIA_ERRO = 5;
 
-function obterNivel($ordem){
-	if ($ordem <= 3){
-		return 'F';
-	} else if ($ordem == 4 || $ordem == 5){
-		return 'M';
-	} else {
-		return 'D';
+function obterNivel($ordem, $qtdMax){
+	switch($qtdMax){
+		case 3:
+			$niveis = array('F', 'M', 'D');
+			break;
+		case 4:
+			$niveis = array('F', 'F', 'M', 'D');
+			break;
+		case 5:
+			$niveis = array('F', 'F', 'M', 'M','D');
+			break;			
+		default:
+			$niveis = array('F', 'F', 'F', 'M', 'M','D');
+			break;
 	}
-}
-
-function nextOrdem($id_assunto, $ordem){
-	if ($ordem == MAX_ORDEM){
-		$id_assunto++;
-		$ordem = 1;
-	} else {
-		$ordem++;
-	}
-	return array($id_assunto, $ordem);
+	return $niveis[$ordem - 1];
 }
 
 abstract class Entity {
@@ -219,5 +217,32 @@ class Gabarito extends Entity {
 class Turma extends Entity {
 	public $id;
 	public $desc_Turma;
+}
+
+class TurmaConfiguracao extends Entity {
+	public $id_turma;
+	public $numero_problemas_fase;
+	public $max_tentativas;
+	public $controle_tempo; 
+	public $tempo_limite;
+	public $assuntos;
+
+	public function getNextAssunto($id_assuntoAtual){
+		$i = 0;
+		while(count($this->assuntos) > $i) {
+			if ($this->assuntos[$i]->id === $id_assuntoAtual){
+				$i++;
+				return $this->assuntos[$i];
+			}
+			$i++;
+		}
+		return null;
+	}
+
+}
+
+class TurmaConfiguracaoFases extends Entity {
+	public $turmaConfiguracao;
+	public $assunto;
 }
 ?>

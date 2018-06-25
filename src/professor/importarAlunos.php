@@ -9,14 +9,27 @@
 
   $file_alunos = $_FILES['file_alunos'];
   $nome_turma = $_POST['nome_turma'];
+  $qtd_problemas = $_POST['qtd_problemas'];
+  $max_tentativas = $_POST['max_tentativas'];
+  $controle_tempo = $_POST['controle_tempo'];
+  $tempo = $_POST['tempo'];
+  $assuntos = $_POST['sel-assunto'];
 
   if(isset($_POST['btn-confirmar'])){
-     $id_turma = salvarDadosAlunos($conexao, $file_alunos, $nome_turma, $id_professor);   
+     $id_turma = salvarDadosAlunos($conexao, $file_alunos, $nome_turma, $id_professor, $qtd_problemas, $max_tentativas, $controle_tempo, $tempo, $assuntos);
   }
 
-  // if(isset($_POST['id_turma'])){
-  //    gerarProblemasTurma($conexao, $_POST['id_turma']);
-  // }
+  function gerarSelectAssuntos($con){
+    $sql = "SELECT id, descricao FROM Assunto";
+    $stmt = $con->prepare($sql);
+    $stmt->execute();
+    $html_select = "<SELECT name ='sel-assunto[]' id='sel-assunt' multiple>";
+    while($linha = $stmt->fetch(PDO::FETCH_ASSOC)){
+      $html_select .= "<option value='$linha[id]' selected>$linha[descricao]</option>";
+    }
+    $html_select .= "</select>";
+    return $html_select;
+  }
 
   function exibirSituacao($situacao){
   	switch ($situacao) {
@@ -50,51 +63,13 @@
         		}
         		this.submit();
     		});  
-    // 		$('#btn-start').click(function(){
-				// var clickBtnValue = $(this).val();
-    //     		var url = 'importarAlunos.php';
-    //     		data =  {'btn-start': clickBtnValue};
-    //     		$.post(url, data);
-    //     	});  		
 		});
 	</script>
 	</head>
 	<body>
-		<br>
 		<div class="table-users">
-	  	<div class="header">Importar alunos</div>
-  		<div class="table-users">
-  			<table>
-  				<tr>
-  					<th class="title1">Carregar dados de uma turma</th>
-  				</tr>
-  				<tr>
-  					<td>
-			  			<form method="POST" enctype="multipart/form-data">
-			  				<table>
-			  					<tr>
-			  						<th>
-						  				<label>Nome da turma: * </label>
-						  				<input type="text" name="nome_turma" id="nome_turma">
-						  			<br/>
-			  						<label>Arquivo com dados dos alunos *
-			  						</label>
-			  						<input type="file" name="file_alunos" id="file_alunos" > 
-			  						<br/>
-			  						(Formato CSV: matricula;nome;email;)
-			  						</th>
-			  					</tr>
-			  					<tr>
-			  						<td>
-			  						<button class="bt-ok" id="btn-confirmar" name="btn-confirmar" type="submit">Carregar</button>
-			  						</td>
-			  					</tr>
-			  				</table>
-			  			</form>
-  					</td>
-  				</tr>
-  			</table>
-  		</div>
+	  	<div class="header">Criação de Turma</div>
+
 		<?php
 		if (isset($_POST["btn-confirmar"])){
 			$resultado = exibirDadosAlunos($conexao, $file_alunos, $nome_turma);
@@ -128,9 +103,11 @@
 		       			<?php 
 		       				if (isset($id_turma)){
 		       					?>
-		       					<form method="POST" action="gerar_atividades_aluno.php">
+		       					<form method="POST" action="gerar_atividades_aluno.php" class="title3">
 		       						<input type="hidden" value="<?=$id_turma?>" name="id_turma">
-		       						<button type="submit" id="btn-start" class="bt-ok">Iniciar atividades</button>
+		       						Deseja iniciar as atividades destes alunos?
+
+		       						<button type="submit" id="btn-start" class="bt-ok">Clique aqui para iniciar</button>
 		       					</form>
 		       			<?php
 		       				}
@@ -142,9 +119,69 @@
 		</form>
 		</div>
     	<?php 
-	        }
+	        } else {
        	?>  
-
+  		<div class="table-users">
+  			<form method="POST" enctype="multipart/form-data">
+  			<fieldset>
+			<legend>Dados da Turma</legend> 
+			<table>
+				<tr>
+					<td width="30%">
+					Nome da turma:</td>
+					<td>
+					<input type="text" name="nome_turma" id="nome_turma" required="required"> 
+					</td>
+				</tr>
+				<tr>
+					<td>
+					Arquivo com dados dos alunos:
+					<br/>(Formato CSV: matricula;nome;email;)
+					</td>
+					<td>
+					<input type="file" name="file_alunos" id="file_alunos" >
+					</td>
+				</tr>
+			</table>
+			  <legend>Configuração dos problemas</legend> 
+			<table>
+				<tr>
+					<td width="30%">			  
+			  		Quantidade de problemas por assunto:
+			  		</td>
+			  		<td>
+			  		<input type="number" name="qtd_problemas" required="required" value="6" max="6" min="1">
+			  		</td>
+			  	</tr>
+			  	<tr>
+			  		<td>Assuntos:</td>
+			  		<td><?=gerarSelectAssuntos($conexao);?></td>
+				</tr>
+				<tr>
+					<td>Máximo de tentativas por problema:</td>
+					<td><input type="number" value="3" max="5" min="1"  name="max_tentativas"></td>
+				</tr>
+				<tr>
+					<td>Controle de tempo:</td>
+					<td><input type="radio" name="controle_tempo" value="1">Sim 
+					<input type="radio" name="controle_tempo" value="0" checked="checked">Não </td>
+				</tr>
+				<tr>
+					<td>Tempo para cada problema (minutos):</td>
+					<td><input type="number" name="tempo" value="5"></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+					<button class="bt-ok" id="btn-confirmar" name="btn-confirmar" type="submit">Criar Turma</button>
+					</td>
+				</tr>
+			</table>
+			</fieldset>
+		</form>
+	</div>
+	<?php
+	}
+	?>
 	</body>
 </html>
 <?php

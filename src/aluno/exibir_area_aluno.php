@@ -11,12 +11,13 @@
   $areaAlunoDAO = new AreaAlunoDAO($conexao);
   $itemBlocoDAO = new ItemBlocoDAO($conexao);
 
+  $config_session = unserialize($_SESSION["config"]);
+  $MAX_ORDEM = intval($config_session->numero_problemas_fase);
+  $qtdProblemas = $config_session->numero_problemas_fase * count($config_session->assuntos);
+  
   $aluno = $alunoDAO->getById("Aluno", $id_usuario);
   $area_atual = $areaAlunoDAO->getByAluno($id_usuario);
   
-  $qtdProblemas = 10;
- // var_dump($area_atual);
-
   function getURLVideoExemplo($id_assunto){
   	switch ($id_assunto) {
   		case 1: 
@@ -71,25 +72,26 @@
 		<div class="table-users">
 				<table>
 				 <?php
-					if (strcmp($aluno->situacao, "0") == 0){
+				 // desativando a obrigatoriedade de alterar senha
+//					if (strcmp($aluno->situacao, "0") == 0){
 				 ?>
-			        <tr>
+<!-- 			        <tr>
 			           <th class="title2">
 			           	Antes de iniciar, é necessário alterar a senha. <br/>
 			           	<a href="/aluno/alterar_senha.php">Alterar senha</a>
 			           </th>
 			       </tr>
-
+ -->
 			       <?php
-			   		} else if (strcmp($aluno->situacao, "2") == 0){
+//			   		} else if (strcmp($aluno->situacao, "2") == 0){
 				?>
 <!-- 				<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSd1Xi7fA8G0yudzEhRXoMwD_ofGXHWTA1F9niYyYz8FcFL_Ag/viewform?embedded=true" width="700" height="300" frameborder="0" marginheight="0" marginwidth="0" onsubmit="javascript:alert('submit... ');">Carregando…</iframe> -->
 				<?php
-					} else {
+//					} else {
 						$fase = 1;
 				?>
 				<tr>
-				 	<td class="special_line">Fase <?=$fase++;?>: Pesquisa inicial - <a class="bt-ok" href="https://goo.gl/forms/OfMXaaykGuVTEHL92" target="_blank">Clique aqui para responder</a>
+				 	<td class="title2">Fase <?=$fase++;?>: Pesquisa inicial - <a href="https://goo.gl/forms/OfMXaaykGuVTEHL92" target="_blank">Clique aqui para responder</a>
 				 	</td>
 				</tr> 
 
@@ -126,15 +128,16 @@
 				  </div>
 				
 				  	<?php
-					}
+					} // if url
 					?>
 		            </th>
 		          </tr>
 		          <tr>
 		            <td align="middle" valign="center">
 		            	<?php 
+		            	//var_dump($bloco);
 		            		$itensBloco = $itemBlocoDAO->getByBloco($bloco->id);
-		            		for ($i = 1; $i <= MAX_ORDEM; $i++){
+		            		for ($i = 1; $i <= $MAX_ORDEM; $i++){
 		            		// foreach ($itensBloco as $item) {
 
 		            			$item = $itensBloco[$i-1];
@@ -187,16 +190,16 @@
 		            				</span>
 		            			</a>
 		            			<?php
-		            		}
+		            		} // for - itens bloco
 		            	?>
 		          </tr>
 		          <?php
 				    	
-				    }
-				    if ($aluno->nivel > 7) {
+				    } // for blocos
+				    if ($aluno->nivel >= $qtdProblemas) {
 		          ?>
 		          <tr>
-				 	<td class="special_line">Fase <?=$fase++;?>: Pesquisa Final - <a class="bt-ok" href="https://goo.gl/forms/EXI5xa7WMIlebUvS2" target="_blank">Clique aqui para responder</a>
+				 	<td class="title2">Fase <?=$fase++;?>: Pesquisa Final - <a href="https://goo.gl/forms/EXI5xa7WMIlebUvS2" target="_blank">Clique aqui para responder</a>
 				 	</td>
 				 </tr> 
 				 <?php
@@ -206,7 +209,7 @@
 				</table>
 		</div>
 		<?php
-			} // fim do if de alterar senha
+			// } // fim do if de alterar senha -- alterar senha comentado
 		} else {
 			?>
 			<div class="title2">Não há problemas liberados para você. Fale com o professor. </div>
