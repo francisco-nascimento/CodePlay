@@ -595,10 +595,12 @@ class TurmaDAO extends DAO {
 
 class TurmaConfiguracaoDAO extends DAO {
   private $turmaConfigFasesDAO;
+  private $assuntoDAO;
 
   public function __construct($pdo) {
      parent::__construct($pdo);
      $this->turmaConfigFasesDAO = new TurmaConfiguracaoFasesDAO($pdo);
+     $this->assuntoDAO = new AssuntoDAO($pdo);
   }
 
   public function save($id_turma, $numero_problemas_fase, $max_tentativas, $controle_tempo, $tempo_limite){
@@ -613,17 +615,17 @@ class TurmaConfiguracaoDAO extends DAO {
   }
 
   public function getByTurma($id_turma){
-    $config = new TurmaConfiguracao();
     $stmt = $this->db->prepare("SELECT * FROM TurmaConfiguracao where id_turma = ?");
     $stmt->bindValue(1, $id_turma);
     $stmt->execute();
     $config = $stmt->fetchObject("TurmaConfiguracao");
     if ($config){
       $config->assuntos = $this->turmaConfigFasesDAO->getByTurmaConfig($config->id);
-    } else {      
+    } else {     
+      $config = new TurmaConfiguracao();    
       $config->numero_problemas_fase = MAX_ORDEM;
       $config->max_tentativas = QUANTIDADE_TENTATIVAS_MAX;
-      $config->assuntos = $assuntosDAO->listAll();      
+      $config->assuntos = $this->assuntoDAO->listAll();      
     }
     return $config;
   }

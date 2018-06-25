@@ -52,19 +52,6 @@
 	  <title>Code && Play - Listar Alunos</title>
 	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-	<script type="text/javascript">
-		$(document).ready(function(){
-    		$('#btn-confirmar').click(function(){
-        		if ($('#file_alunos').val() == '' ||
-        			$('#nome_turma').val() == ''){
-        			alert('Campos obrigatórios não informados');
-        			return false;
-        		}
-        		this.submit();
-    		});  
-		});
-	</script>
 	</head>
 	<body>
 		<div class="table-users">
@@ -73,13 +60,15 @@
 		<?php
 		if (isset($_POST["btn-confirmar"])){
 			$resultado = exibirDadosAlunos($conexao, $file_alunos, $nome_turma);
+			$qtdAlunos = count($resultado);
+		    if (isset($id_turma) && $qtdAlunos > 0){
 		?>
   		<div class="table-users">
 	      	<table cellspacing="0">
 	      		<tr><td colspan="4">
 	      			<div class="title1">Alunos cadastrados</div>
 	      			<span class="title2">Nome da turma: <?=$nome_turma;?></span><br/>
-	      			<span class="title2">Quantidade de alunos: <?=count($resultado);?></span>
+	      			<span class="title2">Quantidade de alunos: <?=$qtdAlunos?></span>
 	      			</td></tr>
 	      		<tr>
 		         	<th>Nome</th>
@@ -100,25 +89,23 @@
 		       	?>
 		       	<tr>
 		       		<td colspan="3">
-		       			<?php 
-		       				if (isset($id_turma)){
-		       					?>
-		       					<form method="POST" action="gerar_atividades_aluno.php" class="title3">
-		       						<input type="hidden" value="<?=$id_turma?>" name="id_turma">
-		       						Deseja iniciar as atividades destes alunos?
+	   					<form method="POST" action="gerar_atividades_aluno.php" class="title3">
+	   						<input type="hidden" value="<?=$id_turma?>" name="id_turma">
+	   						Deseja iniciar as atividades destes alunos?
 
-		       						<button type="submit" id="btn-start" class="bt-ok">Clique aqui para iniciar</button>
-		       					</form>
-		       			<?php
-		       				}
-		       			?>
+	   						<button type="submit" id="btn-start" class="bt-ok">Clique aqui para iniciar</button>
+	   					</form>
 		       		</td>
 		       	</tr>
-
 			</table>
 		</form>
 		</div>
     	<?php 
+    			} else { // turma criada sem alunos
+    				?>
+	  			<div class="title2">Turma criada sem alunos. Para adicionar alunos, <a href="/professor/cadastrarAluno.php">clique aqui</a>. </div>
+    				<?php
+    			}
 	        } else {
        	?>  
   		<div class="table-users">

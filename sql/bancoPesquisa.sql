@@ -43,7 +43,7 @@ create table TurmaConfiguracaoFases (
 	id_assunto int not null,
 	data_Alteracao timestamp default current_timestamp,
 	primary key (id),
-	foreign key(id_turma_config) references Turma_configuracao(id),
+	foreign key(id_turma_config) references TurmaConfiguracao(id),
 	foreign key (id_assunto) references Assunto(id)
 );
 

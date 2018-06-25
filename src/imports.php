@@ -56,6 +56,7 @@
 <link href="/vendor/bootstrap/css/dropdown.css" rel="stylesheet" type="text/css">
 <?php
     $paginas = array();
+    $i = 0;
     $paginas[$i++] = '/professor/listarProblemas.php';
     $paginas[$i++] = '/professor/listarAlunos.php';
     $paginas[$i++] = '/professor/cadastrarProblema.php';
